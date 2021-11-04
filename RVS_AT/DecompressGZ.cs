@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RVS_AT
 {
-    class DecompressGZ
+    public static class DecompressGz
     {
         #region kompresja
         //public void Compress(FileInfo fileToCompress)
@@ -28,22 +28,15 @@ namespace RVS_AT
         //}
         #endregion
 
-        public async Task Decompress(FileInfo fileToDecompress)
+        public static async Task Decompress(this FileInfo fileToDecompress)
         {
-            using (FileStream originalFileStream = fileToDecompress.OpenRead())
-            {
-                string currentFileName = fileToDecompress.FullName;
-                string newFileName = currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length);
+            await using FileStream originalFileStream = fileToDecompress.OpenRead();
+            string currentFileName = fileToDecompress.FullName;
+            string newFileName = currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length);
 
-                using (FileStream decompressedFileStream = File.Create(newFileName))
-                {
-                    using (GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress))
-                    {
-                        await decompressionStream.CopyToAsync(decompressedFileStream);
-                        //Console.WriteLine("Decompressed: {0}", fileToDecompress.Name);
-                    }
-                }
-            }
+            await using FileStream decompressedFileStream = File.Create(newFileName);
+            await using GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress);
+            await decompressionStream.CopyToAsync(decompressedFileStream);
         }
     }
 }

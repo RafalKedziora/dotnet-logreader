@@ -24,17 +24,17 @@ namespace RVS_AT
             InitializeComponent();
         }
 
-        private void btnSave(object sender, RoutedEventArgs e)
+        private void BtnSave(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void btnClose(object sender, RoutedEventArgs e)
+        private void BtnClose(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void gridMouseDown(object sender, MouseButtonEventArgs e)
+        private void GridMouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
         }

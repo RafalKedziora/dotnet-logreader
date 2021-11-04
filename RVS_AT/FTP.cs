@@ -6,51 +6,46 @@ using System.Threading.Tasks;
 
 namespace RVS_AT
 {
-    public class FTP
+    public class Ftp
     {
         [JsonProperty]
-        private string host;
+        private string _host;
         [JsonProperty]
-        private string login;
+        private string _login;
         [JsonProperty]
-        private string password;
+        private string _password;
         [JsonProperty]
-        public string pathToFiles;
+        public string PathToFiles;
         [JsonProperty]
-        private int port;
-        public FTP(string host, string login, string password, string pathToFiles, int port)
+        private int _port;
+        public Ftp(string host, string login, string password, string pathToFiles, int port)
         {
-            this.host = host;
-            this.login = login;
-            this.password = password;
-            this.pathToFiles = pathToFiles;
-            this.port = port;
+            this._host = host;
+            this._login = login;
+            this._password = password;
+            this.PathToFiles = pathToFiles;
+            this._port = port;
         }
         #region Database access data
         public string Host()
         {
-            return host;
+            return _host;
         }
 
         public string Login()
         {
-            return login;
-        }
-
-        public string Password()
-        {
-            return password;
+            return _login;
         }
 
         public int Port()
         {
-            return port;
+            return _port;
         }
         #endregion
         public async Task Download()
         {
-            FtpClient client = new FtpClient(host);
-            client.Credentials = new NetworkCredential(login, password);
+            FtpClient client = new FtpClient(_host);
+            client.Credentials = new NetworkCredential(_login, _password);
             try
             {
                 await client.ConnectAsync();
