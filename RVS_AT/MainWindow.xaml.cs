@@ -17,10 +17,10 @@ namespace RVS_AT
 {
     public partial class MainWindow : Window
     {
-        Moduls.Menu menuModule = new Moduls.Menu();
-        Moduls.Text textModule = new Moduls.Text();
-        Moduls.Settings settingsModule = new Moduls.Settings();
-        FileOperator fileOperator = new FileOperator();
+        readonly Modules.Menu _menuModule = new();
+        readonly Modules.Text _textModule = new();
+        readonly Modules.Settings _settingsModule = new();
+        readonly FileOperator _fileOperator = new();
         public MainWindow()
         {
             InitializeComponent();
@@ -29,22 +29,22 @@ namespace RVS_AT
             ProcessingAsync();
         }
 
-        public async void ProcessingAsync()
+        public void ProcessingAsync()
         {
-            loadMenu();
-            await FromFtpToLocalFilesUpdate();
-            await fileOperator.unpackerGZ();
+            LoadMenu();
+            Task ftpFiles = FromFtpToLocalFilesUpdate();
+            Task unpackedFiles = _fileOperator.UnpackerGz();
         }
 
         //Grant access to the FileOperator object
-        internal FileOperator grantAccess()
+        internal FileOperator GrantAccess()
         {
-            return fileOperator;
+            return _fileOperator;
         }
 
-        internal async static Task FromFtpToLocalFilesUpdate()
+        internal static async Task FromFtpToLocalFilesUpdate()
         {
-            FTP ftpService = Settings.loadSettings();
+            Ftp ftpService = Settings.LoadSettings();
             if (ftpService != null)
                 await ftpService.Download();
         }
@@ -58,24 +58,24 @@ namespace RVS_AT
     #region UserControlLoading
     public partial class MainWindow : Window
     {
-        private void loadSettings()
+        private void LoadSettings()
         {
             gridDesktop.Children.Clear();
-            gridDesktop.Children.Add(settingsModule);
+            gridDesktop.Children.Add(_settingsModule);
             btnMainOperations.Content = "Operacje";
         }
 
-        private void loadText()
+        private void LoadText()
         {
             gridDesktop.Children.Clear();
-            gridDesktop.Children.Add(textModule);
+            gridDesktop.Children.Add(_textModule);
             btnMainOperations.Content = "Operacje";
         }
 
-        private void loadMenu()
+        private void LoadMenu()
         {
             gridDesktop.Children.Clear();
-            gridDesktop.Children.Add(menuModule);
+            gridDesktop.Children.Add(_menuModule);
             btnMainOperations.Content = "AdminTools";
         }
     }
@@ -83,53 +83,44 @@ namespace RVS_AT
     #region UpperBeamButtons
     public partial class MainWindow : Window
     {
-        private void btnClose(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        private void BtnClose(object sender, RoutedEventArgs e) 
+            => Application.Current.Shutdown();
 
-        private void btnMaximize(object sender, RoutedEventArgs e)
-        {
-            if (WindowState == WindowState.Maximized)
-                WindowState = WindowState.Normal;
-            else
-                WindowState = WindowState.Maximized;
-        }
+        private void BtnMaximize(object sender, RoutedEventArgs e) 
+            => WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
 
-        private void btnMinimize(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
+        private void BtnMinimize(object sender, RoutedEventArgs e) 
+            => WindowState = WindowState.Minimized;
         }
-    }
     #endregion
     #region BtnLoadUserControls
     public partial class MainWindow : Window
     {
-        private void btnOperations(object sender, RoutedEventArgs e)
+        private void BtnOperations(object sender, RoutedEventArgs e)
         {
-            if (gridDesktop.Children.Contains(textModule) && !Application.Current.Windows.OfType<PopupFiltrationText>().Any())
+            if (gridDesktop.Children.Contains(_textModule) && !Application.Current.Windows.OfType<PopupFiltrationText>().Any())
             {
                 PopupFiltrationText popup = new PopupFiltrationText();
                 popup.Show();
             }
         }
 
-        private void btnMenu(object sender, RoutedEventArgs e)
+        private void BtnMenu(object sender, RoutedEventArgs e)
         {
-            if(!gridDesktop.Children.Contains(menuModule))
-                loadMenu();
+            if(!gridDesktop.Children.Contains(_menuModule))
+                LoadMenu();
         }
 
-        private void btnText(object sender, RoutedEventArgs e)
+        private void BtnText(object sender, RoutedEventArgs e)
         {
-            if (!gridDesktop.Children.Contains(textModule))
-                loadText();
+            if (!gridDesktop.Children.Contains(_textModule))
+                LoadText();
         }
 
-        private void btnSettings(object sender, RoutedEventArgs e)
+        private void BtnSettings(object sender, RoutedEventArgs e)
         {
-            if (!gridDesktop.Children.Contains(settingsModule))
-                loadSettings();
+            if (!gridDesktop.Children.Contains(_settingsModule))
+                LoadSettings();
         }
 
         //private void btnFuture(object sender, RoutedEventArgs e)

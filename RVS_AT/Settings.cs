@@ -5,15 +5,14 @@ namespace RVS_AT
 {
     class Settings
     {
-        public static FTP loadSettings()
+        public static Ftp LoadSettings()
         {
-            string settingsDeserialization;
             if (File.Exists("Settings.json"))
             {
-                settingsDeserialization = File.ReadAllText(@"Settings.json");
-                FTP FTP = JsonConvert.DeserializeObject<FTP>(settingsDeserialization);
-                FTP.pathToFiles.Remove(0, 1);
-                return FTP;
+                var settingsDeserialization = File.ReadAllText(@"Settings.json");
+                Ftp ftp = JsonConvert.DeserializeObject<Ftp>(settingsDeserialization);
+                _ = ftp.PathToFiles.Remove(0, 1);
+                return ftp;
             }
             return null;
         }

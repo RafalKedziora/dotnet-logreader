@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="RVS_AT.Moduls.Settings"
+﻿<UserControl x:Class="RVS_AT.Modules.Settings"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RVS_AT.Moduls" xmlns:components="clr-namespace:RVS_AT"
+             xmlns:local="clr-namespace:RVS_AT.Modules" xmlns:components="clr-namespace:RVS_AT"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
@@ -30,15 +30,15 @@
                     <TextBlock>FTP</TextBlock>
                     <Grid Margin="0 2 0 0">
                         <TextBlock>Host:</TextBlock>
-                        <TextBox x:Name="hostTB" Width="150" HorizontalAlignment="Right" GotFocus="textboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Adres połączenia</TextBox>
+                        <TextBox x:Name="hostTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Adres połączenia</TextBox>
                     </Grid>                                                                        
                     <Grid Margin="0 2 0 0">                                                        
                         <TextBlock>Port:</TextBlock>
-                        <TextBox x:Name="portTB" Width="150" HorizontalAlignment="Right" GotFocus="textboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Port</TextBox>
+                        <TextBox x:Name="portTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Port</TextBox>
                     </Grid>                                                                        
                     <Grid Margin="0 2 0 0">                                                        
                         <TextBlock>Login:</TextBlock>
-                        <TextBox x:Name="loginTB" Width="150" HorizontalAlignment="Right" GotFocus="textboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Login</TextBox>
+                        <TextBox x:Name="loginTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Login</TextBox>
                     </Grid>
                     <Grid Margin="0 2 0 0">
                         <TextBlock>Hasło:</TextBlock>
@@ -46,10 +46,10 @@
                     </Grid>
                     <Grid Margin="0 2 0 0">
                         <TextBlock>Ścieżka:</TextBlock>
-                        <TextBox x:Name="pathToFilesTB" Width="150" HorizontalAlignment="Right" GotFocus="textboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">\logs</TextBox>
+                        <TextBox x:Name="pathToFilesTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">\logs</TextBox>
                     </Grid>
                     <Grid Margin="0 10 0 0">
-                        <Button x:Name="saveFTP" Click="saveFtpBtn">
+                        <Button x:Name="saveFTP" Click="SaveFtpBtn">
                             Zapisz
                         </Button>
                     </Grid>
@@ -58,7 +58,7 @@
                     <TextBlock>Feature</TextBlock>
                     <Grid Margin="0 2 0 0">
                         <TextBlock>Login:</TextBlock>
-                        <TextBox x:Name="featureTB" Width="150" HorizontalAlignment="Right" GotFocus="textboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Adres połączenia</TextBox>
+                        <TextBox x:Name="featureTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Adres połączenia</TextBox>
                     </Grid>
 
                     <Grid Margin="0 10 0 0">

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RVS_AT.Moduls
+namespace RVS_AT.Modules
 {
     public partial class Menu : UserControl
     {

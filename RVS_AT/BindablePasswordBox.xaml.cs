@@ -21,8 +21,8 @@ namespace RVS_AT
         
         public string Password
         {
-            get { return (string)GetValue(PasswordProperty); }
-            set { SetValue(PasswordProperty, value); }
+            get => (string)GetValue(PasswordProperty);
+            set => SetValue(PasswordProperty, value);
         }
 
         public BindablePasswordBox()
@@ -39,7 +39,7 @@ namespace RVS_AT
         private void UpdatePassword()
         {
             if(!_isPasswordChanging)
-            passwordBox.Password = Password;
+                passwordBox.Password = Password;
         }
     }
 }
