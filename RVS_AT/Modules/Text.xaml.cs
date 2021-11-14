@@ -32,6 +32,11 @@ namespace RVS_AT.Modules
             }
         }
 
+        public string LogsboxContent()
+        {
+            return logsBox.Text;
+        }
+
         private List<string> ChooseFiles()
         {
             var files = Directory.GetFiles(Environment.CurrentDirectory, "*.log", SearchOption.AllDirectories).ToList();

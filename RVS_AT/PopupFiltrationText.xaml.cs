@@ -26,7 +26,7 @@ namespace RVS_AT
 
         private void BtnSave(object sender, RoutedEventArgs e)
         {
-
+            Filtration();
         }
 
         private void BtnClose(object sender, RoutedEventArgs e)
@@ -37,6 +37,13 @@ namespace RVS_AT
         private void GridMouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void Filtration()
+        {
+            MainWindow temp = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            var query = temp._textModule.logsBox.Text.Split("\n").Where(line => line.Contains(textToFind.Text));
+            temp._textModule.logsBox.Text = string.Join("\n", query);
         }
     }
 }

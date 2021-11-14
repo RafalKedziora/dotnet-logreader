@@ -5,7 +5,7 @@ namespace RVS_AT
 {
     class Settings
     {
-        public static Ftp LoadSettings()
+        public static Ftp Load()
         {
             if (File.Exists("Settings.json"))
             {

@@ -34,7 +34,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Grid.Column="0" MaxWidth="25" HorizontalAlignment="Left" Margin="5 10 0 0">Filtr:</TextBlock>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="5 10 0 0" HorizontalAlignment="Left" MinWidth="105" MaxWidth="205"></TextBox>
+            <TextBox x:Name="textToFind" Grid.Row="0" Grid.Column="1" Margin="5 10 0 0" HorizontalAlignment="Left" MinWidth="105" MaxWidth="205"></TextBox>
         </Grid>
     </DockPanel>
 </Window>

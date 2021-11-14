@@ -18,7 +18,7 @@ namespace RVS_AT
     public partial class MainWindow : Window
     {
         readonly Modules.Menu _menuModule = new();
-        readonly Modules.Text _textModule = new();
+        public readonly Modules.Text _textModule = new();
         readonly Modules.Settings _settingsModule = new();
         readonly FileOperator _fileOperator = new();
         public MainWindow()
@@ -44,7 +44,7 @@ namespace RVS_AT
 
         internal static async Task FromFtpToLocalFilesUpdate()
         {
-            Ftp ftpService = Settings.LoadSettings();
+            Ftp ftpService = Settings.Load();
             if (ftpService != null)
                 await ftpService.Download();
         }
