@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using Newtonsoft.Json;
@@ -8,9 +10,14 @@ namespace RVS_AT.Modules
 {
     public partial class Settings : UserControl
     {
+        private Ftp ftpAccess = ((MainWindow)Application.Current.MainWindow).ftpService;
         public Settings()
         {
             InitializeComponent();
+            hostTB.Text = ftpAccess.Host;
+            loginTB.Text = ftpAccess.Login;
+            pathToFilesTB.Text = ftpAccess.PathToFiles;
+            portTB.Text = ftpAccess.Port;
         }
 
         private void TextboxGotFocus(object sender, RoutedEventArgs e)
@@ -23,10 +30,24 @@ namespace RVS_AT.Modules
 
         private void SaveFtpBtn(object sender, RoutedEventArgs e)
         {
-            var saveFtpConnectionInfo = new Ftp(hostTB.Text, loginTB.Text, passwordTB.passwordBox.Password.ToString(), pathToFilesTB.Text, Convert.ToInt32(portTB.Text));
-            string settingsSerialized = JsonConvert.SerializeObject(saveFtpConnectionInfo);
+            ftpAccess.Host = hostTB.Text;
+            ftpAccess.Login = loginTB.Text;
+            ftpAccess.SetPassword(passwordTB.passwordBox.Password.ToString());
+            ftpAccess.PathToFiles = pathToFilesTB.Text;
+            ftpAccess.Port = portTB.Text;
+            string settingsSerialized = JsonConvert.SerializeObject(ftpAccess);
             File.WriteAllText(@"Settings.json", settingsSerialized);
-            _ = MainWindow.FromFtpToLocalFilesUpdate();
+            _ = ((MainWindow)Application.Current.MainWindow).FromFtpToLocalFilesUpdate();
+        }
+
+        private void SaveColorsBtn(object sender, RoutedEventArgs e)
+        {
+            string[] textboxes = new string[]{ gradient1.Text, gradient2.Text, gradient3.Text, backgroundColor.Text, backgroundButton.Text };
+
+            App.Current.MainWindow.DataContext = this;
+            MainWindow._uiColors.ChangeColor(textboxes);
+            App.Current.MainWindow.DataContext = this;
+            MainWindow._uiColors.ChangeColor(textboxes);
         }
     }
 }

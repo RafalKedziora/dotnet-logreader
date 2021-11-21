@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,7 +23,7 @@ namespace RVS_AT.Modules
             LoadFilesContent();
         }
 
-        private void LoadFilesContent()
+        public void LoadFilesContent()
         {
             var files = ChooseFiles();
             foreach (var fileName in files)
@@ -61,6 +62,29 @@ namespace RVS_AT.Modules
             logsBox.AppendText(fileName + "\n");
             using StreamReader reader = File.OpenText(fileName);
             logsBox.AppendText(reader.ReadToEnd());
+            //new Thread(async () =>
+            //{
+            //    using (FileStream fs = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            //    {
+            //        this.Dispatcher.Invoke(() => { logsBox.Text += fileName + "\n"; });
+            //        using (BufferedStream bs = new BufferedStream(fs))
+            //        {
+            //            using (StreamReader sr = new StreamReader(bs))
+            //            {
+            //                string line;
+            //                while ((line = await sr.ReadLineAsync()) != null)
+            //                {
+            //                    this.Dispatcher.Invoke(() =>
+            //                    {
+            //                        logsBox.Text += line + "\n";
+            //                    });
+
+            //                    Thread.Sleep(100);
+            //                }
+            //            }
+            //        }
+            //    }
+            //}).Start();
         }
     }
 }

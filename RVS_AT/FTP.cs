@@ -3,10 +3,11 @@ using System;
 using System.Net;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace RVS_AT
 {
-    public class Ftp
+    public class Ftp : INotifyPropertyChanged
     {
         [JsonProperty]
         private string _host;
@@ -15,31 +16,45 @@ namespace RVS_AT
         [JsonProperty]
         private string _password;
         [JsonProperty]
-        public string PathToFiles;
+        public string _pathToFiles;
         [JsonProperty]
-        private int _port;
-        public Ftp(string host, string login, string password, string pathToFiles, int port)
+        private string _port;
+
+        public Ftp(string host, string login, string password, string pathToFiles, string port)
         {
             this._host = host;
             this._login = login;
             this._password = password;
-            this.PathToFiles = pathToFiles;
+            this._pathToFiles = pathToFiles;
             this._port = port;
         }
         #region Database access data
-        public string Host()
+        public string Host
         {
-            return _host;
+            get { return _host; }
+            set { _host = value; OnPropertyChanged("Text"); }
         }
 
-        public string Login()
+        public string Login
         {
-            return _login;
+            get { return _login; }
+            set { _login = value; OnPropertyChanged("Text"); }
         }
 
-        public int Port()
+        public string Port
         {
-            return _port;
+            get { return _port; }
+            set { _port = value; OnPropertyChanged("Text"); }
+        }
+
+        public string PathToFiles
+        {
+            get { return _pathToFiles; }
+            set { _pathToFiles = value; OnPropertyChanged("Text"); }
+        }
+        public void SetPassword(string passwd)
+        {
+            this._password = passwd;
         }
         #endregion
         public async Task Download()
@@ -55,6 +70,17 @@ namespace RVS_AT
             catch(Exception e)
             {
                 Console.WriteLine($"FTP Connection Exception: {e}");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

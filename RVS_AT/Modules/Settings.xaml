@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RVS_AT.Modules" xmlns:components="clr-namespace:RVS_AT"
+             xmlns:components="clr-namespace:RVS_AT"
+             xmlns:local="clr-namespace:RVS_AT"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <local:StringToColorConverter x:Key="StringToColorConverter"/>
+    </UserControl.Resources>
     <Grid Background="White">
         <DockPanel>
             <Grid DockPanel.Dock="Top" MaxHeight="80">
@@ -26,27 +30,27 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Margin="0 10 0 0">
+                <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Margin="0 10 0 0" >
                     <TextBlock>FTP</TextBlock>
                     <Grid Margin="0 2 0 0">
                         <TextBlock>Host:</TextBlock>
-                        <TextBox x:Name="hostTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Adres połączenia</TextBox>
+                        <TextBox x:Name="hostTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" DataContext="Ftp"></TextBox>
                     </Grid>                                                                        
                     <Grid Margin="0 2 0 0">                                                        
                         <TextBlock>Port:</TextBlock>
-                        <TextBox x:Name="portTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Port</TextBox>
+                        <TextBox x:Name="portTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" DataContext="Ftp"></TextBox>
                     </Grid>                                                                        
                     <Grid Margin="0 2 0 0">                                                        
                         <TextBlock>Login:</TextBlock>
-                        <TextBox x:Name="loginTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">Login</TextBox>
+                        <TextBox x:Name="loginTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" DataContext="Ftp"></TextBox>
                     </Grid>
                     <Grid Margin="0 2 0 0">
                         <TextBlock>Hasło:</TextBlock>
-                        <components:BindablePasswordBox x:Name="passwordTB"  FontSize="15" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Password = "{Binding Password}"/>
+                        <components:BindablePasswordBox x:Name="passwordTB"  FontSize="15" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" DataContext="BindablePasswordBox" Password = "{Binding Path=Password}"/>
                     </Grid>
                     <Grid Margin="0 2 0 0">
                         <TextBlock>Ścieżka:</TextBlock>
-                        <TextBox x:Name="pathToFilesTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">\logs</TextBox>
+                        <TextBox x:Name="pathToFilesTB" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" DataContext="Ftp"></TextBox>
                     </Grid>
                     <Grid Margin="0 10 0 0">
                         <Button x:Name="saveFTP" Click="SaveFtpBtn">
@@ -54,6 +58,36 @@
                         </Button>
                     </Grid>
                 </StackPanel>
+                
+                <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Margin="0 10 0 0" >
+                    <TextBlock>UI Kolory</TextBlock>
+                    <Grid Margin="0 2 0 0">
+                        <TextBlock>Gradient:</TextBlock>
+                        <TextBox x:Name="gradient1" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Path=Gradient1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringToColorConverter}}"></TextBox>
+                    </Grid>
+                    <Grid Margin="0 2 0 0">
+                        <TextBlock>Gradient:</TextBlock>
+                        <TextBox x:Name="gradient2" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Path=Gradient1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringToColorConverter}}"></TextBox>
+                    </Grid>
+                    <Grid Margin="0 2 0 0">
+                        <TextBlock>Gradient:</TextBlock>
+                        <TextBox x:Name="gradient3" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Path=Gradient1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringToColorConverter}}"></TextBox>
+                    </Grid>
+                    <Grid Margin="0 2 0 0">
+                        <TextBlock>Belka:</TextBlock>
+                        <TextBox x:Name="backgroundColor" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Path=Gradient1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringToColorConverter}}"></TextBox>
+                    </Grid>
+                    <Grid Margin="0 2 0 0">
+                        <TextBlock>Przycisk:</TextBlock>
+                        <TextBox x:Name="backgroundButton" Width="150" HorizontalAlignment="Right" GotFocus="TextboxGotFocus" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Path=Gradient1, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringToColorConverter}}"></TextBox>
+                    </Grid>
+                    <Grid Margin="0 10 0 0">
+                        <Button x:Name="saveColors" Click="SaveColorsBtn">
+                            Zapisz
+                        </Button>
+                    </Grid>
+                </StackPanel>
+                
                 <StackPanel Width="210" Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="center" Margin="0 10 0 0">
                     <TextBlock>Feature</TextBlock>
                     <Grid Margin="0 2 0 0">

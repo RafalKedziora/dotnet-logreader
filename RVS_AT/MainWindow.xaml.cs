@@ -19,13 +19,17 @@ namespace RVS_AT
     {
         readonly Modules.Menu _menuModule = new();
         public readonly Modules.Text _textModule = new();
-        readonly Modules.Settings _settingsModule = new();
+        readonly Modules.Settings _settingsModule;
         readonly FileOperator _fileOperator = new();
+        public static readonly UIColors _uiColors = new();
+        public Ftp ftpService = Settings.Load();
         public MainWindow()
         {
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             this.FontFamily = new FontFamily("Bahnschrift");
+            _settingsModule = new();
+            _uiColors.ChangeColor();
             ProcessingAsync();
         }
 
@@ -42,9 +46,8 @@ namespace RVS_AT
             return _fileOperator;
         }
 
-        internal static async Task FromFtpToLocalFilesUpdate()
+        internal async Task FromFtpToLocalFilesUpdate()
         {
-            Ftp ftpService = Settings.Load();
             if (ftpService != null)
                 await ftpService.Download();
         }
@@ -62,7 +65,7 @@ namespace RVS_AT
         {
             gridDesktop.Children.Clear();
             gridDesktop.Children.Add(_settingsModule);
-            btnMainOperations.Content = "Operacje";
+            btnMainOperations.Content = "AdminTools";
         }
 
         private void LoadText()

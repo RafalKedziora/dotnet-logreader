@@ -2,16 +2,16 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:RVS_AT.Modules"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:RVS_AT.Modules" xmlns:rvs_at="clr-namespace:RVS_AT" d:DataContext="{d:DesignInstance Type=rvs_at:UIColors}"
         mc:Ignorable="d"
         Title="RevosGO AdminTOOL" Height="450" Width="672" WindowStyle="None" MinHeight="450" MinWidth="672">
     <DockPanel>
         <Grid DockPanel.Dock="Left">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF141E30"/>
-                    <GradientStop Color="#FF141E30" Offset="0.008"/>
-                    <GradientStop Color="#FF243B55" Offset="1"/>
+                    <GradientStop Color="{Binding Path=Gradient1, Mode=OneWay}"/>
+                    <GradientStop Color="{Binding Path=Gradient2, Mode=OneWay}" Offset="0.008"/>
+                    <GradientStop Color="{Binding Path=Gradient3, Mode=OneWay}" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
             <Grid.ColumnDefinitions>
@@ -27,36 +27,26 @@
             <Grid>
                 <Grid.Style>
                     <Style TargetType="Grid">
-                        <Setter Property="Background" Value="#FF141E30"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#BEE6FD"/>
-                            </Trigger>
-                        </Style.Triggers>
+                        <Setter Property="Background" Value="{Binding Path=BackgroundButton}"/>
                     </Style>
                 </Grid.Style>
-                <Button x:Name="btnMainOperations" Grid.Column="0" Grid.Row="0" Foreground="White" BorderBrush="{x:Null}" Click="BtnOperations">
+                <Button x:Name="btnMainOperations" Grid.Column="0" Grid.Row="0" BorderBrush="{x:Null}" Foreground="White" Click="BtnOperations">
                     <Button.Background>
                         <ImageBrush/>
                     </Button.Background>
                 </Button>
             </Grid>
-            <Button Grid.Column="0" Grid.Row="1" Foreground="White" OpacityMask="Black" BorderBrush="{x:Null}" Click="BtnMenu">
+            <Button Grid.Column="0" Grid.Row="1" BorderBrush="{x:Null}" Foreground="White" Click="BtnMenu">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background> Menu
             </Button>
-            <Button Grid.Column="0" Grid.Row="2" Foreground="White" OpacityMask="Black" BorderBrush="{x:Null}" Click="BtnText">
+            <Button Grid.Column="0" Grid.Row="2" BorderBrush="{x:Null}" Foreground="White" Click="BtnText">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background> Tekst
             </Button>
-            <!--<Button Grid.Column="0" Grid.Row="4" Foreground="White" OpacityMask="Black" BorderBrush="{x:Null}" Click="btnFuture">
-                <Button.Background>
-                    <ImageBrush/>
-                </Button.Background> future
-            </Button>-->
-            <Button Grid.Column="0" Grid.Row="3" Foreground="White" OpacityMask="Black" BorderBrush="{x:Null}" Click="BtnSettings">
+            <Button Grid.Column="0" Grid.Row="3" BorderBrush="{x:Null}" Foreground="White" Click="BtnSettings">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background> Settings
@@ -70,9 +60,12 @@
                 <RowDefinition MaxHeight="35"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" FlowDirection="RightToLeft" Background="#FF141E30" MouseDown="StackPanel_MouseDown">
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" FlowDirection="RightToLeft" MouseDown="StackPanel_MouseDown">
+                <StackPanel.Background>
+                    <SolidColorBrush Color="{Binding Path=BackgroundColor}"/>
+                </StackPanel.Background>
                 <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="BtnClose">
-                    <Image Source="Img/close.png" OpacityMask="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                    <Image Source="Img/close.png"/>
                 </Button>
                 <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="BtnMaximize">
                     <Image Source="Img/maximize.png"/>

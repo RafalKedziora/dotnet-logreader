@@ -42,8 +42,14 @@ namespace RVS_AT
         private void Filtration()
         {
             MainWindow temp = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-            var query = temp._textModule.logsBox.Text.Split("\n").Where(line => line.Contains(textToFind.Text));
-            temp._textModule.logsBox.Text = string.Join("\n", query);
+            if (textToFind.Text != "")
+            {
+                var query = temp._textModule.logsBox.Text.Split("\n").Where(line => line.Contains(textToFind.Text));
+                temp._textModule.logsBox.Text = string.Join("\n", query);
+            }
+            else
+                temp._textModule.LoadFilesContent();
+
         }
     }
 }
