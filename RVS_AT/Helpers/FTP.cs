@@ -22,11 +22,7 @@ namespace RVS_AT
 
         public Ftp(string host, string login, string password, string pathToFiles, string port)
         {
-            this._host = host;
-            this._login = login;
-            this._password = password;
-            this._pathToFiles = pathToFiles;
-            this._port = port;
+            (_host, _login, _password, _pathToFiles, _port) = (host, login, password, pathToFiles, port);
         }
         #region Database access data
         public string Host

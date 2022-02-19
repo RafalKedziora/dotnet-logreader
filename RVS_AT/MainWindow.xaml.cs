@@ -1,35 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 namespace RVS_AT
 {
     public partial class MainWindow : Window
     {
-        readonly Modules.Menu _menuModule = new();
-        public readonly Modules.Text _textModule = new();
-        readonly Modules.Settings _settingsModule;
-        readonly FileOperator _fileOperator = new();
-        public static readonly UIColors _uiColors = new();
-        public Ftp ftpService = Settings.Load();
+        private readonly Modules.Menu _menuModule;
+        private readonly FileOperator _fileOperator;
+        public readonly Modules.Text _textModule;
+        public readonly Modules.Settings _settingsModule;
+        public UIColors uiColors = Settings.LoadColors();
+        public Ftp ftpService = Settings.LoadFtp();
         public MainWindow()
         {
             InitializeComponent();
+            _menuModule = new();
+            _fileOperator = new();
+            _textModule = new();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             this.FontFamily = new FontFamily("Bahnschrift");
             _settingsModule = new();
-            _uiColors.ChangeColor();
+            uiColors.ChangeColor();
             ProcessingAsync();
         }
 
@@ -38,6 +31,12 @@ namespace RVS_AT
             LoadMenu();
             Task ftpFiles = FromFtpToLocalFilesUpdate();
             Task unpackedFiles = _fileOperator.UnpackerGz();
+        }
+
+        public void RestartApp()
+        {
+            System.Diagnostics.Process.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            Application.Current.Shutdown();
         }
 
         //Grant access to the FileOperator object

@@ -14,14 +14,12 @@ using System.Windows.Shapes;
 
 namespace RVS_AT
 {
-    /// <summary>
-    /// Interaction logic for PopupFiltrationText.xaml
-    /// </summary>
     public partial class PopupFiltrationText : Window
     {
         public PopupFiltrationText()
         {
             InitializeComponent();
+            App.Current.Windows.OfType<MainWindow>().FirstOrDefault().uiColors.UpdatePopupColor();
         }
 
         private void BtnSave(object sender, RoutedEventArgs e)
