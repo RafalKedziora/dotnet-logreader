@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RVS_AT"
         mc:Ignorable="d"
-        Title="PopupFiltrationText" Height="350" Width="400" WindowStyle="None" ResizeMode="NoResize">
-    <DockPanel>
+        Title="PopupFiltrationText" Height="450" Width="450" WindowStyle="None" ResizeMode="NoResize">
+    <DockPanel Margin="0">
         <Grid DockPanel.Dock="Top" MouseDown="GridMouseDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -27,17 +27,49 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <Grid DockPanel.Dock="Right" MinHeight="300" MinWidth="500">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition MaxWidth="35"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition MaxHeight="27" />
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" MaxWidth="25" HorizontalAlignment="Left" Margin="5 10 0 0">Filtr:</TextBlock>
-            <TextBox x:Name="textToFind" Grid.Row="0" Grid.Column="1" Margin="5 10 0 0" HorizontalAlignment="Left" MinWidth="105" MaxWidth="205"></TextBox>
-        </Grid>
+
+        <DockPanel DockPanel.Dock="Right" Margin="5">
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" DockPanel.Dock="Top">
+                <ListBox MinHeight="150" MaxHeight="200" MinWidth="200" MaxWidth="250" Name="lbTodoList" HorizontalContentAlignment="Stretch" SelectionMode="Extended" SelectionChanged="lbTodoList_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Title}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <StackPanel Margin="5,0">
+                    <StackPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="0,0,0,5" />
+                        </Style>
+                    </StackPanel.Resources>
+                    <TextBlock FontWeight="Bold" Margin="0,0,0,10">ListBox selection</TextBlock>
+                    <Button Name="btnShowSelectedItem" Click="btnShowSelectedItem_Click">Show selected</Button>
+                    <Button Name="btnSelectLast" Click="btnSelectLast_Click">Select last</Button>
+                    <Button Name="btnSelectThree" Click="btnSelectLastThreeDays_Click">Select last 3 days</Button>
+                    <Button Name="btnSelectSeven" Click="btnSelectLastSevenDays_Click">Select last 7 days</Button>
+                </StackPanel>
+            </StackPanel>
+
+            <Grid MinHeight="200" MinWidth="200">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MaxWidth="35"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="27" />
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" MaxWidth="25" HorizontalAlignment="Left" Margin="5 10 0 0">Filtr:</TextBlock>
+                <TextBox x:Name="textToFind" Grid.Row="0" Grid.Column="1" Margin="5 10 0 0" HorizontalAlignment="Left" MinWidth="105" MaxWidth="205"></TextBox>
+            </Grid>
+        </DockPanel>
     </DockPanel>
 </Window>

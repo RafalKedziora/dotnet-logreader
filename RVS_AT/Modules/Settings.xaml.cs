@@ -42,7 +42,7 @@ namespace RVS_AT.Modules
             ftpAccess.Port = portTB.Text;
             string settingsSerialized = JsonConvert.SerializeObject(ftpAccess);
             File.WriteAllText(@"Settings/Ftp.json", settingsSerialized);
-            _ = ((MainWindow)Application.Current.MainWindow).FromFtpToLocalFilesUpdate();
+            ((MainWindow)Application.Current.MainWindow).FromFtpToLocalFilesUpdate();
         }
 
         private void SaveColorsBtn(object sender, RoutedEventArgs e)

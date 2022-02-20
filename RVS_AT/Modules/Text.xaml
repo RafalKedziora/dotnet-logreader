@@ -6,7 +6,21 @@
         xmlns:local="clr-namespace:RVS_AT.Modules"
         mc:Ignorable="d"
         d:DesignHeight="400" d:DesignWidth="600">
-    <Grid>
-        <TextBox x:Name="logsBox" FontSize="15" Grid.ColumnSpan="3" BorderThickness="3" TextAlignment="Left" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Padding="5"></TextBox>
-    </Grid>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Height="20">
+            <Grid.Background>
+                <SolidColorBrush Color="{Binding Path=BackgroundColor}"/>
+            </Grid.Background>
+            <StackPanel  Orientation="Horizontal" FlowDirection="RightToLeft">
+                <Button x:Name="Next" Width="35" Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}">Next</Button>
+                <Button x:Name="Prev" Width="35" Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}">Prev</Button>
+                <TextBlock x:Name="CurrentLogName" Margin="20 0 0 0" FontSize="17" Foreground="White">
+                    Current Day
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+        <Grid DockPanel.Dock="Right">
+            <TextBox x:Name="logsBox" FontSize="15" Grid.ColumnSpan="3" BorderThickness="3" TextAlignment="Left" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Padding="5"></TextBox>
+        </Grid>
+    </DockPanel>
 </UserControl>

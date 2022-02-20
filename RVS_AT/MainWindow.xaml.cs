@@ -11,41 +11,22 @@ namespace RVS_AT
         private readonly FileOperator _fileOperator;
         public readonly Modules.Text _textModule;
         public readonly Modules.Settings _settingsModule;
-        public UIColors uiColors = Settings.LoadColors();
-        public Ftp ftpService = Settings.LoadFtp();
+        public UIColors uiColors;
+        public Ftp ftpService;
         public MainWindow()
         {
             InitializeComponent();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            this.FontFamily = new FontFamily("Bahnschrift");
+            LoadAppSettings();
             _menuModule = new();
             _fileOperator = new();
             _textModule = new();
-            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            this.FontFamily = new FontFamily("Bahnschrift");
             _settingsModule = new();
-            uiColors.ChangeColor();
             ProcessingAsync();
         }
 
-        public void ProcessingAsync()
-        {
-            LoadMenu();
-            Task ftpFiles = FromFtpToLocalFilesUpdate();
-            Task unpackedFiles = _fileOperator.UnpackerGz();
-        }
-
-        public void RestartApp()
-        {
-            System.Diagnostics.Process.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
-            Application.Current.Shutdown();
-        }
-
-        //Grant access to the FileOperator object
-        internal FileOperator GrantAccess()
-        {
-            return _fileOperator;
-        }
-
-        internal async Task FromFtpToLocalFilesUpdate()
+        internal async void FromFtpToLocalFilesUpdate()
         {
             if (ftpService != null)
                 await ftpService.Download();
@@ -55,8 +36,33 @@ namespace RVS_AT
         {
            this.DragMove();
         }
-    }
 
+        public void RestartApp()
+        {
+            System.Diagnostics.Process.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            Application.Current.Shutdown();
+        }
+    }
+    #region AppRun
+    public partial class MainWindow : Window
+    {
+        private void LoadAppSettings()
+        {
+            ftpService = Settings.LoadFtp();
+            uiColors = Settings.LoadColors();
+
+            uiColors.ChangeColor();
+        }
+
+
+        private void ProcessingAsync()
+        {
+            LoadMenu();
+            FromFtpToLocalFilesUpdate();
+            _fileOperator.UnpackerGz();
+        }
+    }
+    #endregion
     #region UserControlLoading
     public partial class MainWindow : Window
     {

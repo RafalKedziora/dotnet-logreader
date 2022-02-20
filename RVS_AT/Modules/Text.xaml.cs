@@ -20,7 +20,6 @@ namespace RVS_AT.Modules
         public Text()
         {
             InitializeComponent();
-            LoadFilesContent();
         }
 
         public void LoadFilesContent()
