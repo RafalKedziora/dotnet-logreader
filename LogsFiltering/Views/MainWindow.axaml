@@ -1,0 +1,84 @@
+<Window xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:vm="using:LogsFiltering.ViewModels"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		mc:Ignorable="d" d:DesignWidth="672" d:DesignHeight="450" HasSystemDecorations="True" MinWidth="672" MinHeight="450"
+		x:Class="LogsFiltering.Views.MainWindow"
+		Icon="/Assets/avalonia-logo.ico"
+        Title="LogsFiltering"
+		TransparencyLevelHint="AcrylicBlur"
+		Background="Transparent">
+  
+  <Window.Resources>
+	<Image x:Key="Close">/Assets/close.png</Image>
+	<Image x:Key="Maximize">/Assets/maximize.png</Image>
+	<Image x:Key="Minimize">/Assets/minimize.png</Image>
+  </Window.Resources>
+
+  <Design.DataContext>
+	<vm:MainWindowViewModel />
+  </Design.DataContext>
+  
+  <Panel MinWidth="672" MinHeight="450">
+	<ExperimentalAcrylicBorder IsHitTestVisible="False">
+	  <ExperimentalAcrylicBorder.Material>
+		<ExperimentalAcrylicMaterial
+			BackgroundSource="Digger"
+			TintColor="Black"
+			TintOpacity="1"
+			MaterialOpacity="0.65" />
+	  </ExperimentalAcrylicBorder.Material>
+	</ExperimentalAcrylicBorder>
+
+	<DockPanel>
+	  <!-- TopBar -->
+	  <Panel DockPanel.Dock="Top" MinHeight="45" Background="Orange">
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+		  <Button Name="MinimizeButton" Width="45" Height="45" Command="{Binding BtnClose}" Foreground="White" Background="{x:Null}">
+			<Panel Width="45" Height="45">
+			  <Image Source="{DynamicResource Minimize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</Panel>
+		  </Button>
+		  <Button Name="MaximizeButton" Width="45" Height="45" Command="{Binding BtnClose}">
+			<Panel>
+			  <Image Source="{DynamicResource Maximize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</Panel>
+		  </Button>
+		  <Button Name="CloseButton" Width="45" Height="45" Command="{Binding BtnClose}">
+			<Panel>
+			  <Image Source="{DynamicResource Close}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</Panel>
+		  </Button>
+		</StackPanel>
+	  </Panel>
+
+	  <!-- NavBarLeft -->
+	  <Panel DockPanel.Dock="Left" MinHeight="200" Width="80" Background="Blue">
+		<StackPanel Orientation="Vertical">
+		  <Button Name="test1" Width="80" Height="50" Command="{Binding BtnClose}">
+			<Panel>
+			  <Image Source="{DynamicResource Minimize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</Panel>
+		  </Button>
+		  <Button Name="test2" Width="80" Height="50" Command="{Binding BtnClose}">
+			<Panel>
+			  <Image Source="{DynamicResource Maximize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</Panel>
+		  </Button>
+		  <Button Name="test3" Width="80" Height="50" Command="{Binding BtnClose}">
+			<Panel>
+			  <Image Source="{DynamicResource Close}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			</Panel>
+		  </Button>
+		</StackPanel>
+	  </Panel>
+
+	  <!-- ModuleView -->
+	  <Panel DockPanel.Dock="Right" MinHeight="200" Background="Green">
+		<!-- Modules view here -->
+	  </Panel>
+	  
+	</DockPanel>
+  </Panel>
+</Window>
