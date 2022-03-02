@@ -11,7 +11,6 @@ namespace LogsFiltering.Views
 {
     public partial class MainWindow : Window
     {
-        private readonly CancellationTokenSource _cts;
         //private readonly Modules.Menu _menuModule;
         //private readonly FileOperator _fileOperator;
         //public readonly Modules.Text _textModule;
@@ -25,7 +24,7 @@ namespace LogsFiltering.Views
                 this.AttachDevTools();
 #endif
             //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            this.FontFamily = new FontFamily("Bahnschrift");
+            //this.FontFamily = new FontFamily("Bahnschrift");
             //LoadAppSettings();
             //_menuModule = new();
             //_fileOperator = new();
@@ -47,7 +46,7 @@ namespace LogsFiltering.Views
 
         public void RestartApp()
         {
-            System.Diagnostics.Process.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            //System.Diagnostics.Process.Start(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
             //Application.Current.Shutdown();
         }
     }
@@ -101,7 +100,6 @@ namespace LogsFiltering.Views
     {
         private void BtnClose(object sender, RoutedEventArgs e)
         {
-            _cts.Cancel();
         }
 
         private void BtnMaximize(object sender, RoutedEventArgs e)
