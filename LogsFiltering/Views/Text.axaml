@@ -1,0 +1,24 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LogsFiltering.Views.Text">
+  <DockPanel>
+	<Panel DockPanel.Dock="Top" Height="20">
+	  <Panel.Background>
+		<SolidColorBrush Color="{Binding Path=BackgroundColor}"/>
+	  </Panel.Background>
+	  <StackPanel  Orientation="Horizontal" FlowDirection="RightToLeft">
+		<Button x:Name="Next" Width="35" Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}">Next</Button>
+		<Button x:Name="Prev" Width="35" Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}">Prev</Button>
+		<TextBlock x:Name="CurrentLogName" Margin="20 0 0 0" FontSize="17" Foreground="White">
+		  Current Day
+		</TextBlock>
+	  </StackPanel>
+	</Panel>
+	<Grid DockPanel.Dock="Right">
+	  <TextBox x:Name="logsBox" FontSize="15" Grid.ColumnSpan="3" BorderThickness="3" TextAlignment="Left" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Padding="5"></TextBox>
+	</Grid>
+  </DockPanel>
+</UserControl>

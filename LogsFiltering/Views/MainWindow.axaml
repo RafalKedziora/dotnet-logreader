@@ -12,11 +12,6 @@
         Title="LogsFiltering"
 		TransparencyLevelHint="AcrylicBlur"
 		Background="Transparent">
-	
-	<Window.Resources>
-		<logsFiltering:BitmapAssetValueConverter x:Key="variableImage"/>
-		<Bitmap x:Key="Close">/Assets/close.png</Bitmap>
-	</Window.Resources>
 
   <Design.DataContext>
 	<vm:MainWindowViewModel />
@@ -34,22 +29,23 @@
 	</ExperimentalAcrylicBorder>
 
 	<DockPanel>
+	  
 	  <!-- TopBar -->
 	  <Panel DockPanel.Dock="Top" MinHeight="45" Background="Orange">
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 		  <Button Name="MinimizeButton" Width="45" Height="45" Command="{Binding BtnClose}" HorizontalAlignment="Center" VerticalAlignment="Center">
-			<Panel Width="45" Height="45">
-			  <Image Source="{DynamicResource Close}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			<Panel>
+			  <Image Source="{Binding Minimize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 			</Panel>
 		  </Button>
 		  <Button Name="MaximizeButton" Width="45" Height="45" Command="{Binding BtnClose}">
 			<Panel>
-				<Image Source="{Binding Close, Converter={StaticResource variableImage}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				<Image Source="{Binding Maximize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 			</Panel>
 		  </Button>
 		  <Button Name="CloseButton" Width="45" Height="45" Command="{Binding BtnClose}">
 			  <Panel>
-				  <Image Source="{Binding Close, Converter={StaticResource variableImage}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				  <Image Source="{Binding Close}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 			  </Panel> 
 		  </Button>
 		</StackPanel>
@@ -61,24 +57,25 @@
 		<StackPanel Orientation="Vertical">
 		  <Button Name="test1" Width="80" Height="50" Command="{Binding BtnClose}">
 			<Panel>
-				<Image Source="{Binding Close, Converter={StaticResource variableImage}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				<TextBlock Text="{Binding Menu}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 			</Panel>
 		  </Button>
 		  <Button Name="test2" Width="80" Height="50" Command="{Binding BtnClose}">
 			<Panel>
-				<Image Source="{Binding Close, Converter={StaticResource variableImage}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			  <TextBlock Text="{Binding Text}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 			</Panel>
 		  </Button>
 		  <Button Name="test3" Width="80" Height="50" Command="{Binding BtnClose}">
 			<Panel>
-				<Image Source="{Binding Close, Converter={StaticResource variableImage}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+			  <TextBlock Text="{Binding Settings}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 			</Panel>
 		  </Button>
 		</StackPanel>
 	  </Panel>
 	  
 	  <!-- ModuleView -->
-	  <Panel DockPanel.Dock="Right" MinHeight="200" Background="Green">
+	  <Panel DockPanel.Dock="Right" MinHeight="200">
+		<Image Source="{Binding Close}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 	  </Panel>
 	</DockPanel>
   </Panel>

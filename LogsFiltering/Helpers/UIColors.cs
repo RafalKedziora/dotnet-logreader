@@ -25,7 +25,6 @@ namespace RVS_AT
             set
             {
                 _gradient1 = value;
-                //OnPropertyChanged("Color");
             }
         }
 
@@ -35,7 +34,6 @@ namespace RVS_AT
             set
             {
                 _gradient2 = value;
-               // OnPropertyChanged("Color");
             }
         }
 
@@ -45,7 +43,6 @@ namespace RVS_AT
             set
             {
                 _gradient3 = value;
-               // OnPropertyChanged("Color");
             }
         }
 
@@ -55,7 +52,6 @@ namespace RVS_AT
             set
             {
                 _background = value;
-               // OnPropertyChanged("Background");
             }
         }
 
@@ -65,7 +61,6 @@ namespace RVS_AT
             set
             {
                 _backgroundButton = value;
-               // OnPropertyChanged("Background");
             }
         }
 
@@ -83,22 +78,5 @@ namespace RVS_AT
             BackgroundColor = Color.Parse(textColors[3]);
             BackgroundButton = new SolidColorBrush(Color.Parse(textColors[4]));
         }
-
-        //public void UpdatePopupColor()
-        //{
-        //    App.Current.Windows.OfType<PopupFiltrationText>().FirstOrDefault().DataContext = this;
-        //}
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //protected void OnPropertyChanged(string propertyName)
-        //{
-        //    PropertyChangedEventHandler handler = PropertyChanged;
-
-        //    if (handler != null)
-        //    {
-        //        handler(this, new PropertyChangedEventArgs(propertyName));
-        //    }
-        //}
     }
 }
