@@ -5,20 +5,20 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LogsFiltering.Views.Text">
   <DockPanel>
-	<Panel DockPanel.Dock="Top" Height="20">
+	<Panel DockPanel.Dock="Top" MinHeight="20">
 	  <Panel.Background>
 		<SolidColorBrush Color="{Binding Path=BackgroundColor}"/>
 	  </Panel.Background>
-	  <StackPanel  Orientation="Horizontal" FlowDirection="RightToLeft">
-		<Button x:Name="Next" Width="35" Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}">Next</Button>
-		<Button x:Name="Prev" Width="35" Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}">Prev</Button>
-		<TextBlock x:Name="CurrentLogName" Margin="20 0 0 0" FontSize="17" Foreground="White">
-		  Current Day
-		</TextBlock>
+	  <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+		  <TextBlock Name="CurrentLogName" Margin="20 0 0 0" FontSize="15" Foreground="White" VerticalAlignment="Center">
+			  Current Day
+		  </TextBlock>
+		  <Button Name="Next" MinWidth="40" Background="Red" FontSize="12" VerticalAlignment="Center" Foreground="White" BorderBrush="{x:Null}" Margin="10 0 0 0">Next</Button>
+		  <Button Name="Prev" MinWidth="40" Background="Red" FontSize="12" VerticalAlignment="Center" Foreground="White" BorderBrush="{x:Null}">Prev</Button>
 	  </StackPanel>
 	</Panel>
-	<Grid DockPanel.Dock="Right">
-	  <TextBox x:Name="logsBox" FontSize="15" Grid.ColumnSpan="3" BorderThickness="3" TextAlignment="Left" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Padding="5"></TextBox>
-	</Grid>
+	<Panel DockPanel.Dock="Right">
+	  <TextBox Name="logsBox" FontSize="15" Grid.ColumnSpan="3" BorderThickness="3" TextAlignment="Left" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" Padding="5"></TextBox>
+	</Panel>
   </DockPanel>
 </UserControl>

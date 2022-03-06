@@ -31,19 +31,19 @@
 	<DockPanel>
 	  
 	  <!-- TopBar -->
-	  <Panel DockPanel.Dock="Top" MinHeight="45" Background="Orange">
+	  <Panel DockPanel.Dock="Top" MinHeight="40" Background="Orange">
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-		  <Button Name="MinimizeButton" Width="45" Height="45" Command="{Binding BtnClose}" HorizontalAlignment="Center" VerticalAlignment="Center">
+		  <Button Name="MinimizeButton" Width="40" Height="40" Command="{Binding BtnClose}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="BtnMinimize">
 			<Panel>
 			  <Image Source="{Binding Minimize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 			</Panel>
 		  </Button>
-		  <Button Name="MaximizeButton" Width="45" Height="45" Command="{Binding BtnClose}">
+		  <Button Name="MaximizeButton" Width="40" Height="40" Command="{Binding BtnClose}" Click="BtnMaximize">
 			<Panel>
 				<Image Source="{Binding Maximize}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 			</Panel>
 		  </Button>
-		  <Button Name="CloseButton" Width="45" Height="45" Command="{Binding BtnClose}">
+		  <Button Name="CloseButton" Width="40" Height="40" Command="{Binding BtnClose}" Click="BtnClose">
 			  <Panel>
 				  <Image Source="{Binding Close}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 			  </Panel> 
@@ -74,9 +74,9 @@
 	  </Panel>
 	  
 	  <!-- ModuleView -->
-	  <Panel DockPanel.Dock="Right" MinHeight="200">
-		<Image Source="{Binding Close}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-	  </Panel>
+	  <Panel Name="MenuLoader" DockPanel.Dock="Right" MinHeight="200">
+		<!-- Module Loader-->
+      </Panel>
 	</DockPanel>
   </Panel>
 </Window>

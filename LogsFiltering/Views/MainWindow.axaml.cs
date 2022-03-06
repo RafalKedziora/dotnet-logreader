@@ -11,9 +11,10 @@ namespace LogsFiltering.Views
 {
     public partial class MainWindow : Window
     {
+        private Panel _menuLoader;
         //private readonly Modules.Menu _menuModule;
         //private readonly FileOperator _fileOperator;
-        //public readonly Modules.Text _textModule;
+        public readonly Views.Text _textModule;
         //public readonly Modules.Settings _settingsModule;
         //public UIColors uiColors;
         //public Ftp ftpService;
@@ -23,14 +24,14 @@ namespace LogsFiltering.Views
 #if DEBUG
                 this.AttachDevTools();
 #endif
-            //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            //this.FontFamily = new FontFamily("Bahnschrift");
+            _menuLoader = this.Get<Panel>("MenuLoader");
+            this.FontFamily = new FontFamily("Bahnschrift");
             //LoadAppSettings();
             //_menuModule = new();
             //_fileOperator = new();
-            //_textModule = new();
+            _textModule = new();
             //_settingsModule = new();
-            //ProcessingAsync();
+            ProcessingAsync();
         }
 
         private void InitializeComponent()
@@ -62,17 +63,17 @@ namespace LogsFiltering.Views
         //}
 
 
-        //private void ProcessingAsync()
-        //{
-        //    //LoadMenu();
+        private void ProcessingAsync()
+        {
+              LoadMenu();
         //    FromFtpToLocalFilesUpdate();
         //    _fileOperator.UnpackerGz();
-        //}
+        }
     }
     #endregion
     #region UserControlLoading
-    //public partial class MainWindow : Window
-    //{
+    public partial class MainWindow : Window
+    {
     //    private void LoadSettings()
     //    {
     //        gridDesktop.Children.Clear();
@@ -80,26 +81,28 @@ namespace LogsFiltering.Views
     //        btnMainOperations.Content = "AdminTools";
     //    }
 
-    //    private void LoadText()
-    //    {
-    //        gridDesktop.Children.Clear();
-    //        gridDesktop.Children.Add(_textModule);
-    //        btnMainOperations.Content = "Operacje";
-    //    }
+        private void LoadText()
+        {
+            _menuLoader.Children.Clear();
+            _menuLoader.Children.Add(_textModule);
+            //btnMainOperations.Content = "Operacje";
+        }
 
-    //    private void LoadMenu()
-    //    {
-    //        gridDesktop.Children.Clear();
-    //        gridDesktop.Children.Add(_menuModule);
-    //        btnMainOperations.Content = "AdminTools";
-    //    }
-    //}
+        private void LoadMenu()
+        {
+            _menuLoader.Children.Clear();
+            _menuLoader.Children.Add(_textModule);
+            //btnMainOperations.Content = "AdminTools";
+        }
+    }
     #endregion
     #region UpperBeamButtons
     public partial class MainWindow : Window
     {
         private void BtnClose(object sender, RoutedEventArgs e)
         {
+            var ss = new ClassicDesktopStyleApplicationLifetime();
+            ss.Shutdown();
         }
 
         private void BtnMaximize(object sender, RoutedEventArgs e)
