@@ -7,7 +7,7 @@ namespace RVS_AT
 {
     class FileOperator
     {
-        public async Task UnpackerGz()
+        public async void UnpackerGz()
         {
             List<string> fileNames = new List<string>();
             var files = Directory.GetFiles(Environment.CurrentDirectory, "*.gz", SearchOption.AllDirectories);

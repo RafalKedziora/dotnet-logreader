@@ -2,16 +2,16 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:RVS_AT.Modules" xmlns:rvs_at="clr-namespace:RVS_AT" d:DataContext="{d:DesignInstance Type=rvs_at:UIColors}"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:RVS_AT"
         mc:Ignorable="d"
-        Title="RevosGO AdminTOOL" Height="450" Width="672" WindowStyle="None" MinHeight="450" MinWidth="672">
+        Title="LogsFilteringWPF" Height="450" Width="672" WindowStyle="None" MinHeight="450" MinWidth="672">
     <DockPanel>
         <Grid DockPanel.Dock="Left">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="{Binding Path=Gradient1, Mode=OneWay}"/>
-                    <GradientStop Color="{Binding Path=Gradient2, Mode=OneWay}" Offset="0.008"/>
-                    <GradientStop Color="{Binding Path=Gradient3, Mode=OneWay}" Offset="1"/>
+                    <GradientStop Color="{Binding Path=Gradient1}"/>
+                    <GradientStop Color="{Binding Path=Gradient2}" Offset="0.008"/>
+                    <GradientStop Color="{Binding Path=Gradient3}" Offset="1"/>
                 </LinearGradientBrush>
             </Grid.Background>
             <Grid.ColumnDefinitions>
