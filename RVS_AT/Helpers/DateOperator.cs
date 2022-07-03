@@ -35,7 +35,7 @@ namespace RVS_AT
 
         public DateTime[] GetLastDays()
         { 
-            var lastDays = Enumerable.Range(0, 2).Select(i => DateTime.Now.Date.AddDays(-i)).ToArray();
+            var lastDays = Enumerable.Range(0, 4).Select(i => DateTime.Now.Date.AddDays(-i)).ToArray();
             return lastDays;
         }
     }
