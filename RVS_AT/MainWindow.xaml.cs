@@ -91,7 +91,7 @@ namespace RVS_AT
     #region UpperBeamButtons
     public partial class MainWindow : Window
     {
-        private void BtnClose(object sender, RoutedEventArgs e) 
+        private void BtnClose(object sender, RoutedEventArgs e)
             => Application.Current.Shutdown();
 
         private void BtnMaximize(object sender, RoutedEventArgs e) 

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:RVS_AT"
         mc:Ignorable="d"
-        Title="RevosGO AdminTOOL" Height="450" Width="672" WindowStyle="None" MinHeight="450" MinWidth="672">
+        Title="LogsFilteringWPF" Height="450" Width="672" WindowStyle="None" MinHeight="450" MinWidth="672">
     <DockPanel>
         <Grid DockPanel.Dock="Left">
             <Grid.Background>

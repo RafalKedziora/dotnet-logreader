@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
     <Grid>
-        <Image Source="D:\wszystkie\screenymc+grafiki\NaInstagram\baner.png"/>
+        <Image Source="../Img/AvaloniaWPF.png"/>
     </Grid>
 </UserControl>
