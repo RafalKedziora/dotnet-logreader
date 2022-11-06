@@ -7,6 +7,9 @@ using RVS_AT.ViewModels;
 using Services.Data;
 using System.Windows;
 using Microsoft.Extensions.Configuration;
+using RVS_AT.Services;
+using Services.Repositories;
+using Services.Interfaces;
 
 namespace RVS_AT
 {
@@ -22,9 +25,11 @@ namespace RVS_AT
                 {
                     string connectionString = hostContext.Configuration.GetConnectionString("Default");
 
+                    services.AddTransient<IFtpCredentialsRepository, FtpCredentialsRepository>();
+                    services.AddTransient<IUIColorsRepository, UIColorsRepository>();
+
                     services.AddSingleton(new LFDbContextFactory(connectionString));
-
-
+                    services.AddSingleton<ContentStore>();
                     services.AddSingleton<NavigationStore>();
 
                     services.AddSingleton(s => new MainWindow()
@@ -45,7 +50,8 @@ namespace RVS_AT
                 dbContext.Database.Migrate();
             }
 
-            //navigate
+            NavigationService<MainWindowViewModel> navigationService = _host.Services.GetRequiredService<NavigationService<MainWindowViewModel>>();
+            navigationService.Navigate();
 
             MainWindow = _host.Services.GetRequiredService<MainWindow>();
             MainWindow.Show();

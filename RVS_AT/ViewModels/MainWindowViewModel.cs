@@ -1,16 +1,20 @@
 ﻿using RVS_AT.Commands;
+using RVS_AT.Services;
 using RVS_AT.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace RVS_AT.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        private readonly ContentStore _contentStore;
+
         public ICommand OpenOperationsCommand { get; }
 
         public ICommand CloseAppCommand { get; }
@@ -21,28 +25,28 @@ namespace RVS_AT.ViewModels
         public ICommand SettingsNavigateCommand { get; }
         public ICommand MainMenuNavigateCommand { get; }
 
-        private readonly NavigationStore _navigationStore;
-
-        public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
-
-        public MainWindowViewModel(NavigationStore navigationStore)
+        public MainWindowViewModel(ContentStore contentStore, NavigationService<MenuViewModel> menuNavigationService)
         {
-            OpenOperationsCommand = new OpenOperationsCommand();
+            _contentStore = contentStore;
+
             CloseAppCommand = new CloseAppCommand();
             MinMaxAppCommand = new MinMaxAppCommand();
             StateAppCommand = new StateAppCommand();
+
+            OpenOperationsCommand = new OpenOperationsCommand();
             TextNavigateCommand = new TextNavigateCommand();
             SettingsNavigateCommand = new SettingsNavigateCommand();
-            MainMenuNavigateCommand = new MainMenuNavigateCommand();
+            MainMenuNavigateCommand = new NavigateCommand<MenuViewModel>(menuNavigationService);
 
-            _navigationStore = navigationStore;
-
-            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 
-        private void OnCurrentViewModelChanged()
+        public static MainWindowViewModel LoadViewModel(ContentStore contentStore, NavigationService<MenuViewModel> menuNavigationService)
         {
-            OnPropertyChanged(nameof(CurrentViewModel));
+            var viewModel = new MainWindowViewModel(contentStore, menuNavigationService);
+
+            viewModel.MainMenuNavigateCommand.Execute(null);
+
+            return viewModel;
         }
     }
 }

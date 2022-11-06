@@ -67,10 +67,10 @@
                 <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding CloseAppCommand}">
                     <Image Source="Img/close.png"/>
                 </Button>
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding MinMaxAppCommand}">
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding StateAppCommand}">
                     <Image Source="Img/maximize.png"/>
                 </Button>
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding StateAppCommand}">
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding MinMaxAppCommand}">
                     <Image Source="Img/minimize.png"/>
                 </Button>
             </StackPanel>
