@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RVS_AT.Stores
 {
-    public class NavigationStore
+    public class ModalNavigationStore
     {
         private ViewModelBase _currentViewModel;
         public ViewModelBase CurrentViewModel
@@ -21,7 +21,14 @@ namespace RVS_AT.Stores
             }
         }
 
+        public bool IsOpen => CurrentViewModel != null;
+
         public event Action CurrentViewModelChanged;
+
+        public void Close()
+        {
+            CurrentViewModel = null;
+        }
 
         private void OnCurrentViewModelChanged()
         {

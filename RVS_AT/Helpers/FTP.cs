@@ -18,15 +18,15 @@ namespace RVS_AT
         {
             (_host, _login, _password, _pathToFiles, _port) = (host, login, password, pathToFiles, port);
         }
-        public async Task Download()
+        public void Download()
         {
             FtpClient client = new FtpClient(_host);
             client.Credentials = new NetworkCredential(_login, _password);
             try
             {
-                await client.ConnectAsync();
-                await client.DownloadDirectoryAsync(Environment.CurrentDirectory + "/logs", _pathToFiles, FtpFolderSyncMode.Update);
-                await client.DisconnectAsync();
+                client.Connect();
+                client.DownloadDirectory(Environment.CurrentDirectory + "/logs", _pathToFiles, FtpFolderSyncMode.Update);
+                client.Disconnect();
             }
             catch(Exception e)
             {

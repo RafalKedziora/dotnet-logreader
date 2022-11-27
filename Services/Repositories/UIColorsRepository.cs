@@ -11,15 +11,14 @@ namespace Services.Repositories
         {
             _context = context;
         }
-        public async Task<UIColors> GetByIdAsync(int id = 1)
+        public UIColors GetById(int id = 1)
         {
-            return await _context.UIColors
-                .FindAsync(id);
+            return _context.UIColors.FirstOrDefault(elem => elem.Id == id);
         }
-        public async Task UpdateAsync(UIColors updateUIColors)
+        public void Update(UIColors updateUIColors)
         {
             _context.UIColors.Update(updateUIColors);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

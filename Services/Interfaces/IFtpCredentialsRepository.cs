@@ -4,7 +4,7 @@ namespace Services.Interfaces
 {
     public interface IFtpCredentialsRepository
     {
-        Task<FtpCredentials> GetByIdAsync(int id);
-        Task UpdateAsync(FtpCredentials updateFtpCredentials);
+        FtpCredentials GetById(int id);
+        void Update(FtpCredentials updateFtpCredentials);
     }
 }

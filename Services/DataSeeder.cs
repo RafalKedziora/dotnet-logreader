@@ -12,29 +12,24 @@ namespace Services
             _context = context;
         }
 
-        public async void Seed()
+        public void Seed()
         {
-            if(await _context.Database.CanConnectAsync())
+            if (_context.Database.CanConnect())
             {
-                if(!_context.FtpCredentials.Any())
+                if (!_context.FtpCredentials.Any())
                 {
-                    _ = Task.Run(() =>
-                    {
-                        var ftpCredentials = GetCredentials();
-                        _context.FtpCredentials.AddAsync(ftpCredentials);
-                        _context.SaveChangesAsync();
 
-                    });
+                    var ftpCredentials = GetCredentials();
+                    _context.FtpCredentials.Add(ftpCredentials);
+                    _context.SaveChanges();
+
                 }
 
-                if(!_context.UIColors.Any())
+                if (!_context.UIColors.Any())
                 {
-                    _ = Task.Run(() =>
-                    {
-                        var uiColors = GetUIColors();
-                        _context.UIColors.AddAsync(uiColors);
-                        _context.SaveChangesAsync();
-                    });
+                    var uiColors = GetUIColors();
+                    _context.UIColors.Add(uiColors);
+                    _context.SaveChanges();
                 }
             }
         }
@@ -44,8 +39,8 @@ namespace Services
             var uiColors = new UIColors()
             {
                 Id = 1,
-                BackGround = "#FF141E30",
-                BackGroundButton = "#FF141E30",
+                Background = "#FF141E30",
+                BackgroundButton = "#FF141E30",
                 Gradient1 = "#FF141E30",
                 Gradient2 = "#FF141E30",
                 Gradient3 = "#FF243B55"

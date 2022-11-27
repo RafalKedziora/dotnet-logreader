@@ -11,14 +11,14 @@ namespace Services.Repositories
         {
             _context = context;
         }
-        public async Task<FtpCredentials> GetByIdAsync(int id = 1)
+        public FtpCredentials GetById(int id = 1)
         {
-            return await _context.FtpCredentials.FindAsync(id);
+            return _context.FtpCredentials.FirstOrDefault(elem => elem.Id == id);
         }
-        public async Task UpdateAsync(FtpCredentials updateFtpCredentials)
+        public void Update(FtpCredentials updateFtpCredentials)
         {
             _context.FtpCredentials.Update(updateFtpCredentials);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

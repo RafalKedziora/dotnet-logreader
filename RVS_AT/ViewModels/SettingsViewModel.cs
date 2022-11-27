@@ -1,4 +1,5 @@
 ﻿using RVS_AT.Commands;
+using RVS_AT.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,10 @@ namespace RVS_AT.ViewModels
             SaveNULLCommand = new SaveNULLCommand();
         }
 
+        public SettingsViewModel(ContentStore contentStore)
+        {
+            this.contentStore = contentStore;
+        }
 
         private string _host;
         public string Host
@@ -149,6 +154,8 @@ namespace RVS_AT.ViewModels
         }
 
         private string _backgroundButton;
+        private ContentStore contentStore;
+
         public string BackgroundButton
         {
             get

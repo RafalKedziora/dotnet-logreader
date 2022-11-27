@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="RVS_AT.Components.LeftNavigationBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:viewmodels="clr-namespace:RVS_AT.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:LeftNavigationBarViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="{Binding Path=Gradient1}"/>
+                <GradientStop Color="{Binding Path=Gradient2}" Offset="0.008"/>
+                <GradientStop Color="{Binding Path=Gradient3}" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="80" MaxWidth="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="60"/>
+            <RowDefinition MaxHeight="60"/>
+            <RowDefinition MaxHeight="60"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Background" Value="{Binding Path=BackgroundButton}"/>
+                </Style>
+            </Grid.Style>
+        </Grid>
+        <Button Grid.Column="0" Grid.Row="0" BorderBrush="{x:Null}" Foreground="White" Command="{Binding MainMenuNavigateCommand}">
+            Menu
+        </Button>
+        <Button Grid.Column="0" Grid.Row="1" BorderBrush="{x:Null}" Foreground="White" Command="{Binding TextNavigateCommand}">
+            Tekst
+        </Button>
+        <Button Grid.Column="0" Grid.Row="2" BorderBrush="{x:Null}" Foreground="White" Command="{Binding SettingsNavigateCommand}">
+            Settings
+        </Button>
+    </Grid>
+</UserControl>

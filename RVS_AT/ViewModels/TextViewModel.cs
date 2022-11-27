@@ -1,4 +1,5 @@
 ﻿using RVS_AT.Commands;
+using RVS_AT.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,11 @@ namespace RVS_AT.ViewModels
             NextDayCommand = new NextDayCommand();
         }
 
+        public TextViewModel(ContentStore contentStore)
+        {
+            this.contentStore = contentStore;
+        }
+
         private string currentDay;
         public string CurrentDay
         {
@@ -34,6 +40,8 @@ namespace RVS_AT.ViewModels
         }
 
         private string logsContent;
+        private ContentStore contentStore;
+
         public string LogsContent
         {
             get
