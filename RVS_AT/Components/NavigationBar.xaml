@@ -5,23 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:viewmodels="clr-namespace:RVS_AT.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:NavigationBarViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid MouseDown="OnMouseLeftButtonDown">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="80" MaxWidth="75"/>
+            <ColumnDefinition MaxWidth="80"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition MaxHeight="35"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" HorizontalAlignment="Left" x:Name="btnMainOperations" BorderBrush="{x:Null}" Command="{Binding OpenOperationsCommand}">
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background> Testowo
+        <Grid.Background>
+            <SolidColorBrush Color="{Binding Path=BackgroundColor}"/>
+        </Grid.Background>
+        <Button Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" Command="{Binding OpenOperationsCommand}">
+            Testowo
         </Button>
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <StackPanel.Background>
-                <SolidColorBrush Color="{Binding Path=BackgroundColor}"/>
-            </StackPanel.Background>
             <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding CloseAppCommand}">
                 <Image Source="../Img/close.png"/>
             </Button>

@@ -24,5 +24,10 @@ namespace RVS_AT.Components
         {
             InitializeComponent();
         }
+
+        private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).DragMove();
+        }
     }
 }

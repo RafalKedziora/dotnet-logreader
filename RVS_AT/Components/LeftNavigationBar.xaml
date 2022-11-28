@@ -7,9 +7,9 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="{Binding Path=Gradient1}"/>
-                <GradientStop Color="{Binding Path=Gradient2}" Offset="0.008"/>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{Binding Path=Gradient1}" Offset="0.0"/>
+                <GradientStop Color="{Binding Path=Gradient2}" Offset="0.5"/>
                 <GradientStop Color="{Binding Path=Gradient3}" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
@@ -21,20 +21,13 @@
             <RowDefinition MaxHeight="60"/>
             <RowDefinition MaxHeight="60"/>
         </Grid.RowDefinitions>
-        <Grid>
-            <Grid.Style>
-                <Style TargetType="Grid">
-                    <Setter Property="Background" Value="{Binding Path=BackgroundButton}"/>
-                </Style>
-            </Grid.Style>
-        </Grid>
-        <Button Grid.Column="0" Grid.Row="0" BorderBrush="{x:Null}" Foreground="White" Command="{Binding MainMenuNavigateCommand}">
+        <Button Grid.Column="0" Grid.Row="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding MainMenuNavigateCommand}">
             Menu
         </Button>
-        <Button Grid.Column="0" Grid.Row="1" BorderBrush="{x:Null}" Foreground="White" Command="{Binding TextNavigateCommand}">
+        <Button Grid.Column="0" Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding TextNavigateCommand}">
             Tekst
         </Button>
-        <Button Grid.Column="0" Grid.Row="2" BorderBrush="{x:Null}" Foreground="White" Command="{Binding SettingsNavigateCommand}">
+        <Button Grid.Column="0" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding SettingsNavigateCommand}">
             Settings
         </Button>
     </Grid>

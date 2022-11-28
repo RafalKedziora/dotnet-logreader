@@ -7,11 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace RVS_AT.ViewModels
 {
-    internal class LeftNavigationBarViewModel : ViewModelBase
+    public class LeftNavigationBarViewModel : ViewModelBase
     {
         public readonly ContentStore _contentStore;
 
@@ -22,9 +24,9 @@ namespace RVS_AT.ViewModels
         public string BackgroundButton => _contentStore._uiColors.BackgroundButton;
         public string Background => _contentStore._uiColors.Background;
 
-        public string Gradient1 => _contentStore._uiColors.Gradient1;
-        public string Gradient2 => _contentStore._uiColors.Gradient2;
-        public string Gradient3 => _contentStore._uiColors.Gradient3;
+        public Color Gradient1 => (Color)ColorConverter.ConvertFromString(_contentStore._uiColors.Gradient1);
+        public Color Gradient2 => (Color)ColorConverter.ConvertFromString(_contentStore._uiColors.Gradient2);
+        public Color Gradient3 => (Color)ColorConverter.ConvertFromString(_contentStore._uiColors.Gradient3);
 
 
         public LeftNavigationBarViewModel(

@@ -82,7 +82,8 @@ namespace RVS_AT
             return new LayoutNavigationService<MenuViewModel>(
                 serviceProvider.GetRequiredService<NavigationStore>(),
                 () => serviceProvider.GetRequiredService<MenuViewModel>(),
-                () => serviceProvider.GetRequiredService<NavigationBarViewModel>());
+                () => serviceProvider.GetRequiredService<NavigationBarViewModel>(),
+                () => serviceProvider.GetRequiredService<LeftNavigationBarViewModel>());
         }
 
         private INavigationService CreateSettingsNavigationService(IServiceProvider serviceProvider)
@@ -90,7 +91,8 @@ namespace RVS_AT
             return new LayoutNavigationService<SettingsViewModel>(
                 serviceProvider.GetRequiredService<NavigationStore>(),
                 () => serviceProvider.GetRequiredService<SettingsViewModel>(),
-                () => serviceProvider.GetRequiredService<NavigationBarViewModel>());
+                () => serviceProvider.GetRequiredService<NavigationBarViewModel>(),
+                () => serviceProvider.GetRequiredService<LeftNavigationBarViewModel>());
         }
 
         private INavigationService CreateTextNavigationService(IServiceProvider serviceProvider)
@@ -98,7 +100,8 @@ namespace RVS_AT
             return new LayoutNavigationService<TextViewModel>(
                 serviceProvider.GetRequiredService<NavigationStore>(),
                 () => serviceProvider.GetRequiredService<TextViewModel>(),
-                () => serviceProvider.GetRequiredService<NavigationBarViewModel>());
+                () => serviceProvider.GetRequiredService<NavigationBarViewModel>(),
+                () => serviceProvider.GetRequiredService<LeftNavigationBarViewModel>());
         }
 
         private INavigationService CreatePopupNavigationService(IServiceProvider serviceProvider)
