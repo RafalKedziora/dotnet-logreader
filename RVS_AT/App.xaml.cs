@@ -50,6 +50,7 @@ namespace RVS_AT
             services.AddTransient<MenuViewModel>();
             services.AddTransient<TextViewModel>(s => new TextViewModel(s.GetRequiredService<ContentStore>()));
             services.AddTransient<SettingsViewModel>(s => new SettingsViewModel(s.GetRequiredService<ContentStore>()));
+            services.AddTransient<PopupFiltrationTextViewModel>(CreatePopupViewModel);
 
             services.AddTransient<NavigationBarViewModel>(CreateNavigationBarViewModel);
             services.AddTransient<LeftNavigationBarViewModel>(CreateLeftNavigationBarViewModel);
@@ -106,16 +107,18 @@ namespace RVS_AT
 
         private INavigationService CreatePopupNavigationService(IServiceProvider serviceProvider)
         {
-            return new ModalNavigationService<PopupFiltrationTextViewModel>(
-                serviceProvider.GetRequiredService<ModalNavigationStore>(),
-                () => serviceProvider.GetRequiredService<PopupFiltrationTextViewModel>());
+            return new LayoutNavigationService<PopupFiltrationTextViewModel>(
+                serviceProvider.GetRequiredService<NavigationStore>(),
+                () => serviceProvider.GetRequiredService<PopupFiltrationTextViewModel>(),
+                () => serviceProvider.GetRequiredService<NavigationBarViewModel>(),
+                () => serviceProvider.GetRequiredService<LeftNavigationBarViewModel>());
         }
 
         private PopupFiltrationTextViewModel CreatePopupViewModel(IServiceProvider serviceProvider)
         {
             CompositeNavigationService navigationService = new CompositeNavigationService(
                 serviceProvider.GetRequiredService<CloseModalNavigationService>(),
-                CreateTextNavigationService(serviceProvider));
+                CreatePopupNavigationService(serviceProvider));
 
             return new PopupFiltrationTextViewModel(
                 serviceProvider.GetRequiredService<ContentStore>(),
@@ -124,14 +127,15 @@ namespace RVS_AT
 
         private NavigationBarViewModel CreateNavigationBarViewModel(IServiceProvider serviceProvider)
         {
-            return new NavigationBarViewModel(serviceProvider.GetRequiredService<ContentStore>());
+            return new NavigationBarViewModel(serviceProvider.GetRequiredService<ContentStore>(),
+                CreatePopupNavigationService(serviceProvider));
         }
         private LeftNavigationBarViewModel CreateLeftNavigationBarViewModel(IServiceProvider serviceProvider)
         {
             return new LeftNavigationBarViewModel(serviceProvider.GetRequiredService<ContentStore>(),
                 CreateMenuNavigationService(serviceProvider),
                 CreateTextNavigationService(serviceProvider),
-                CreatePopupNavigationService(serviceProvider));
+                CreateSettingsNavigationService(serviceProvider));
         }
     }
 }

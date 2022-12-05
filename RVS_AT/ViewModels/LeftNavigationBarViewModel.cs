@@ -32,8 +32,8 @@ namespace RVS_AT.ViewModels
         public LeftNavigationBarViewModel(
             ContentStore contentStore,
             INavigationService menuNavigationService,
-            INavigationService settingsNavigationService,
-            INavigationService textNavigationService)
+            INavigationService textNavigationService,
+            INavigationService settingsNavigationService)
         {
             _contentStore = contentStore;
 

@@ -24,9 +24,10 @@ namespace RVS_AT.ViewModels
 
         public string BackgroundColor => _contentStore._uiColors.Background;
 
-        public NavigationBarViewModel(ContentStore contentStore)
+        public NavigationBarViewModel(ContentStore contentStore, INavigationService popupNavigationService)
         {
             _contentStore = contentStore;
+            OpenOperationsCommand = new NavigateCommand(popupNavigationService);
 
             CloseAppCommand = new CloseAppCommand();
             MinMaxAppCommand = new MinMaxAppCommand();

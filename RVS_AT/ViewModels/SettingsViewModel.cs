@@ -15,16 +15,15 @@ namespace RVS_AT.ViewModels
         public ICommand SaveColorsCommand { get; }
         public ICommand SaveFtpCredentialsCommand { get; }
 
-        public SettingsViewModel()
-        {
-            SaveColorsCommand = new SaveColorsCommand();
-            SaveFtpCredentialsCommand = new SaveFtpCredentialsCommand();
-            SaveNULLCommand = new SaveNULLCommand();
-        }
+        private readonly ContentStore _contentStore;
 
         public SettingsViewModel(ContentStore contentStore)
         {
-            this.contentStore = contentStore;
+            _contentStore = contentStore;
+
+            SaveColorsCommand = new SaveColorsCommand();
+            SaveFtpCredentialsCommand = new SaveFtpCredentialsCommand();
+            SaveNULLCommand = new SaveNULLCommand();
         }
 
         private string _host;
@@ -154,7 +153,6 @@ namespace RVS_AT.ViewModels
         }
 
         private string _backgroundButton;
-        private ContentStore contentStore;
 
         public string BackgroundButton
         {

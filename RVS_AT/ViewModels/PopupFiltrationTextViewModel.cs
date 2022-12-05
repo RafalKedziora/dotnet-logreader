@@ -12,22 +12,19 @@ namespace RVS_AT.ViewModels
 {
     public class PopupFiltrationTextViewModel : ViewModelBase
     {
-        private ContentStore contentStore;
-        private CompositeNavigationService navigationService;
+        private ContentStore _contentStore;
+        private CompositeNavigationService _navigationService;
 
         public ICommand SaveOperationsCommand { get; }
         public ICommand CloseOperationsCommand { get; }
 
-        public PopupFiltrationTextViewModel()
-        {
-            SaveOperationsCommand = new SaveOperationsCommand();
-            CloseOperationsCommand = new CloseOperationsCommand();
-        }
-
         public PopupFiltrationTextViewModel(ContentStore contentStore, CompositeNavigationService navigationService)
         {
-            this.contentStore = contentStore;
-            this.navigationService = navigationService;
+            _contentStore = contentStore;
+            _navigationService = navigationService;
+
+            SaveOperationsCommand = new SaveOperationsCommand();
+            CloseOperationsCommand = new CloseOperationsCommand();
         }
     }
 }
