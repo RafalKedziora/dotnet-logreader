@@ -16,8 +16,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentFTP" Version="35.2.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="FluentFTP" Version="42.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+    <PackageReference Include="SimpleModal.WPF" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,10 +50,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Settings\Colors.json">
+    <Folder Include="Converters\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Settings\Ftp.json">
+    <None Update="settings.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

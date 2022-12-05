@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using RVS_AT.Interfaces;
 
 namespace RVS_AT
 {
-    class DateOperator : IDateOperator
+    class DateOperator
     {
-        public DateTime DateParser(string fileName)
+        public async Task<DateTime> DateParser(string fileName)
         {
             DateTime parsedDay;
             try
@@ -29,14 +25,16 @@ namespace RVS_AT
                     Console.WriteLine(e.Message);
                 }
             }
+            var result = await Task.FromResult(parsedDay);
 
-            return parsedDay;
+            return result;
         }
 
-        public DateTime[] GetLastDays()
+        public async Task<DateTime[]> GetLastDays()
         { 
             var lastDays = Enumerable.Range(0, 4).Select(i => DateTime.Now.Date.AddDays(-i)).ToArray();
-            return lastDays;
+            var result = await Task.FromResult(lastDays);
+            return result;
         }
     }
 }

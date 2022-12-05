@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace RVS_AT
+namespace RVS_AT.Helpers
 {
     public partial class BindablePasswordBox : UserControl
     {
