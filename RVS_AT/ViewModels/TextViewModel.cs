@@ -14,23 +14,25 @@ namespace RVS_AT.ViewModels
         public ICommand PrevDayCommand { get; }
         public ICommand NextDayCommand { get; }
 
-        public TextViewModel()
-        {
-            PrevDayCommand = new PrevDayCommand();
-            NextDayCommand = new NextDayCommand();
-        }
+        private string logsContent;
+        private string currentDay;
+
+        private ContentStore _contentStore;
+
+        public string Background => _contentStore._uiColors.Background;
+        public string BackgroundButton => _contentStore._uiColors.BackgroundButton;
 
         public TextViewModel(ContentStore contentStore)
         {
-            this.contentStore = contentStore;
+            _contentStore = contentStore;
+            NextDayCommand = new NextDayCommand(this, _contentStore);
         }
 
-        private string currentDay;
         public string CurrentDay
         {
             get
             {
-                return currentDay;
+                return DateTime.Today.ToString();
             }
             set
             {
@@ -38,9 +40,6 @@ namespace RVS_AT.ViewModels
                 OnPropertyChanged(nameof(CurrentDay));
             }
         }
-
-        private string logsContent;
-        private ContentStore contentStore;
 
         public string LogsContent
         {

@@ -24,6 +24,18 @@ namespace RVS_AT.ViewModels
             SaveColorsCommand = new SaveColorsCommand();
             SaveFtpCredentialsCommand = new SaveFtpCredentialsCommand();
             SaveNULLCommand = new SaveNULLCommand();
+
+            _host = _contentStore._ftpCredentials.Host;
+            _port = _contentStore._ftpCredentials.Port;
+            _login = _contentStore._ftpCredentials.Login;
+            _password = _contentStore._ftpCredentials.Password;
+            _pathToFiles = _contentStore._ftpCredentials.PathToFiles;
+
+            _gradient1 = _contentStore._uiColors.Gradient1;
+            _gradient2 = _contentStore._uiColors.Gradient2;
+            _gradient3 = _contentStore._uiColors.Gradient3;
+            _backgroundColor = _contentStore._uiColors.Background;
+            _backgroundButton = _contentStore._uiColors.BackgroundButton;
         }
 
         private string _host;
