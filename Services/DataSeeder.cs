@@ -1,4 +1,4 @@
-﻿using Data;
+﻿using Domain.Models;
 using Services.Data;
 
 namespace Services

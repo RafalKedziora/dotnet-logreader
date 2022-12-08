@@ -1,4 +1,4 @@
-﻿using Data;
+﻿using Domain.Models;
 
 namespace Services.Interfaces
 {

@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RVS_AT", "RVS_AT\RVS_AT.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{40FE0A59-C1C6-4C6E-A230-BB1DF5D1C413}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{400395AD-CEE6-4B7B-B3A1-700F4E01FA9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Data\Domain.csproj", "{400395AD-CEE6-4B7B-B3A1-700F4E01FA9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{2B925E0D-0E07-4C6A-A0DC-2354EEF32796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{2B925E0D-0E07-4C6A-A0DC-2354EEF32796}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

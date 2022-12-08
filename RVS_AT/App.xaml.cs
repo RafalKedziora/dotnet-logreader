@@ -37,10 +37,10 @@ namespace RVS_AT
             services.AddDbContext<LFContext>(options => options.UseSqlite(connectionString));
             services.AddTransient<DataSeeder>();
 
-            services.AddSingleton<IFtpCredentialsRepository, FtpCredentialsRepository>();
-            services.AddSingleton<IUIColorsRepository, UIColorsRepository>();
+            services.AddTransient<IFtpCredentialsRepository, FtpCredentialsRepository>();
+            services.AddTransient<IUIColorsRepository, UIColorsRepository>();
 
-            services.AddSingleton<ContentStore>();
+            services.AddTransient<ContentStore>();
             services.AddSingleton<NavigationStore>();
             services.AddSingleton<ModalNavigationStore>();
 
@@ -48,12 +48,14 @@ namespace RVS_AT
             services.AddSingleton<CloseModalNavigationService>();
 
             services.AddTransient<MenuViewModel>();
-            services.AddTransient<TextViewModel>(s => new TextViewModel(s.GetRequiredService<ContentStore>()));
-            services.AddTransient<SettingsViewModel>(s => new SettingsViewModel(s.GetRequiredService<ContentStore>()));
-            services.AddTransient<PopupFiltrationTextViewModel>(CreatePopupViewModel);
 
             services.AddTransient<NavigationBarViewModel>(CreateNavigationBarViewModel);
             services.AddTransient<LeftNavigationBarViewModel>(CreateLeftNavigationBarViewModel);
+
+            services.AddTransient<TextViewModel>(s => new TextViewModel(s.GetRequiredService<ContentStore>()));
+            services.AddTransient<SettingsViewModel>(s => new SettingsViewModel(s.GetRequiredService<ContentStore>(), s.GetRequiredService<NavigationBarViewModel>(), s.GetRequiredService<LeftNavigationBarViewModel>(), CreateSettingsNavigationService(s)));
+            services.AddTransient<PopupFiltrationTextViewModel>(CreatePopupViewModel);
+
             services.AddSingleton<MainViewModel>();
 
             services.AddSingleton<MainWindow>(s => new MainWindow()
@@ -127,12 +129,14 @@ namespace RVS_AT
 
         private NavigationBarViewModel CreateNavigationBarViewModel(IServiceProvider serviceProvider)
         {
-            return new NavigationBarViewModel(serviceProvider.GetRequiredService<ContentStore>(),
+            return new NavigationBarViewModel(
+                serviceProvider.GetRequiredService<ContentStore>(),
                 CreatePopupNavigationService(serviceProvider));
         }
         private LeftNavigationBarViewModel CreateLeftNavigationBarViewModel(IServiceProvider serviceProvider)
         {
-            return new LeftNavigationBarViewModel(serviceProvider.GetRequiredService<ContentStore>(),
+            return new LeftNavigationBarViewModel(
+                serviceProvider.GetRequiredService<ContentStore>(),
                 CreateMenuNavigationService(serviceProvider),
                 CreateTextNavigationService(serviceProvider),
                 CreateSettingsNavigationService(serviceProvider));

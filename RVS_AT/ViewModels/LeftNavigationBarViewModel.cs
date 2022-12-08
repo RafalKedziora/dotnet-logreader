@@ -1,4 +1,4 @@
-﻿using Data;
+﻿using Domain.Models;
 using RVS_AT.Commands;
 using RVS_AT.Services;
 using RVS_AT.Stores;
@@ -15,31 +15,103 @@ namespace RVS_AT.ViewModels
 {
     public class LeftNavigationBarViewModel : ViewModelBase
     {
-        public readonly ContentStore _contentStore;
-
         public ICommand TextNavigateCommand { get; }
         public ICommand SettingsNavigateCommand { get; }
         public ICommand MainMenuNavigateCommand { get; }
 
-        public string BackgroundButton => _contentStore._uiColors.BackgroundButton;
-        public string Background => _contentStore._uiColors.Background;
+        private string _backgroundButton;
 
-        public Color Gradient1 => (Color)ColorConverter.ConvertFromString(_contentStore._uiColors.Gradient1);
-        public Color Gradient2 => (Color)ColorConverter.ConvertFromString(_contentStore._uiColors.Gradient2);
-        public Color Gradient3 => (Color)ColorConverter.ConvertFromString(_contentStore._uiColors.Gradient3);
+        public string BackgroundButton
+        {
+            get
+            {
+                return _backgroundButton;
+            }
+            set
+            {
+                _backgroundButton = value;
+                OnPropertyChanged(nameof(BackgroundButton));
+            }
+        }
+        private string _background;
 
+        public string Background
+        {
+            get
+            {
+                return _background;
+            }
+            set
+            {
+                _background = value;
+                OnPropertyChanged(nameof(Background));
+            }
+        }
 
+        private Color _gradient1;
+
+        public Color Gradient1
+        {
+            get
+            {
+                return _gradient1;
+            }
+            set
+            {
+                _gradient1 = value;
+                OnPropertyChanged(nameof(Gradient1));
+            }
+        }
+
+        private Color _gradient2;
+
+        public Color Gradient2
+        {
+            get
+            {
+                return _gradient2;
+            }
+            set
+            {
+                _gradient2 = value;
+                OnPropertyChanged(nameof(Gradient2));
+            }
+        }
+
+        private Color _gradient3;
+
+        public Color Gradient3
+        {
+            get
+            {
+                return _gradient3;
+            }
+            set
+            {
+                _gradient3 = value;
+                OnPropertyChanged(nameof(Gradient3));
+            }
+        }
         public LeftNavigationBarViewModel(
             ContentStore contentStore,
             INavigationService menuNavigationService,
             INavigationService textNavigationService,
             INavigationService settingsNavigationService)
         {
-            _contentStore = contentStore;
-
+            UpdateColors(contentStore._uiColors);
             TextNavigateCommand = new NavigateCommand(textNavigationService);
             SettingsNavigateCommand = new NavigateCommand(settingsNavigationService);
             MainMenuNavigateCommand = new NavigateCommand(menuNavigationService);
+        }
+        
+        public void UpdateColors(UIColors updatedColors)
+        {
+            Gradient1 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient1);
+            Gradient2 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient2);
+            Gradient3 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient3);
+
+            BackgroundButton = updatedColors.BackgroundButton;
+            Background = updatedColors.Background;
         }
     }
 }
