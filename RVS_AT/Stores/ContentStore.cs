@@ -1,4 +1,4 @@
-﻿using Data;
+﻿using Domain.Models;
 using RVS_AT.Models;
 using Services.Interfaces;
 using Services.Repositories;
@@ -13,9 +13,9 @@ namespace RVS_AT.Stores
 {
     public class ContentStore
     {
-        private readonly IFtpCredentialsRepository _ftpCredentialsRepository;
-        private readonly IUIColorsRepository _uiColorsRepository;
-        private readonly List<FileModel> _files;
+        public IFtpCredentialsRepository _ftpCredentialsRepository;
+        public IUIColorsRepository _uiColorsRepository;
+        public List<FileModel> _files;
 
         public UIColors _uiColors;
         public FtpCredentials _ftpCredentials;

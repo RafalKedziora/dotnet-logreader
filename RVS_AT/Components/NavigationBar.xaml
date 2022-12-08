@@ -14,7 +14,7 @@
             <RowDefinition MaxHeight="35"/>
         </Grid.RowDefinitions>
         <Grid.Background>
-            <SolidColorBrush Color="{Binding Path=BackgroundColor}"/>
+            <SolidColorBrush Color="{Binding Background}"/>
         </Grid.Background>
         <Button Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" Command="{Binding OpenOperationsCommand}">
             Testowo

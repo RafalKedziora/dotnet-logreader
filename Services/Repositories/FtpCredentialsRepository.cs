@@ -1,4 +1,4 @@
-﻿using Data;
+﻿using Domain.Models;
 using Services.Data;
 using Services.Interfaces;
 
@@ -17,6 +17,7 @@ namespace Services.Repositories
         }
         public void Update(FtpCredentials updateFtpCredentials)
         {
+            _context.FtpCredentials.Remove(_context.FtpCredentials.FirstOrDefault(elem => elem.Id == updateFtpCredentials.Id));
             _context.FtpCredentials.Update(updateFtpCredentials);
             _context.SaveChanges();
         }

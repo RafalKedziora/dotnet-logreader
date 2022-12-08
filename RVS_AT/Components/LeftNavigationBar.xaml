@@ -8,9 +8,9 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="{Binding Path=Gradient1}" Offset="0.0"/>
-                <GradientStop Color="{Binding Path=Gradient2}" Offset="0.5"/>
-                <GradientStop Color="{Binding Path=Gradient3}" Offset="1"/>
+                <GradientStop Color="{Binding Gradient1}" Offset="0.0"/>
+                <GradientStop Color="{Binding Gradient2}" Offset="0.5"/>
+                <GradientStop Color="{Binding Gradient3}" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.ColumnDefinitions>

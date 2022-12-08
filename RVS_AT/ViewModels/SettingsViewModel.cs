@@ -1,4 +1,6 @@
-﻿using RVS_AT.Commands;
+﻿using Domain.Models;
+using RVS_AT.Commands;
+using RVS_AT.Services;
 using RVS_AT.Stores;
 using System;
 using System.Collections.Generic;
@@ -11,31 +13,48 @@ namespace RVS_AT.ViewModels
 {
     public class SettingsViewModel : ViewModelBase
     {
-        public ICommand SaveNULLCommand { get; }
         public ICommand SaveColorsCommand { get; }
         public ICommand SaveFtpCredentialsCommand { get; }
+        public ICommand ResetSettings { get; }
 
-        private readonly ContentStore _contentStore;
+        private readonly NavigationBarViewModel _navigationBarViewModel;
+        private readonly LeftNavigationBarViewModel _leftNavigationBarViewModel;
 
-        public SettingsViewModel(ContentStore contentStore)
+        public SettingsViewModel(ContentStore contentStore, NavigationBarViewModel navigationBarViewModel, LeftNavigationBarViewModel leftNavigationBarViewModel, INavigationService settingsNavigationService)
         {
-            _contentStore = contentStore;
+            _navigationBarViewModel = navigationBarViewModel;
+            _leftNavigationBarViewModel = leftNavigationBarViewModel;
 
-            SaveColorsCommand = new SaveColorsCommand();
-            SaveFtpCredentialsCommand = new SaveFtpCredentialsCommand();
-            SaveNULLCommand = new SaveNULLCommand();
+            SaveColorsCommand = new SaveColorsCommand(contentStore, this);
+            SaveFtpCredentialsCommand = new SaveFtpCredentialsCommand(contentStore, this);
+            ResetSettings = new NavigateCommand(settingsNavigationService);
 
-            _host = _contentStore._ftpCredentials.Host;
-            _port = _contentStore._ftpCredentials.Port;
-            _login = _contentStore._ftpCredentials.Login;
-            _password = _contentStore._ftpCredentials.Password;
-            _pathToFiles = _contentStore._ftpCredentials.PathToFiles;
+            LoadColors(contentStore._uiColors);
+            LoadFtpCredentials(contentStore._ftpCredentials);
+        }
+        private void LoadColors(UIColors colors)
+        {
+            Gradient1 = colors.Gradient1;
+            Gradient2 = colors.Gradient2;
+            Gradient3 = colors.Gradient3;
+            Background = colors.Background;
+            BackgroundButton = colors.BackgroundButton;
+        }
 
-            _gradient1 = _contentStore._uiColors.Gradient1;
-            _gradient2 = _contentStore._uiColors.Gradient2;
-            _gradient3 = _contentStore._uiColors.Gradient3;
-            _backgroundColor = _contentStore._uiColors.Background;
-            _backgroundButton = _contentStore._uiColors.BackgroundButton;
+        public void UpdateColors(UIColors updatedColors)
+        {
+            _navigationBarViewModel.UpdateColors(updatedColors);
+            _leftNavigationBarViewModel.UpdateColors(updatedColors);
+            ResetSettings.Execute(this);
+        }
+
+        private void LoadFtpCredentials(FtpCredentials ftpCredentials)
+        {
+            _host = ftpCredentials.Host;
+            _port = ftpCredentials.Port;
+            _login = ftpCredentials.Login;
+            _password = ftpCredentials.Password;
+            _pathToFiles = ftpCredentials.PathToFiles;
         }
 
         private string _host;
@@ -150,17 +169,17 @@ namespace RVS_AT.ViewModels
             }
         }
 
-        private string _backgroundColor;
-        public string BackgroundColor
+        private string _background;
+        public string Background
         {
             get
             {
-                return _backgroundColor;
+                return _background;
             }
             set
             {
-                _backgroundColor = value;
-                OnPropertyChanged(nameof(BackgroundColor));
+                _background = value;
+                OnPropertyChanged(nameof(Background));
             }
         }
 

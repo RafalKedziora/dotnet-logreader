@@ -1,4 +1,4 @@
-﻿using Data;
+﻿using Domain.Models;
 using Services.Data;
 using Services.Interfaces;
 
@@ -17,6 +17,7 @@ namespace Services.Repositories
         }
         public void Update(UIColors updateUIColors)
         {
+            _context.UIColors.Remove(_context.UIColors.FirstOrDefault(elem => elem.Id == updateUIColors.Id));
             _context.UIColors.Update(updateUIColors);
             _context.SaveChanges();
         }

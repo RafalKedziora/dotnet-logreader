@@ -1,4 +1,4 @@
-﻿using Data;
+﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Services.Data

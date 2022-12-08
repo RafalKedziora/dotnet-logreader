@@ -1,4 +1,4 @@
-﻿using Data;
+﻿using Domain.Models;
 using RVS_AT.Commands;
 using RVS_AT.Services;
 using RVS_AT.Stores;
@@ -14,24 +14,39 @@ namespace RVS_AT.ViewModels
 {
     public class NavigationBarViewModel : ViewModelBase
     {
-        private readonly ContentStore _contentStore;
-
         public ICommand OpenOperationsCommand { get; }
 
         public ICommand CloseAppCommand { get; }
         public ICommand MinMaxAppCommand { get; }
         public ICommand StateAppCommand { get; }
 
-        public string BackgroundColor => _contentStore._uiColors.Background;
+        private string _background;
+        public string Background
+        {
+            get
+            {
+                return _background;
+            }
+            set
+            {
+                _background = value;
+                OnPropertyChanged(nameof(Background));
+            }
+        }
 
         public NavigationBarViewModel(ContentStore contentStore, INavigationService popupNavigationService)
         {
-            _contentStore = contentStore;
             OpenOperationsCommand = new NavigateCommand(popupNavigationService);
 
             CloseAppCommand = new CloseAppCommand();
             MinMaxAppCommand = new MinMaxAppCommand();
             StateAppCommand = new StateAppCommand();
+
+            UpdateColors(contentStore._uiColors);
+        }
+        internal void UpdateColors(UIColors updatedColors)
+        {
+            Background = updatedColors.Background;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Data
+﻿namespace Domain.Models
 {
     public class UIColors
     {
