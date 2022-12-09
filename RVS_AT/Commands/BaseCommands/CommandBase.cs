@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace RVS_AT.Commands
+namespace RVS_AT.Commands.BaseCommands
 {
     public abstract class CommandBase : ICommand
     {

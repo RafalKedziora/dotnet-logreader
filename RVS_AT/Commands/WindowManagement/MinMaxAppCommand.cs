@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
-namespace RVS_AT.Commands
+namespace RVS_AT.Commands.WindowManagement
 {
-    public class OpenOperationsCommand : CommandBase
+    public class MinMaxAppCommand : CommandBase
     {
         public override void Execute(object parameter)
         {
-            Console.WriteLine();
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
     }
 }

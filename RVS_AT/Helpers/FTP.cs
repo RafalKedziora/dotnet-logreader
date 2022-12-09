@@ -3,45 +3,69 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using RVS_AT.Stores;
+using System.Windows.Controls;
+using System.Threading;
+using RVS_AT.Models;
+using System.Collections.Generic;
+using System.Windows.Navigation;
+using FluentFTP.Helpers;
 
 namespace RVS_AT
 {
-    public class Ftp : INotifyPropertyChanged
+    public class Ftp
     {
-        private string _host;
-        private string _login;
-        private string _password;
-        public string _pathToFiles;
-        private string _port;
-
-        public Ftp(string host, string login, string password, string pathToFiles, string port)
+        private readonly ContentStore _contentStore;
+        public Ftp(ContentStore contentStore)
         {
-            (_host, _login, _password, _pathToFiles, _port) = (host, login, password, pathToFiles, port);
+            _contentStore = contentStore;
         }
-        public void Download()
+
+        public async Task<List<FileModel>> GetListingAsync()
         {
-            FtpClient client = new FtpClient(_host);
-            client.Credentials = new NetworkCredential(_login, _password);
-            try
+            var token = new CancellationToken();
+            var listOfFiles = new List<FileModel>();
+            using (var conn = new AsyncFtpClient(
+                _contentStore._ftpCredentials.Host,
+                _contentStore._ftpCredentials.Login,
+                _contentStore._ftpCredentials.Password,
+                _contentStore._ftpCredentials.Port))
+            {
+                await conn.Connect(token);
+                var idSetter = 0;
+                foreach (var item in await conn.GetListing(_contentStore._ftpCredentials.PathToFiles, FtpListOption.Recursive, token))
+                {
+                    if(item.Type == FtpObjectType.File)
+                    {
+                        idSetter++;
+
+                        var itemFullName = item.FullName.Split('.', 2);
+                        listOfFiles.Add(new FileModel
+                        {
+                            Id = idSetter,
+                            Name = itemFullName[0],
+                            Extension = itemFullName[1],
+                        });
+                        Console.WriteLine("File!  " + item.FullName);
+                    }
+                }
+            }
+            return listOfFiles;
+        }
+
+        public void DownloadFile(FileModel file)
+        {
+            FtpClient client = new FtpClient(
+            _contentStore._ftpCredentials.Host,
+            _contentStore._ftpCredentials.Login,
+            _contentStore._ftpCredentials.Password, 
+            _contentStore._ftpCredentials.Port);
+
+            using (client)
             {
                 client.Connect();
-                client.DownloadDirectory(Environment.CurrentDirectory + "/logs", _pathToFiles, FtpFolderSyncMode.Update);
+                client.DownloadFile($"{Environment.CurrentDirectory}/logs/{file.Name}.{file.Extension}", $"{_contentStore._ftpCredentials.PathToFiles}/{file.Name}.{file.Extension}", FtpLocalExists.Skip, FtpVerify.Retry);
                 client.Disconnect();
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine($"FTP Connection Exception: {e}");
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }
