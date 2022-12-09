@@ -1,13 +1,18 @@
 ﻿using Domain.Models;
 using RVS_AT.Commands;
+using RVS_AT.Commands.SettingsCommands;
 using RVS_AT.Services;
 using RVS_AT.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace RVS_AT.ViewModels
 {
@@ -15,12 +20,13 @@ namespace RVS_AT.ViewModels
     {
         public ICommand SaveColorsCommand { get; }
         public ICommand SaveFtpCredentialsCommand { get; }
+        public ICommand LoadFtpData { get; }
         public ICommand ResetSettings { get; }
 
         private readonly NavigationBarViewModel _navigationBarViewModel;
         private readonly LeftNavigationBarViewModel _leftNavigationBarViewModel;
 
-        public SettingsViewModel(ContentStore contentStore, NavigationBarViewModel navigationBarViewModel, LeftNavigationBarViewModel leftNavigationBarViewModel, INavigationService settingsNavigationService)
+        public SettingsViewModel(ContentStore contentStore, NavigationBarViewModel navigationBarViewModel, LeftNavigationBarViewModel leftNavigationBarViewModel, INavigationService settingsNavigationService, Ftp ftp)
         {
             _navigationBarViewModel = navigationBarViewModel;
             _leftNavigationBarViewModel = leftNavigationBarViewModel;
@@ -28,6 +34,7 @@ namespace RVS_AT.ViewModels
             SaveColorsCommand = new SaveColorsCommand(contentStore, this);
             SaveFtpCredentialsCommand = new SaveFtpCredentialsCommand(contentStore, this);
             ResetSettings = new NavigateCommand(settingsNavigationService);
+            LoadFtpData = new LoadFtpData(this, ftp);
 
             LoadColors(contentStore._uiColors);
             LoadFtpCredentials(contentStore._ftpCredentials);
@@ -55,6 +62,21 @@ namespace RVS_AT.ViewModels
             _login = ftpCredentials.Login;
             _password = ftpCredentials.Password;
             _pathToFiles = ftpCredentials.PathToFiles;
+        }
+
+        internal void UpdateProgressBar(int current, int fileCount)
+        {
+            Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
+            {
+                if (fileCount > 0)
+                {
+                    Progress = (int)(((double)current / fileCount) * 100);
+                }
+                else
+                {
+                    Progress = 0;
+                }
+            }));
         }
 
         private string _host;
@@ -99,13 +121,12 @@ namespace RVS_AT.ViewModels
             }
         }
 
+        public string SecurePassword { private get; set; }
+
         private string _password;
         public string Password
         {
-            get
-            {
-                return _password;
-            }
+            get => _password;
             set
             {
                 _password = value;
@@ -195,6 +216,18 @@ namespace RVS_AT.ViewModels
             {
                 _backgroundButton = value;
                 OnPropertyChanged(nameof(BackgroundButton));
+            }
+        }
+
+        private int _progress;
+
+        public int Progress
+        {
+            get { return _progress; }
+            set
+            {
+                _progress = value;
+                OnPropertyChanged(nameof(Progress));
             }
         }
     }

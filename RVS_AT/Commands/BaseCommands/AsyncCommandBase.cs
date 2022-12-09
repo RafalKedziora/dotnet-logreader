@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RVS_AT.Commands.BaseCommands;
 
-namespace RVS_AT.Commands
+namespace RVS_AT.Commands.BaseCommands
 {
     public abstract class AsyncCommandBase : CommandBase
     {

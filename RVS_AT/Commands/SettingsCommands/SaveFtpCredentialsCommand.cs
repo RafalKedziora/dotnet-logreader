@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using RVS_AT.Commands.BaseCommands;
 using RVS_AT.Stores;
 using RVS_AT.ViewModels;
 using Services.Interfaces;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RVS_AT.Commands
+namespace RVS_AT.Commands.SettingsCommands
 {
     public class SaveFtpCredentialsCommand : CommandBase
     {
@@ -28,7 +29,7 @@ namespace RVS_AT.Commands
             {
                 Host = _settingsViewModel.Host,
                 Login = _settingsViewModel.Login,
-                Password = _settingsViewModel.Password,
+                Password = _settingsViewModel.Password.ToString(),
                 PathToFiles = _settingsViewModel.PathToFiles,
                 Port = _settingsViewModel.Port,
                 Id = 1

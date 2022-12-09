@@ -1,5 +1,6 @@
 ﻿using ABI.Windows.UI;
 using Domain.Models;
+using RVS_AT.Commands.BaseCommands;
 using RVS_AT.Stores;
 using RVS_AT.ViewModels;
 using Services.Interfaces;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace RVS_AT.Commands
+namespace RVS_AT.Commands.SettingsCommands
 {
     public class SaveColorsCommand : CommandBase
     {
