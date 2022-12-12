@@ -1,20 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using RVS_AT.Services;
 using RVS_AT.Stores;
 using RVS_AT.ViewModels;
-using Services.Data;
-using System.Windows;
-using Microsoft.Extensions.Configuration;
-using RVS_AT.Services;
-using Services.Repositories;
-using Services.Interfaces;
-using System.Windows.Navigation;
-using System;
-using RVS_AT.Components;
-using System.Configuration;
-using System.IO;
 using Services;
+using Services.Data;
+using Services.Interfaces;
+using Services.Repositories;
+using System;
+using System.IO;
+using System.Windows;
 
 namespace RVS_AT
 {

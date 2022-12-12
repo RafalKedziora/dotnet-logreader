@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Documents;
 
 namespace RVS_AT
 {
@@ -34,10 +32,10 @@ namespace RVS_AT
         }
 
         public List<FileModel> FilterUnpacked(List<FileModel> files)
-        { 
-            foreach(var file in files)
+        {
+            foreach (var file in files)
             {
-                if(file.Extension == ".log" && files.Exists(x => x.Name == file.Name && x.Extension == ".log.gz"))
+                if (file.Extension == ".log" && files.Exists(x => x.Name == file.Name && x.Extension == ".log.gz"))
                 {
                     files.Remove(file);
                 }

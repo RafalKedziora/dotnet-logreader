@@ -2,12 +2,6 @@
 using RVS_AT.Commands;
 using RVS_AT.Services;
 using RVS_AT.Stores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -89,7 +83,7 @@ namespace RVS_AT.ViewModels
             SettingsNavigateCommand = new NavigateCommand(settingsNavigationService);
             MainMenuNavigateCommand = new NavigateCommand(menuNavigationService);
         }
-        
+
         public void UpdateColors(UIColors updatedColors)
         {
             Gradient1 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient1);

@@ -1,10 +1,7 @@
 ﻿using RVS_AT.Commands.BaseCommands;
 using RVS_AT.Stores;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RVS_AT.Commands.SettingsCommands
@@ -23,7 +20,7 @@ namespace RVS_AT.Commands.SettingsCommands
         {
             _contentStore._files = _fileUnpacker.GetFilesToUnpack();
 
-            foreach(var file in _contentStore._files)
+            foreach (var file in _contentStore._files)
             {
                 await _fileUnpacker.Decompress(new FileInfo(Environment.CurrentDirectory + "/logs/" + file.Name));
             }

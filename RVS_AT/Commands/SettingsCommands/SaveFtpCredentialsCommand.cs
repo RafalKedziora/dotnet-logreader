@@ -2,12 +2,6 @@
 using RVS_AT.Commands.BaseCommands;
 using RVS_AT.Stores;
 using RVS_AT.ViewModels;
-using Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RVS_AT.Commands.SettingsCommands
 {

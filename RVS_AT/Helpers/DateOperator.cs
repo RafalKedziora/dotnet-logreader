@@ -31,7 +31,7 @@ namespace RVS_AT
         }
 
         public async Task<DateTime[]> GetLastDays()
-        { 
+        {
             var lastDays = Enumerable.Range(0, 4).Select(i => DateTime.Now.Date.AddDays(-i)).ToArray();
             var result = await Task.FromResult(lastDays);
             return result;

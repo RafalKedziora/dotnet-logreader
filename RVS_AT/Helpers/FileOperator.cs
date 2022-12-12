@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace RVS_AT
+﻿namespace RVS_AT
 {
     class FileOperator
     {
@@ -10,7 +6,7 @@ namespace RVS_AT
         //{
         //    List<string> fileNames = new List<string>();
         //    var files = Directory.GetFiles(Environment.CurrentDirectory, "*.gz", SearchOption.AllDirectories);
-            
+
         //    foreach (var fileToDecompress in files)
         //    {
         //        await new FileInfo(fileToDecompress).Decompress();
