@@ -35,6 +35,20 @@ namespace RVS_AT.ViewModels
             }
         }
 
+        private string _backgroundButton;
+        public string BackgroundButton
+        {
+            get
+            {
+                return _backgroundButton;
+            }
+            set
+            {
+                _backgroundButton = value;
+                OnPropertyChanged(nameof(BackgroundButton));
+            }
+        }
+
         public NavigationBarViewModel(ContentStore contentStore, INavigationService popupNavigationService)
         {
             OpenOperationsCommand = new NavigateCommand(popupNavigationService);
@@ -48,6 +62,7 @@ namespace RVS_AT.ViewModels
         internal void UpdateColors(UIColors updatedColors)
         {
             Background = updatedColors.Background;
+            BackgroundButton = updatedColors.BackgroundButton;
         }
     }
 }

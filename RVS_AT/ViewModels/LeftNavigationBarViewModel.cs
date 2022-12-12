@@ -19,20 +19,6 @@ namespace RVS_AT.ViewModels
         public ICommand SettingsNavigateCommand { get; }
         public ICommand MainMenuNavigateCommand { get; }
 
-        private string _backgroundButton;
-
-        public string BackgroundButton
-        {
-            get
-            {
-                return _backgroundButton;
-            }
-            set
-            {
-                _backgroundButton = value;
-                OnPropertyChanged(nameof(BackgroundButton));
-            }
-        }
         private string _background;
 
         public string Background
@@ -110,7 +96,6 @@ namespace RVS_AT.ViewModels
             Gradient2 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient2);
             Gradient3 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient3);
 
-            BackgroundButton = updatedColors.BackgroundButton;
             Background = updatedColors.Background;
         }
     }

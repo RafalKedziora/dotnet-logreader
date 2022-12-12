@@ -13,10 +13,10 @@ using FluentFTP.Helpers;
 
 namespace RVS_AT
 {
-    public class Ftp
+    public class FtpDownloader
     {
         private readonly ContentStore _contentStore;
-        public Ftp(ContentStore contentStore)
+        public FtpDownloader(ContentStore contentStore)
         {
             _contentStore = contentStore;
         }
