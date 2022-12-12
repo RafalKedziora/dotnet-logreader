@@ -1,10 +1,5 @@
 ﻿using RVS_AT.Commands.BaseCommands;
 using RVS_AT.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace RVS_AT.Commands.SettingsCommands
@@ -12,9 +7,9 @@ namespace RVS_AT.Commands.SettingsCommands
     public class LoadFtpData : AsyncCommandBase
     {
         private readonly SettingsViewModel _settingsViewModel;
-        private readonly Ftp _ftp;
+        private readonly FtpDownloader _ftp;
 
-        public LoadFtpData(SettingsViewModel settingsViewModel, Ftp ftp)
+        public LoadFtpData(SettingsViewModel settingsViewModel, FtpDownloader ftp)
         {
             _settingsViewModel = settingsViewModel;
             _ftp = ftp;
@@ -34,7 +29,6 @@ namespace RVS_AT.Commands.SettingsCommands
                     current++;
                     _ftp.DownloadFile(file);
                     _settingsViewModel.UpdateProgressBar(current, fileCount);
-                    Thread.Sleep(500);
                 }
             }
             else

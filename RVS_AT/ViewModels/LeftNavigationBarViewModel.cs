@@ -2,12 +2,6 @@
 using RVS_AT.Commands;
 using RVS_AT.Services;
 using RVS_AT.Stores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -19,20 +13,6 @@ namespace RVS_AT.ViewModels
         public ICommand SettingsNavigateCommand { get; }
         public ICommand MainMenuNavigateCommand { get; }
 
-        private string _backgroundButton;
-
-        public string BackgroundButton
-        {
-            get
-            {
-                return _backgroundButton;
-            }
-            set
-            {
-                _backgroundButton = value;
-                OnPropertyChanged(nameof(BackgroundButton));
-            }
-        }
         private string _background;
 
         public string Background
@@ -103,14 +83,13 @@ namespace RVS_AT.ViewModels
             SettingsNavigateCommand = new NavigateCommand(settingsNavigationService);
             MainMenuNavigateCommand = new NavigateCommand(menuNavigationService);
         }
-        
+
         public void UpdateColors(UIColors updatedColors)
         {
             Gradient1 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient1);
             Gradient2 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient2);
             Gradient3 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient3);
 
-            BackgroundButton = updatedColors.BackgroundButton;
             Background = updatedColors.Background;
         }
     }

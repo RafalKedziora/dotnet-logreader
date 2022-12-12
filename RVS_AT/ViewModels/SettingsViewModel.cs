@@ -4,13 +4,6 @@ using RVS_AT.Commands.SettingsCommands;
 using RVS_AT.Services;
 using RVS_AT.Stores;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 
@@ -21,12 +14,13 @@ namespace RVS_AT.ViewModels
         public ICommand SaveColorsCommand { get; }
         public ICommand SaveFtpCredentialsCommand { get; }
         public ICommand LoadFtpData { get; }
+        public ICommand UnpackFilesCommand { get; }
         public ICommand ResetSettings { get; }
 
         private readonly NavigationBarViewModel _navigationBarViewModel;
         private readonly LeftNavigationBarViewModel _leftNavigationBarViewModel;
 
-        public SettingsViewModel(ContentStore contentStore, NavigationBarViewModel navigationBarViewModel, LeftNavigationBarViewModel leftNavigationBarViewModel, INavigationService settingsNavigationService, Ftp ftp)
+        public SettingsViewModel(ContentStore contentStore, NavigationBarViewModel navigationBarViewModel, LeftNavigationBarViewModel leftNavigationBarViewModel, INavigationService settingsNavigationService, FtpDownloader ftp, FileUnpacker fileUnpacker)
         {
             _navigationBarViewModel = navigationBarViewModel;
             _leftNavigationBarViewModel = leftNavigationBarViewModel;
@@ -35,6 +29,8 @@ namespace RVS_AT.ViewModels
             SaveFtpCredentialsCommand = new SaveFtpCredentialsCommand(contentStore, this);
             ResetSettings = new NavigateCommand(settingsNavigationService);
             LoadFtpData = new LoadFtpData(this, ftp);
+            UnpackFilesCommand = new UnpackFilesCommand(contentStore, fileUnpacker);
+
 
             LoadColors(contentStore._uiColors);
             LoadFtpCredentials(contentStore._ftpCredentials);

@@ -1,15 +1,11 @@
 ﻿using RVS_AT.Commands;
 using RVS_AT.Stores;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace RVS_AT.ViewModels
 {
-    public class TextViewModel : ViewModelBase 
+    public class TextViewModel : ViewModelBase
     {
         public ICommand PrevDayCommand { get; }
         public ICommand NextDayCommand { get; }

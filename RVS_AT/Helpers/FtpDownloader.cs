@@ -1,22 +1,17 @@
 ﻿using FluentFTP;
-using System;
-using System.Net;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using RVS_AT.Stores;
-using System.Windows.Controls;
-using System.Threading;
 using RVS_AT.Models;
+using RVS_AT.Stores;
+using System;
 using System.Collections.Generic;
-using System.Windows.Navigation;
-using FluentFTP.Helpers;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace RVS_AT
 {
-    public class Ftp
+    public class FtpDownloader
     {
         private readonly ContentStore _contentStore;
-        public Ftp(ContentStore contentStore)
+        public FtpDownloader(ContentStore contentStore)
         {
             _contentStore = contentStore;
         }
@@ -35,7 +30,7 @@ namespace RVS_AT
                 var idSetter = 0;
                 foreach (var item in await conn.GetListing(_contentStore._ftpCredentials.PathToFiles, FtpListOption.Recursive, token))
                 {
-                    if(item.Type == FtpObjectType.File)
+                    if (item.Type == FtpObjectType.File)
                     {
                         idSetter++;
 
@@ -58,7 +53,7 @@ namespace RVS_AT
             FtpClient client = new FtpClient(
             _contentStore._ftpCredentials.Host,
             _contentStore._ftpCredentials.Login,
-            _contentStore._ftpCredentials.Password, 
+            _contentStore._ftpCredentials.Password,
             _contentStore._ftpCredentials.Port);
 
             using (client)

@@ -20,13 +20,13 @@
             Testowo
         </Button>
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding CloseAppCommand}">
+            <Button Background="{Binding BackgroundButton}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding CloseAppCommand}">
                 <Image Source="../Img/close.png"/>
             </Button>
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding StateAppCommand}">
+            <Button Background="{Binding BackgroundButton}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding StateAppCommand}">
                 <Image Source="../Img/maximize.png"/>
             </Button>
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding MinMaxAppCommand}">
+            <Button Background="{Binding BackgroundButton}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding MinMaxAppCommand}">
                 <Image Source="../Img/minimize.png"/>
             </Button>
         </StackPanel>

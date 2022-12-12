@@ -1,18 +1,7 @@
-﻿using ABI.Windows.UI;
-using Domain.Models;
+﻿using Domain.Models;
 using RVS_AT.Commands.BaseCommands;
 using RVS_AT.Stores;
 using RVS_AT.ViewModels;
-using Services.Interfaces;
-using Services.Repositories;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Data;
-using System.Windows.Media;
 
 namespace RVS_AT.Commands.SettingsCommands
 {
