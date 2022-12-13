@@ -6,7 +6,7 @@ namespace RVS_AT
 {
     class DateOperator
     {
-        public async Task<DateTime> DateParser(string fileName)
+        public static DateTime DateParser(string fileName)
         {
             DateTime parsedDay;
             try
@@ -25,9 +25,8 @@ namespace RVS_AT
                     Console.WriteLine(e.Message);
                 }
             }
-            var result = await Task.FromResult(parsedDay);
-
-            return result;
+            
+            return parsedDay;
         }
 
         public async Task<DateTime[]> GetLastDays()

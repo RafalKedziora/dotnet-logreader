@@ -22,6 +22,8 @@ namespace RVS_AT
                     Name = Path.GetFileName(filePath),
                     Extension = Path.GetExtension(filePath)
                 };
+                fileModel.LogDate = DateOperator.DateParser(fileModel.Name);
+
 
                 files.Add(fileModel);
             }
@@ -45,13 +47,16 @@ namespace RVS_AT
 
         public async Task Decompress(FileInfo fileToDecompress)
         {
-            await using FileStream originalFileStream = fileToDecompress.OpenRead();
-            string currentFileName = fileToDecompress.FullName;
-            string newFileName = currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length);
+            if (fileToDecompress.Extension == ".gz")
+            {
+                await using FileStream originalFileStream = fileToDecompress.OpenRead();
+                string currentFileName = fileToDecompress.FullName;
+                string newFileName = currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length);
 
-            await using FileStream decompressedFileStream = File.Create(newFileName);
-            await using GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress);
-            await decompressionStream.CopyToAsync(decompressedFileStream);
+                await using FileStream decompressedFileStream = File.Create(newFileName);
+                await using GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress);
+                await decompressionStream.CopyToAsync(decompressedFileStream);
+            }
         }
     }
 }

@@ -43,10 +43,8 @@ namespace RVS_AT.ViewModels
             }
         }
 
-        public NavigationBarViewModel(ContentStore contentStore, INavigationService popupNavigationService)
+        public NavigationBarViewModel(ContentStore contentStore)
         {
-            OpenOperationsCommand = new NavigateCommand(popupNavigationService);
-
             CloseAppCommand = new CloseAppCommand();
             MinMaxAppCommand = new MinMaxAppCommand();
             StateAppCommand = new StateAppCommand();

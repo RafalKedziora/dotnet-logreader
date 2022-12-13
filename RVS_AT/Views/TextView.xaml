@@ -10,15 +10,13 @@
                 <SolidColorBrush Color="{Binding Path=Background}"/>
             </Grid.Background>
             <StackPanel  Orientation="Horizontal" FlowDirection="RightToLeft">
-                <Button x:Name="Next" Width="35" Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}" Command="{Binding NextDayCommand}">Next</Button>
-                <Button x:Name="Prev" Width="35" Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}" Command="{Binding PrevDayCommand}">Prev</Button>
-                <TextBlock x:Name="CurrentLogName" Margin="20 0 0 0" FontSize="17" Foreground="White" Text="{Binding CurrentDay}">
-                    Current Day
-                </TextBlock>
+                <Button Width="35" Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}" Command="{Binding NextDayCommand}">Next</Button>
+                <Button Width="35" Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}" Command="{Binding PrevDayCommand}">Prev</Button>
+                <TextBlock Margin="20 0 0 0" FontSize="17" Foreground="White" Text="{Binding CurrentDay}"/>
             </StackPanel>
         </Grid>
         <Grid DockPanel.Dock="Right">
-            <TextBox x:Name="logsBox" FontSize="15" Grid.ColumnSpan="3" BorderThickness="3" TextAlignment="Left" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Padding="5" Text="{Binding LogsContent}"></TextBox>
+            <TextBox FontSize="15" Grid.ColumnSpan="3" BorderThickness="3" TextAlignment="Left" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" Padding="5" Text="{Binding LogboxText}"></TextBox>
         </Grid>
     </DockPanel>
 </UserControl>

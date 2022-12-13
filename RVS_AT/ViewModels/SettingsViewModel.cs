@@ -13,9 +13,10 @@ namespace RVS_AT.ViewModels
     {
         public ICommand SaveColorsCommand { get; }
         public ICommand SaveFtpCredentialsCommand { get; }
-        public ICommand LoadFtpData { get; }
+        public ICommand LoadFtpDataCommand { get; }
         public ICommand UnpackFilesCommand { get; }
         public ICommand ResetSettings { get; }
+        public ICommand RemoveAllFilesCommand { get; }
 
         private readonly NavigationBarViewModel _navigationBarViewModel;
         private readonly LeftNavigationBarViewModel _leftNavigationBarViewModel;
@@ -28,8 +29,9 @@ namespace RVS_AT.ViewModels
             SaveColorsCommand = new SaveColorsCommand(contentStore, this);
             SaveFtpCredentialsCommand = new SaveFtpCredentialsCommand(contentStore, this);
             ResetSettings = new NavigateCommand(settingsNavigationService);
-            LoadFtpData = new LoadFtpData(this, ftp);
+            LoadFtpDataCommand = new LoadFtpData(this, ftp);
             UnpackFilesCommand = new UnpackFilesCommand(contentStore, fileUnpacker);
+            RemoveAllFilesCommand = new RemoveAllFilesCommand(Environment.CurrentDirectory + "/logs");
 
 
             LoadColors(contentStore._uiColors);
