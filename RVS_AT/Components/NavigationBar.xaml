@@ -16,9 +16,9 @@
         <Grid.Background>
             <SolidColorBrush Color="{Binding Background}"/>
         </Grid.Background>
-        <Button Grid.Column="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontWeight="Bold" Command="{Binding OpenOperationsCommand}">
-            Testowo
-        </Button>
+        <TextBlock Grid.Column="0" Background="{x:Null}" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">
+            LogReader
+        </TextBlock>
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Button Background="{Binding BackgroundButton}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding CloseAppCommand}">
                 <Image Source="../Img/close.png"/>

@@ -1,6 +1,8 @@
 ﻿using RVS_AT.Commands;
+using RVS_AT.Helpers;
 using RVS_AT.Stores;
 using System;
+using System.Linq;
 using System.Windows.Input;
 
 namespace RVS_AT.ViewModels
@@ -9,11 +11,11 @@ namespace RVS_AT.ViewModels
     {
         public ICommand PrevDayCommand { get; }
         public ICommand NextDayCommand { get; }
-
-        private string logsContent;
+        
         private string currentDay;
+        private string logboxText;
 
-        private ContentStore _contentStore;
+        private readonly ContentStore _contentStore;
 
         public string Background => _contentStore._uiColors.Background;
         public string BackgroundButton => _contentStore._uiColors.BackgroundButton;
@@ -22,14 +24,21 @@ namespace RVS_AT.ViewModels
         {
             _contentStore = contentStore;
             NextDayCommand = new NextDayCommand(this, _contentStore);
+
+            if (_contentStore.Files.Any(x => x.Name == "latest.log"))
+            {
+                logboxText = FileReader.ReadFile(Environment.CurrentDirectory + "/logs/latest.log");
+                currentDay = DateTime.Today.ToString("dd.MM.yyyy");
+            }
         }
 
         public string CurrentDay
         {
             get
             {
-                return DateTime.Today.ToString();
+                return currentDay;
             }
+
             set
             {
                 currentDay = value;
@@ -37,16 +46,16 @@ namespace RVS_AT.ViewModels
             }
         }
 
-        public string LogsContent
+        public string LogboxText
         {
             get
             {
-                return logsContent;
+                return logboxText;
             }
             set
             {
-                logsContent = value;
-                OnPropertyChanged(nameof(LogsContent));
+                logboxText = value;
+                OnPropertyChanged(nameof(LogboxText));
             }
         }
     }

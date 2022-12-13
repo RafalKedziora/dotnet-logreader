@@ -87,11 +87,14 @@
                 <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" Margin="0 10 30 0" HorizontalAlignment="Right">
                     <ProgressBar Name="pbStatus"  Width="100" Height="30" Minimum="0" Maximum="100" Value="{Binding Progress, Mode=OneWay}"></ProgressBar>
                     <StackPanel Margin="0 10 0 0">
-                        <Button Command="{Binding LoadFtpData}">
+                        <Button Command="{Binding LoadFtpDataCommand}">
                             Wczytaj FTP
                         </Button>
                         <Button Command="{Binding UnpackFilesCommand}">
                             Wypakuj
+                        </Button>
+                        <Button Command="{Binding RemoveAllFilesCommand}">
+                            Usuń pliki
                         </Button>
                     </StackPanel>
                 </StackPanel>
