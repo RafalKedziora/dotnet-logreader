@@ -22,7 +22,10 @@ namespace RVS_AT.Commands.SettingsCommands
 
             foreach (var file in _contentStore._files)
             {
-                await _fileUnpacker.Decompress(new FileInfo(Environment.CurrentDirectory + "/logs/" + file.Name));
+                if (file.Extension == ".gz")
+                {
+                    await _fileUnpacker.Decompress(new FileInfo($"{Environment.CurrentDirectory}/logs/{file.Name}{file.Extension}"));
+                }
             }
         }
     }

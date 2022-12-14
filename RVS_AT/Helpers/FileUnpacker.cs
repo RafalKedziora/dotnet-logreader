@@ -1,4 +1,5 @@
-﻿using RVS_AT.Models;
+﻿using RVS_AT.Helpers;
+using RVS_AT.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +20,7 @@ namespace RVS_AT
             {
                 var fileModel = new FileModel
                 {
-                    Name = Path.GetFileName(filePath),
+                    Name = Path.GetFileNameWithoutExtension(filePath),
                     Extension = Path.GetExtension(filePath)
                 };
                 fileModel.LogDate = DateOperator.DateParser(fileModel.Name);
@@ -28,20 +29,8 @@ namespace RVS_AT
                 files.Add(fileModel);
             }
 
-            files = FilterUnpacked(files);
+            files = FileReader.FilterUnpacked(files);
 
-            return files;
-        }
-
-        public List<FileModel> FilterUnpacked(List<FileModel> files)
-        {
-            foreach (var file in files)
-            {
-                if (file.Extension == ".log" && files.Exists(x => x.Name == file.Name && x.Extension == ".log.gz"))
-                {
-                    files.Remove(file);
-                }
-            }
             return files;
         }
 

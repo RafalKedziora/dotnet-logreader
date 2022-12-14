@@ -1,5 +1,7 @@
 ﻿using RVS_AT.Commands;
 using RVS_AT.Helpers;
+using RVS_AT.Models;
+using RVS_AT.Services;
 using RVS_AT.Stores;
 using System;
 using System.Linq;
@@ -11,7 +13,8 @@ namespace RVS_AT.ViewModels
     {
         public ICommand PrevDayCommand { get; }
         public ICommand NextDayCommand { get; }
-        
+        public ICommand ResetTextView { get; }
+
         private string currentDay;
         private string logboxText;
 
@@ -20,16 +23,35 @@ namespace RVS_AT.ViewModels
         public string Background => _contentStore._uiColors.Background;
         public string BackgroundButton => _contentStore._uiColors.BackgroundButton;
 
-        public TextViewModel(ContentStore contentStore)
+        public TextViewModel(ContentStore contentStore, INavigationService textNavigationService)
         {
             _contentStore = contentStore;
-            NextDayCommand = new NextDayCommand(this, _contentStore);
 
-            if (_contentStore.Files.Any(x => x.Name == "latest.log"))
+            NextDayCommand = new NextDayCommand(this, _contentStore);
+            PrevDayCommand = new PrevDayCommand(this, _contentStore);
+            ResetTextView = new NavigateCommand(textNavigationService);
+
+            ChangeDay(_contentStore.currentFile);
+        }
+
+        public void ChangeDay(FileModel file)
+        {
+            if (file is null && _contentStore.Files.Any(x => x.Name == "latest"))
             {
-                logboxText = FileReader.ReadFile(Environment.CurrentDirectory + "/logs/latest.log");
+                logboxText = FileReader.ReadFile(Environment.CurrentDirectory + $"/logs/latest.log");
                 currentDay = DateTime.Today.ToString("dd.MM.yyyy");
+                _contentStore.currentFile = _contentStore.Files.FirstOrDefault(x => x.Name == "latest");
             }
+            else
+            {
+                logboxText = FileReader.ReadFile(Environment.CurrentDirectory + $"/logs/{file.Name}.log");
+                currentDay = file.LogDate.ToString("dd.MM.yyyy");
+            }
+        }
+
+        public void ResetViewModel()
+        {
+            ResetTextView.Execute(this);
         }
 
         public string CurrentDay

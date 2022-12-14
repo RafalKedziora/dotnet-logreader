@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RVS_AT.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,22 @@ namespace RVS_AT.Helpers
             {
                 return reader.ReadToEnd();
             }
+        }
+        
+        public static List<FileModel> FilterUnpacked(List<FileModel> files)
+        {
+            var filteredFiles = new List<FileModel>();
+            foreach (var file in files)
+            {
+                if (file.Extension == ".log" && files.Exists(x => x.Name == file.Name + file.Extension && x.Extension == ".gz"))
+                {
+                    filteredFiles.Add(file);
+                }
+            }
+
+            filteredFiles.Add(files.FirstOrDefault(x => x.Name == "latest"));
+            
+            return filteredFiles;
         }
     }
 }

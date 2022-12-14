@@ -50,7 +50,7 @@ namespace RVS_AT
             services.AddTransient(CreateNavigationBarViewModel);
             services.AddTransient(CreateLeftNavigationBarViewModel);
 
-            services.AddTransient<TextViewModel>(s => new TextViewModel(s.GetRequiredService<ContentStore>()));
+            services.AddTransient<TextViewModel>(s => new TextViewModel(s.GetRequiredService<ContentStore>(), CreateTextNavigationService(s)));
             services.AddTransient<SettingsViewModel>(s => new SettingsViewModel(s.GetRequiredService<ContentStore>(), s.GetRequiredService<NavigationBarViewModel>(), s.GetRequiredService<LeftNavigationBarViewModel>(), CreateSettingsNavigationService(s), s.GetRequiredService<FtpDownloader>(), s.GetRequiredService<FileUnpacker>()));
 
             services.AddSingleton<MainViewModel>();
