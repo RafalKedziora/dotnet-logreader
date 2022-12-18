@@ -1,13 +1,13 @@
 ﻿using Domain.Models;
-using RVS_AT.Commands;
-using RVS_AT.Commands.SettingsCommands;
-using RVS_AT.Services;
-using RVS_AT.Stores;
+using WpfLogReader.Commands;
+using WpfLogReader.Commands.SettingsCommands;
+using WpfLogReader.Services;
+using WpfLogReader.Stores;
 using System;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace RVS_AT.ViewModels
+namespace WpfLogReader.ViewModels
 {
     public class SettingsViewModel : ViewModelBase
     {

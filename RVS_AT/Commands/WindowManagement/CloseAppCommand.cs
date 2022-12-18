@@ -1,7 +1,7 @@
-﻿using RVS_AT.Commands.BaseCommands;
+﻿using WpfLogReader.Commands.BaseCommands;
 using System.Windows;
 
-namespace RVS_AT.Commands.WindowManagement
+namespace WpfLogReader.Commands.WindowManagement
 {
     public class CloseAppCommand : CommandBase
     {

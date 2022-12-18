@@ -1,4 +1,4 @@
-﻿namespace RVS_AT.Models
+﻿namespace Domain.Models
 {
     public class FileModel
     {

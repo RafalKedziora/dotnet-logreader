@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace RVS_AT.Helpers
+namespace WpfLogReader.Helpers
 {
     public static class PasswordBoxAssistant
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace RVS_AT.ViewModels
+namespace WpfLogReader.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged, IDisposable
     {

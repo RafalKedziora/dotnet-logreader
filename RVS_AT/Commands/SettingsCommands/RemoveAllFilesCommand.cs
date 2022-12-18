@@ -1,8 +1,8 @@
-﻿using RVS_AT.Commands.BaseCommands;
+﻿using WpfLogReader.Commands.BaseCommands;
 using System.Collections.Generic;
 using System.IO;
 
-namespace RVS_AT.Commands.SettingsCommands
+namespace WpfLogReader.Commands.SettingsCommands
 {
     public class RemoveAllFilesCommand : CommandBase
     {

@@ -1,4 +1,4 @@
-﻿namespace RVS_AT.ViewModels
+﻿namespace WpfLogReader.ViewModels
 {
     public class LayoutViewModel : ViewModelBase
     {

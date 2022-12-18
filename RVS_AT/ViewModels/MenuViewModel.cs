@@ -1,9 +1,9 @@
-﻿using RVS_AT.Models;
-using RVS_AT.Stores;
+﻿using Domain.Models;
+using WpfLogReader.Stores;
 using System;
 using System.IO;
 
-namespace RVS_AT.ViewModels
+namespace WpfLogReader.ViewModels
 {
     public class MenuViewModel : ViewModelBase
     {

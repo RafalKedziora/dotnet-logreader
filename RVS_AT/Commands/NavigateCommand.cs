@@ -1,7 +1,7 @@
-﻿using RVS_AT.Commands.BaseCommands;
-using RVS_AT.Services;
+﻿using WpfLogReader.Commands.BaseCommands;
+using WpfLogReader.Services;
 
-namespace RVS_AT.Commands
+namespace WpfLogReader.Commands
 {
     public class NavigateCommand : CommandBase
     {

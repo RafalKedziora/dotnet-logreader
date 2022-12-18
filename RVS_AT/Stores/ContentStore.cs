@@ -1,9 +1,9 @@
 ﻿using Domain.Models;
-using RVS_AT.Models;
+using Domain.Models;
 using Services.Interfaces;
 using System.Collections.Generic;
 
-namespace RVS_AT.Stores
+namespace WpfLogReader.Stores
 {
     public class ContentStore
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace RVS_AT.Commands.BaseCommands
+namespace WpfLogReader.Commands.BaseCommands
 {
     public abstract class CommandBase : ICommand
     {

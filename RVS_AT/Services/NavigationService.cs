@@ -1,8 +1,8 @@
-﻿using RVS_AT.Stores;
-using RVS_AT.ViewModels;
+﻿using WpfLogReader.Stores;
+using WpfLogReader.ViewModels;
 using System;
 
-namespace RVS_AT.Services
+namespace WpfLogReader.Services
 {
     public class NavigationService<TViewModel> : INavigationService where TViewModel : ViewModelBase
     {

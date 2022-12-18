@@ -1,8 +1,8 @@
-﻿using RVS_AT.Commands.BaseCommands;
-using RVS_AT.ViewModels;
+﻿using WpfLogReader.Commands.BaseCommands;
+using WpfLogReader.ViewModels;
 using System.Threading.Tasks;
 
-namespace RVS_AT.Commands.SettingsCommands
+namespace WpfLogReader.Commands.SettingsCommands
 {
     public class LoadFtpData : AsyncCommandBase
     {

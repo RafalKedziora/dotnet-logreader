@@ -1,7 +1,7 @@
-﻿using RVS_AT.ViewModels;
+﻿using WpfLogReader.ViewModels;
 using System;
 
-namespace RVS_AT.Stores
+namespace WpfLogReader.Stores
 {
     public class ModalNavigationStore
     {

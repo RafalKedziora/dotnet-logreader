@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace RVS_AT.Views
+namespace WpfLogReader.Views
 {
     public partial class Text : UserControl
     {

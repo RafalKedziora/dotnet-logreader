@@ -1,4 +1,4 @@
-﻿namespace RVS_AT.Services
+﻿namespace WpfLogReader.Services
 {
     public interface INavigationService
     {

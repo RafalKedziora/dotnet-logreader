@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace RVS_AT.Components
+namespace WpfLogReader.Components
 {
     /// <summary>
     /// Interaction logic for LeftNavigationBar.xaml

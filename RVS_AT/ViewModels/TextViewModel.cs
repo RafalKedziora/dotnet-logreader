@@ -1,13 +1,13 @@
-﻿using RVS_AT.Commands;
-using RVS_AT.Helpers;
-using RVS_AT.Models;
-using RVS_AT.Services;
-using RVS_AT.Stores;
+﻿using WpfLogReader.Commands;
+using WpfLogReader.Helpers;
+using Domain.Models;
+using WpfLogReader.Services;
+using WpfLogReader.Stores;
 using System;
 using System.Linq;
 using System.Windows.Input;
 
-namespace RVS_AT.ViewModels
+namespace WpfLogReader.ViewModels
 {
     public class TextViewModel : ViewModelBase
     {

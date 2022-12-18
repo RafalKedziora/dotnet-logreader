@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RVS_AT.Services
+namespace WpfLogReader.Services
 {
     public class CompositeNavigationService : INavigationService
     {

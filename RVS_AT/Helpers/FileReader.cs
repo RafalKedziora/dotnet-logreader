@@ -1,9 +1,9 @@
-﻿using RVS_AT.Models;
+﻿using Domain.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace RVS_AT.Helpers
+namespace WpfLogReader.Helpers
 {
     public static class FileReader
     {

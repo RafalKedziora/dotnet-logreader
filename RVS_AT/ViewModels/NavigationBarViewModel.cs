@@ -1,9 +1,9 @@
 ﻿using Domain.Models;
-using RVS_AT.Commands.WindowManagement;
-using RVS_AT.Stores;
+using WpfLogReader.Commands.WindowManagement;
+using WpfLogReader.Stores;
 using System.Windows.Input;
 
-namespace RVS_AT.ViewModels
+namespace WpfLogReader.ViewModels
 {
     public class NavigationBarViewModel : ViewModelBase
     {

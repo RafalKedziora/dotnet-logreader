@@ -1,6 +1,6 @@
-﻿using RVS_AT.Stores;
+﻿using WpfLogReader.Stores;
 
-namespace RVS_AT.Services
+namespace WpfLogReader.Services
 {
     public class CloseModalNavigationService : INavigationService
     {

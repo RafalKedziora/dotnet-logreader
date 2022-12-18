@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-namespace RVS_AT
+namespace WpfLogReader
 {
     public partial class MainWindow : Window
     {

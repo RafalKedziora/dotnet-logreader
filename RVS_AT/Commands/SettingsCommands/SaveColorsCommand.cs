@@ -1,9 +1,9 @@
 ﻿using Domain.Models;
-using RVS_AT.Commands.BaseCommands;
-using RVS_AT.Stores;
-using RVS_AT.ViewModels;
+using WpfLogReader.Commands.BaseCommands;
+using WpfLogReader.Stores;
+using WpfLogReader.ViewModels;
 
-namespace RVS_AT.Commands.SettingsCommands
+namespace WpfLogReader.Commands.SettingsCommands
 {
     public class SaveColorsCommand : CommandBase
     {

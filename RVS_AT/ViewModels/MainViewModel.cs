@@ -1,6 +1,6 @@
-﻿using RVS_AT.Stores;
+﻿using WpfLogReader.Stores;
 
-namespace RVS_AT.ViewModels
+namespace WpfLogReader.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {

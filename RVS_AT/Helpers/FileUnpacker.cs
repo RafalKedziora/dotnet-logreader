@@ -1,11 +1,11 @@
-﻿using RVS_AT.Models;
+﻿using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
 
-namespace RVS_AT
+namespace WpfLogReader
 {
     public class FileUnpacker
     {

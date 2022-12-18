@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace RVS_AT.Commands.BaseCommands
+namespace WpfLogReader.Commands.BaseCommands
 {
     public abstract class AsyncCommandBase : CommandBase
     {

@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace RVS_AT.Components
+namespace WpfLogReader.Components
 {
     /// <summary>
     /// Interaction logic for NavigationBar.xaml

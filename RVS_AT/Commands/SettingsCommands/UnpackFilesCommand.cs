@@ -1,11 +1,11 @@
-﻿using RVS_AT.Commands.BaseCommands;
-using RVS_AT.Helpers;
-using RVS_AT.Stores;
+﻿using WpfLogReader.Commands.BaseCommands;
+using WpfLogReader.Helpers;
+using WpfLogReader.Stores;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace RVS_AT.Commands.SettingsCommands
+namespace WpfLogReader.Commands.SettingsCommands
 {
     public class UnpackFilesCommand : AsyncCommandBase
     {

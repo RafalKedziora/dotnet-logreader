@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RVS_AT
+namespace WpfLogReader
 {
     public static class DateOperator
     {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RVS_AT.Services;
-using RVS_AT.Stores;
-using RVS_AT.ViewModels;
+using WpfLogReader.Services;
+using WpfLogReader.Stores;
+using WpfLogReader.ViewModels;
 using Services;
 using Services.Data;
 using Services.Interfaces;
@@ -12,7 +12,7 @@ using System;
 using System.IO;
 using System.Windows;
 
-namespace RVS_AT
+namespace WpfLogReader
 {
     public partial class App : Application
     {
