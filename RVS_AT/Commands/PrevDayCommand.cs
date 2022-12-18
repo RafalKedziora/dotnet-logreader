@@ -1,8 +1,6 @@
 ﻿using RVS_AT.Commands.BaseCommands;
-using RVS_AT.Helpers;
 using RVS_AT.Stores;
 using RVS_AT.ViewModels;
-using System;
 using System.Linq;
 
 namespace RVS_AT.Commands
@@ -21,8 +19,12 @@ namespace RVS_AT.Commands
         {
             if (_contentStore._files is not null)
             {
-                _contentStore.currentFile = _contentStore._files.LastOrDefault(x => x.LogDate < _contentStore.currentFile.LogDate);
-                _textViewModel.ResetViewModel();
+                var file = _contentStore._files.LastOrDefault(x => x.Id < _contentStore.currentFile.Id);
+                if (file is not null)
+                {
+                    _contentStore.currentFile = file;
+                    _textViewModel.ResetViewModel();
+                }
             }
         }
     }

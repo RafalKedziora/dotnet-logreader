@@ -1,4 +1,5 @@
 ﻿using RVS_AT.Commands.BaseCommands;
+using RVS_AT.Helpers;
 using RVS_AT.Stores;
 using System;
 using System.IO;
@@ -22,11 +23,14 @@ namespace RVS_AT.Commands.SettingsCommands
 
             foreach (var file in _contentStore._files)
             {
-                if (file.Extension == ".gz")
+                if (file.Extension == ".log.gz")
                 {
                     await _fileUnpacker.Decompress(new FileInfo($"{Environment.CurrentDirectory}/logs/{file.Name}{file.Extension}"));
                 }
             }
+
+            _contentStore._files = FileReader.FilterUnpacked(_contentStore._files);
+
         }
     }
 }

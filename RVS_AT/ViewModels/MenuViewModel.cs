@@ -2,7 +2,6 @@
 using RVS_AT.Stores;
 using System;
 using System.IO;
-using System.Windows.Documents;
 
 namespace RVS_AT.ViewModels
 {
@@ -16,10 +15,10 @@ namespace RVS_AT.ViewModels
             if (File.Exists(Environment.CurrentDirectory + "/logs/latest.log"))
                 _contentStore._files.Add(new FileModel
                 {
-                    Name = "latest.log",
+                    Name = "latest",
                     Extension = ".log",
                     LogDate = DateTime.Now
-                    
+
                 });
         }
     }

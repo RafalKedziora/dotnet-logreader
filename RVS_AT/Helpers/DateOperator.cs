@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RVS_AT
 {
@@ -25,7 +23,7 @@ namespace RVS_AT
                     Console.WriteLine(e.Message);
                 }
             }
-            
+
             return parsedDay;
         }
     }

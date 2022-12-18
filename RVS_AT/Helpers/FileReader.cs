@@ -1,10 +1,7 @@
 ﻿using RVS_AT.Models;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RVS_AT.Helpers
 {
@@ -17,20 +14,20 @@ namespace RVS_AT.Helpers
                 return reader.ReadToEnd();
             }
         }
-        
+
         public static List<FileModel> FilterUnpacked(List<FileModel> files)
         {
             var filteredFiles = new List<FileModel>();
             foreach (var file in files)
             {
-                if (file.Extension == ".log" && files.Exists(x => x.Name == file.Name + file.Extension && x.Extension == ".gz"))
+                if (file.Extension.Equals(".log.gz"))
                 {
+                    file.Extension = ".log";
                     filteredFiles.Add(file);
                 }
             }
-
             filteredFiles.Add(files.FirstOrDefault(x => x.Name == "latest"));
-            
+
             return filteredFiles;
         }
     }

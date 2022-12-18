@@ -1,5 +1,4 @@
-﻿using RVS_AT.Helpers;
-using RVS_AT.Models;
+﻿using RVS_AT.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,16 +19,17 @@ namespace RVS_AT
             {
                 var fileModel = new FileModel
                 {
-                    Name = Path.GetFileNameWithoutExtension(filePath),
+                    Id = files.Count + 1,
+                    Name = Path.GetFileNameWithoutExtension(filePath).Split('.')[0],
                     Extension = Path.GetExtension(filePath)
                 };
-                fileModel.LogDate = DateOperator.DateParser(fileModel.Name);
 
+                fileModel.Extension = fileModel.Extension == ".gz" ? ".log.gz" : ".log";
+
+                fileModel.LogDate = DateOperator.DateParser(fileModel.Name.Split('.')[0]);
 
                 files.Add(fileModel);
             }
-
-            files = FileReader.FilterUnpacked(files);
 
             return files;
         }
