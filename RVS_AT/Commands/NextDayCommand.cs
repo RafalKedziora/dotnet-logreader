@@ -1,11 +1,11 @@
 ﻿using RVS_AT.Commands.BaseCommands;
 using RVS_AT.Stores;
 using RVS_AT.ViewModels;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace RVS_AT.Commands
 {
-    public class NextDayCommand : AsyncCommandBase
+    public class NextDayCommand : CommandBase
     {
         private readonly TextViewModel _textViewModel;
         private readonly ContentStore _contentStore;
@@ -15,9 +15,17 @@ namespace RVS_AT.Commands
             _contentStore = contentStore;
         }
 
-        public override Task ExecuteAsync(object parameter)
+        public override void Execute(object parameter)
         {
-            return Task.FromResult(0);
+            if (_contentStore._files is not null)
+            {
+                var file = _contentStore._files.FirstOrDefault(x => x.Id > _contentStore.currentFile.Id);
+                if (file is not null)
+                {
+                    _contentStore.currentFile = file;
+                    _textViewModel.ResetViewModel();
+                }
+            }
         }
     }
 }

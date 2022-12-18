@@ -19,29 +19,18 @@ namespace RVS_AT
             {
                 var fileModel = new FileModel
                 {
-                    Name = Path.GetFileName(filePath),
+                    Id = files.Count + 1,
+                    Name = Path.GetFileNameWithoutExtension(filePath).Split('.')[0],
                     Extension = Path.GetExtension(filePath)
                 };
-                fileModel.LogDate = DateOperator.DateParser(fileModel.Name);
 
+                fileModel.Extension = fileModel.Extension == ".gz" ? ".log.gz" : ".log";
+
+                fileModel.LogDate = DateOperator.DateParser(fileModel.Name.Split('.')[0]);
 
                 files.Add(fileModel);
             }
 
-            files = FilterUnpacked(files);
-
-            return files;
-        }
-
-        public List<FileModel> FilterUnpacked(List<FileModel> files)
-        {
-            foreach (var file in files)
-            {
-                if (file.Extension == ".log" && files.Exists(x => x.Name == file.Name && x.Extension == ".log.gz"))
-                {
-                    files.Remove(file);
-                }
-            }
             return files;
         }
 

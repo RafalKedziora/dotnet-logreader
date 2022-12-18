@@ -10,6 +10,7 @@ namespace RVS_AT.Stores
         public IFtpCredentialsRepository _ftpCredentialsRepository;
         public IUIColorsRepository _uiColorsRepository;
         public List<FileModel> _files;
+        public FileModel currentFile;
 
         public UIColors _uiColors;
         public FtpCredentials _ftpCredentials;
@@ -25,6 +26,7 @@ namespace RVS_AT.Stores
             _ftpCredentials = GetFtpDataAccess();
 
             _files = new List<FileModel>();
+            currentFile = null;
         }
 
         public UIColors GetUIColors() => _uiColorsRepository.GetById(1);

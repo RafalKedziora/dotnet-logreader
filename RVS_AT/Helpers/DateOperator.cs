@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RVS_AT
 {
-    class DateOperator
+    public static class DateOperator
     {
         public static DateTime DateParser(string fileName)
         {
             DateTime parsedDay;
             try
             {
-                parsedDay = DateTime.Parse(fileName.Remove(10));
+                parsedDay = DateTime.Parse(fileName);
             }
             catch (Exception e)
             {
-                if (fileName == "latest.log")
+                if (fileName == "latest")
                 {
                     parsedDay = DateTime.Now.Date;
                 }
@@ -25,15 +23,8 @@ namespace RVS_AT
                     Console.WriteLine(e.Message);
                 }
             }
-            
-            return parsedDay;
-        }
 
-        public async Task<DateTime[]> GetLastDays()
-        {
-            var lastDays = Enumerable.Range(0, 4).Select(i => DateTime.Now.Date.AddDays(-i)).ToArray();
-            var result = await Task.FromResult(lastDays);
-            return result;
+            return parsedDay;
         }
     }
 }
