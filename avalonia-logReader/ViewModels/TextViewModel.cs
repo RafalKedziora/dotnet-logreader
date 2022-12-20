@@ -1,8 +1,8 @@
 ﻿using AvaloniaLogReader.Commands;
 using AvaloniaLogReader.Helpers;
-using AvaloniaLogReader.Models;
 using AvaloniaLogReader.Services;
 using AvaloniaLogReader.Stores;
+using Domain.Models;
 using System;
 using System.Linq;
 using System.Windows.Input;

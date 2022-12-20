@@ -1,11 +1,11 @@
 ﻿using Domain.Models;
+using System;
+using System.Windows.Input;
+using System.Windows.Threading;
 using WpfLogReader.Commands;
 using WpfLogReader.Commands.SettingsCommands;
 using WpfLogReader.Services;
 using WpfLogReader.Stores;
-using System;
-using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace WpfLogReader.ViewModels
 {

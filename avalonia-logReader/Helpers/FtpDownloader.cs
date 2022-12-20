@@ -1,6 +1,6 @@
-﻿using FluentFTP;
-using AvaloniaLogReader.Models;
-using AvaloniaLogReader.Stores;
+﻿using AvaloniaLogReader.Stores;
+using Domain.Models;
+using FluentFTP;
 using System;
 using System.Collections.Generic;
 using System.Threading;

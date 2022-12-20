@@ -1,17 +1,33 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:AvaloniaLogReader.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="AvaloniaLogReader.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="AvaloniaLogReader">
+        mc:Ignorable="d"
+		xmlns:views="using:AvaloniaLogReader.Views"
+		xmlns:vm="using:AvaloniaLogReader.ViewModels"
+		x:Class="AvaloniaLogReader.Views.MainWindow"
+		Title="LogReaderAvalonia" d:DesignHeight="450" d:DesignWidth="672">
 
-    <Design.DataContext>
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
+  <Design.DataContext>
+	<vm:MainViewModel/>
+  </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  <Window.DataTemplates>
+	<DataTemplate DataType="{x:Type vm:LayoutViewModel}">
+	  <views:Layout />
+	</DataTemplate>
+	<DataTemplate DataType="{x:Type vm:MenuViewModel}">
+	  <views:MenuView />
+	</DataTemplate>
+	<DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+	  <views:SettingsView />
+	</DataTemplate>
+	<DataTemplate DataType="{x:Type vm:TextViewModel}">
+	  <views:TextView />
+	</DataTemplate>
+  </Window.DataTemplates>
+
+  <ContentControl Content="{Binding CurrentViewModel}" />
 
 </Window>
+

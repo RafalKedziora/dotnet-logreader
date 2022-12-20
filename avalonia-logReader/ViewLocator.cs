@@ -1,13 +1,14 @@
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Controls.Templates;
+using AvaloniaLogReader.ViewModels;
 using System;
-using System.ComponentModel;
-using System.ComponentModel;
 
 namespace AvaloniaLogReader
 {
     public class ViewLocator : IDataTemplate
     {
+        public bool SupportsRecycling => false;
+
         public IControl Build(object data)
         {
             var name = data.GetType().FullName!.Replace("ViewModel", "View");
@@ -17,14 +18,15 @@ namespace AvaloniaLogReader
             {
                 return (Control)Activator.CreateInstance(type)!;
             }
-
-            return new TextBlock { Text = "Not Found: " + name };
+            else
+            {
+                return new TextBlock { Text = "Not Found: " + name };
+            }
         }
 
         public bool Match(object data)
         {
-
-            return data is INotifyPropertyChanged;
+            return data is ViewModelBase;
         }
     }
 }

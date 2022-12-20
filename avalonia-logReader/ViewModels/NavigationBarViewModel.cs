@@ -1,18 +1,10 @@
-﻿using Domain.Models;
-using AvaloniaLogReader.Commands.WindowManagement;
-using AvaloniaLogReader.Stores;
-using System.Windows.Input;
+﻿using AvaloniaLogReader.Stores;
+using Domain.Models;
 
 namespace AvaloniaLogReader.ViewModels
 {
     public class NavigationBarViewModel : ViewModelBase
     {
-        public ICommand OpenOperationsCommand { get; }
-
-        public ICommand CloseAppCommand { get; }
-        public ICommand MinMaxAppCommand { get; }
-        public ICommand StateAppCommand { get; }
-
         private string _background;
         public string Background
         {
@@ -43,10 +35,6 @@ namespace AvaloniaLogReader.ViewModels
 
         public NavigationBarViewModel(ContentStore contentStore)
         {
-            CloseAppCommand = new CloseAppCommand();
-            MinMaxAppCommand = new MinMaxAppCommand();
-            StateAppCommand = new StateAppCommand();
-
             UpdateColors(contentStore._uiColors);
         }
         internal void UpdateColors(UIColors updatedColors)

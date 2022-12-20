@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WpfLogReader.Services;
-using WpfLogReader.Stores;
-using WpfLogReader.ViewModels;
 using Services;
 using Services.Data;
 using Services.Interfaces;
@@ -11,6 +8,9 @@ using Services.Repositories;
 using System;
 using System.IO;
 using System.Windows;
+using WpfLogReader.Services;
+using WpfLogReader.Stores;
+using WpfLogReader.ViewModels;
 
 namespace WpfLogReader
 {
@@ -40,10 +40,8 @@ namespace WpfLogReader
 
             services.AddSingleton<ContentStore>();
             services.AddSingleton<NavigationStore>();
-            services.AddSingleton<ModalNavigationStore>();
 
-            services.AddSingleton<INavigationService>(s => CreateMenuNavigationService(s));
-            services.AddSingleton<CloseModalNavigationService>();
+            services.AddSingleton(s => CreateMenuNavigationService(s));
 
             services.AddTransient<MenuViewModel>();
 

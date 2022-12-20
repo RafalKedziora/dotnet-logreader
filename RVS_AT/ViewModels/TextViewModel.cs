@@ -1,11 +1,11 @@
-﻿using WpfLogReader.Commands;
-using WpfLogReader.Helpers;
-using Domain.Models;
-using WpfLogReader.Services;
-using WpfLogReader.Stores;
+﻿using Domain.Models;
 using System;
 using System.Linq;
 using System.Windows.Input;
+using WpfLogReader.Commands;
+using WpfLogReader.Helpers;
+using WpfLogReader.Services;
+using WpfLogReader.Stores;
 
 namespace WpfLogReader.ViewModels
 {

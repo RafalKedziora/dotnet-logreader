@@ -1,6 +1,6 @@
-﻿using WpfLogReader.Commands.BaseCommands;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
+using WpfLogReader.Commands.BaseCommands;
 
 namespace WpfLogReader.Commands.SettingsCommands
 {

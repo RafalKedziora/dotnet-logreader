@@ -1,5 +1,5 @@
-﻿using AvaloniaLogReader.Models;
-using AvaloniaLogReader.Stores;
+﻿using AvaloniaLogReader.Stores;
+using Domain.Models;
 using System;
 using System.IO;
 

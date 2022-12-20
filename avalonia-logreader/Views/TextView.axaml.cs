@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace AvaloniaLogReader.Views
 {
-    public partial class MainWindow : Window
+    public partial class TextView : UserControl
     {
-        public MainWindow()
+        public TextView()
         {
             InitializeComponent();
         }

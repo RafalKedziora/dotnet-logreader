@@ -1,7 +1,7 @@
-﻿using Domain.Models;
-using AvaloniaLogReader.Commands.BaseCommands;
+﻿using AvaloniaLogReader.Commands.BaseCommands;
 using AvaloniaLogReader.Stores;
 using AvaloniaLogReader.ViewModels;
+using Domain.Models;
 
 namespace AvaloniaLogReader.Commands.SettingsCommands
 {

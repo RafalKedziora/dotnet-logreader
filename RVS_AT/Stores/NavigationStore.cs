@@ -1,5 +1,5 @@
-﻿using WpfLogReader.ViewModels;
-using System;
+﻿using System;
+using WpfLogReader.ViewModels;
 
 namespace WpfLogReader.Stores
 {

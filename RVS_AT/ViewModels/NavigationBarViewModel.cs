@@ -1,14 +1,12 @@
 ﻿using Domain.Models;
+using System.Windows.Input;
 using WpfLogReader.Commands.WindowManagement;
 using WpfLogReader.Stores;
-using System.Windows.Input;
 
 namespace WpfLogReader.ViewModels
 {
     public class NavigationBarViewModel : ViewModelBase
     {
-        public ICommand OpenOperationsCommand { get; }
-
         public ICommand CloseAppCommand { get; }
         public ICommand MinMaxAppCommand { get; }
         public ICommand StateAppCommand { get; }

@@ -1,4 +1,4 @@
-﻿using AvaloniaLogReader.Models;
+﻿using Domain.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

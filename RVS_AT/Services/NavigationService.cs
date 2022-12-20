@@ -1,6 +1,6 @@
-﻿using WpfLogReader.Stores;
+﻿using System;
+using WpfLogReader.Stores;
 using WpfLogReader.ViewModels;
-using System;
 
 namespace WpfLogReader.Services
 {

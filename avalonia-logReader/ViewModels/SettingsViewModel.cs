@@ -1,11 +1,10 @@
-﻿using Domain.Models;
-using AvaloniaLogReader.Commands;
+﻿using AvaloniaLogReader.Commands;
 using AvaloniaLogReader.Commands.SettingsCommands;
 using AvaloniaLogReader.Services;
 using AvaloniaLogReader.Stores;
+using Domain.Models;
 using System;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace AvaloniaLogReader.ViewModels
 {
@@ -64,7 +63,7 @@ namespace AvaloniaLogReader.ViewModels
 
         internal void UpdateProgressBar(int current, int fileCount)
         {
-            Dispatcher.CurrentDispatcher.BeginInvoke(new Action(() =>
+            Avalonia.Threading.Dispatcher.UIThread.InvokeAsync(new Action(() =>
             {
                 if (fileCount > 0)
                 {
@@ -118,8 +117,6 @@ namespace AvaloniaLogReader.ViewModels
                 OnPropertyChanged(nameof(Login));
             }
         }
-
-        public string SecurePassword { private get; set; }
 
         private string _password;
         public string Password

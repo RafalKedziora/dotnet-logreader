@@ -1,10 +1,10 @@
-﻿using FluentFTP;
-using Domain.Models;
-using WpfLogReader.Stores;
+﻿using Domain.Models;
+using FluentFTP;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using WpfLogReader.Stores;
 
 namespace WpfLogReader
 {

@@ -1,5 +1,5 @@
-﻿using WpfLogReader.Commands.BaseCommands;
-using System.Windows;
+﻿using System.Windows;
+using WpfLogReader.Commands.BaseCommands;
 
 namespace WpfLogReader.Commands.WindowManagement
 {

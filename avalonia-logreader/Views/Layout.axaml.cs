@@ -1,10 +1,10 @@
-﻿using System.Windows.Controls;
+using Avalonia.Controls;
 
 namespace AvaloniaLogReader.Views
 {
-    public partial class Text : UserControl
+    public partial class Layout : UserControl
     {
-        public Text()
+        public Layout()
         {
             InitializeComponent();
         }

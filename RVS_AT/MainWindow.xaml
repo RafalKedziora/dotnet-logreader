@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:custom="clr-namespace:ModalControl;assembly=ModalControl"
         xmlns:components="clr-namespace:WpfLogReader.Components"
         xmlns:viewmodels="clr-namespace:WpfLogReader.ViewModels"
         xmlns:views="clr-namespace:WpfLogReader.Views"
@@ -24,10 +23,6 @@
                 <views:Text />
             </DataTemplate>
         </Grid.Resources>
-
-        <custom:Modal Panel.ZIndex="1" IsOpen="{Binding IsOpen}">
-            <ContentControl Content="{Binding CurrentModalViewModel}" />
-        </custom:Modal>
 
         <ContentControl Content="{Binding CurrentViewModel}" />
     </Grid>

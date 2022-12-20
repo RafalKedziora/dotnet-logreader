@@ -1,6 +1,6 @@
-﻿using WpfLogReader.Commands.BaseCommands;
+﻿using System.Threading.Tasks;
+using WpfLogReader.Commands.BaseCommands;
 using WpfLogReader.ViewModels;
-using System.Threading.Tasks;
 
 namespace WpfLogReader.Commands.SettingsCommands
 {

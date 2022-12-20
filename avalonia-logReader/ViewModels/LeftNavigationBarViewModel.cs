@@ -1,11 +1,11 @@
-﻿using Domain.Models;
-using WpfLogReader.Commands;
-using WpfLogReader.Services;
-using WpfLogReader.Stores;
+﻿using Avalonia.Media;
+using AvaloniaLogReader.Commands;
+using AvaloniaLogReader.Services;
+using AvaloniaLogReader.Stores;
+using Domain.Models;
 using System.Windows.Input;
-using System.Windows.Media;
 
-namespace WpfLogReader.ViewModels
+namespace AvaloniaLogReader.ViewModels
 {
     public class LeftNavigationBarViewModel : ViewModelBase
     {
@@ -86,9 +86,9 @@ namespace WpfLogReader.ViewModels
 
         public void UpdateColors(UIColors updatedColors)
         {
-            Gradient1 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient1);
-            Gradient2 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient2);
-            Gradient3 = (Color)ColorConverter.ConvertFromString(updatedColors.Gradient3);
+            Gradient1 = Color.Parse(updatedColors.Gradient1);
+            Gradient2 = Color.Parse(updatedColors.Gradient2);
+            Gradient3 = Color.Parse(updatedColors.Gradient3);
 
             Background = updatedColors.Background;
         }
