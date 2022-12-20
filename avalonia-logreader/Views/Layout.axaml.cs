@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 
 namespace AvaloniaLogReader.Views
 {
@@ -7,6 +8,10 @@ namespace AvaloniaLogReader.Views
         public Layout()
         {
             InitializeComponent();
+        }
+        private void InitializeComponent()
+        {
+            AvaloniaXamlLoader.Load(this);
         }
     }
 }

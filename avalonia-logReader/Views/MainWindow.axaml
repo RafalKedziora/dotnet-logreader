@@ -11,7 +11,7 @@
   <Design.DataContext>
 	<vm:MainViewModel/>
   </Design.DataContext>
-
+  
   <Window.DataTemplates>
 	<DataTemplate DataType="{x:Type vm:LayoutViewModel}">
 	  <views:Layout />

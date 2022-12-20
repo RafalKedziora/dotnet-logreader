@@ -4,5 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaLogReader.Views.LeftNavigationBar">
-  Welcome to Avalonia!
+  <Grid>
+	<Grid.Background>
+	  <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+		<GradientStop Color="{Binding Gradient1}" Offset="0.0"/>
+		<GradientStop Color="{Binding Gradient2}" Offset="0.5"/>
+		<GradientStop Color="{Binding Gradient3}" Offset="1"/>
+	  </LinearGradientBrush>
+	</Grid.Background>
+	<Grid.ColumnDefinitions>
+	  <ColumnDefinition MinWidth="80" MaxWidth="150"/>
+	</Grid.ColumnDefinitions>
+	<Grid.RowDefinitions>
+	  <RowDefinition MaxHeight="60"/>
+	  <RowDefinition MaxHeight="60"/>
+	  <RowDefinition MaxHeight="60"/>
+	</Grid.RowDefinitions>
+	<Button Grid.Column="0" Grid.Row="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding MainMenuNavigateCommand}">
+	  Menu
+	</Button>
+	<Button Grid.Column="0" Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding TextNavigateCommand}">
+	  Tekst
+	</Button>
+	<Button Grid.Column="0" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Command="{Binding SettingsNavigateCommand}">
+	  Settings
+	</Button>
+  </Grid>
 </UserControl>

@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using AvaloniaLogReader.Services;
 using AvaloniaLogReader.Stores;
@@ -23,6 +24,11 @@ namespace AvaloniaLogReader
         private IConfiguration _configuration;
 
         public override void Initialize()
+        {
+            AvaloniaXamlLoader.Load(this);
+        }
+
+        public override void OnFrameworkInitializationCompleted()
         {
             IServiceCollection services = new ServiceCollection();
             var builder = new ConfigurationBuilder()
@@ -63,20 +69,16 @@ namespace AvaloniaLogReader
 
             _serviceProvider = services.BuildServiceProvider();
 
-            AvaloniaXamlLoader.Load(this);
-        }
-
-        public override void OnFrameworkInitializationCompleted()
-        {
             var seeder = _serviceProvider.GetRequiredService<DataSeeder>();
             seeder.Seed();
 
             INavigationService initialNavigationService = _serviceProvider.GetRequiredService<INavigationService>();
             initialNavigationService.Navigate();
 
-            var MainWindow = _serviceProvider.GetRequiredService<MainWindow>();
-
-            this.Run(MainWindow);
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                desktop.MainWindow = _serviceProvider.GetService<MainWindow>();
+            }
 
             base.OnFrameworkInitializationCompleted();
         }
