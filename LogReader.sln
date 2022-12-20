@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfLogReader", "RVS_AT\WpfLogReader.csproj", "{6F37D9D6-CC19-4711-AD75-7F4313E19248}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfLogReader", "WpfLogReader\WpfLogReader.csproj", "{6F37D9D6-CC19-4711-AD75-7F4313E19248}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{40FE0A59-C1C6-4C6E-A230-BB1DF5D1C413}"
 EndProject
@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Data\Domain.cspro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{2B925E0D-0E07-4C6A-A0DC-2354EEF32796}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaLogReader", "avalonia-logReader\AvaloniaLogReader.csproj", "{CC6E2B0A-E2DC-4314-95C6-A32D66DD7B1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaLogReader", "AvaloniaLogReader\AvaloniaLogReader.csproj", "{CC6E2B0A-E2DC-4314-95C6-A32D66DD7B1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
