@@ -6,7 +6,7 @@
 		xmlns:views="using:AvaloniaLogReader.Views"
 		xmlns:vm="using:AvaloniaLogReader.ViewModels"
 		x:Class="AvaloniaLogReader.Views.MainWindow"
-		Title="LogReaderAvalonia" d:DesignHeight="450" d:DesignWidth="672">
+		Title="LogReaderAvalonia" Height="530" Width="700" MinHeight="530" MinWidth="700">
 
   <Design.DataContext>
 	<vm:MainViewModel/>

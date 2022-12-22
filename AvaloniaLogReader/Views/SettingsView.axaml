@@ -11,7 +11,17 @@
 	<vm:SettingsViewModel/>
   </Design.DataContext>
 
-  <Grid Background="White">
+  <UserControl.Styles>
+	<Style Selector="TextBlock">
+	  <Setter Property="FontSize" Value="13"/>
+	</Style>
+	<Style Selector="TextBox">
+	  <Setter Property="FontSize" Value="13"/>
+	  <Setter Property="Width" Value="150"/>
+	</Style>
+  </UserControl.Styles>
+  
+  <Grid Background="Gray">
 	<DockPanel>
 	  <Grid DockPanel.Dock="Top" MaxHeight="80">
 		<Grid.ColumnDefinitions>
@@ -35,23 +45,23 @@
 		  <TextBlock>FTP</TextBlock>
 		  <Grid Margin="0 2 0 0">
 			<TextBlock>Host:</TextBlock>
-			<TextBox Text="{Binding Host}" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+			<TextBox Text="{Binding Host}" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 		  </Grid>
 		  <Grid Margin="0 2 0 0">
 			<TextBlock>Port:</TextBlock>
-			<TextBox Text="{Binding Port}" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+			<TextBox Text="{Binding Port}" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 		  </Grid>
 		  <Grid Margin="0 2 0 0">
 			<TextBlock>Login:</TextBlock>
-			<TextBox Text="{Binding Login}" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+			<TextBox Text="{Binding Login}" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 		  </Grid>
 		  <Grid Margin="0 2 0 0">
 			<TextBlock>Hasło:</TextBlock>
-			<TextBox PasswordChar="*" x:Name="PasswordBox" Text="{Binding Password}" FontSize="15" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+			<TextBox PasswordChar="*" x:Name="PasswordBox" Text="{Binding Password}" FontSize="15" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 		  </Grid>
 		  <Grid Margin="0 2 0 0">
 			<TextBlock>Ścieżka:</TextBlock>
-			<TextBox Text="{Binding PathToFiles}" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+			<TextBox Text="{Binding PathToFiles}" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 		  </Grid>
 		  <Grid Margin="0 10 0 0">
 			<Button x:Name="saveFTP" Command="{Binding SaveFtpCredentialsCommand}">
@@ -64,23 +74,23 @@
 		  <TextBlock>UI Kolory</TextBlock>
 		  <Grid Margin="0 2 0 0">
 			<TextBlock>Gradient:</TextBlock>
-			<TextBox Text="{Binding Gradient1}" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+			<TextBox Text="{Binding Gradient1}" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 		  </Grid>
 		  <Grid Margin="0 2 0 0">
 			<TextBlock>Gradient:</TextBlock>
-			<TextBox Text="{Binding Gradient2}" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+			<TextBox Text="{Binding Gradient2}" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 		  </Grid>
 		  <Grid Margin="0 2 0 0">
 			<TextBlock>Gradient:</TextBlock>
-			<TextBox Text="{Binding Gradient3}" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+			<TextBox Text="{Binding Gradient3}" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 		  </Grid>
 		  <Grid Margin="0 2 0 0">
 			<TextBlock>Belka:</TextBlock>
-			<TextBox Text="{Binding Background}" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+			<TextBox Text="{Binding Background}" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 		  </Grid>
 		  <Grid Margin="0 2 0 0">
 			<TextBlock>Przycisk:</TextBlock>
-			<TextBox Text="{Binding BackgroundButton}" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+			<TextBox Text="{Binding BackgroundButton}" HorizontalAlignment="Right" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 		  </Grid>
 		  <Grid Margin="0 10 0 0">
 			<Button x:Name="saveColors" Command="{Binding SaveColorsCommand}">

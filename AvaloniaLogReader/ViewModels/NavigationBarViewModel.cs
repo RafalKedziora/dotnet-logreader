@@ -19,20 +19,6 @@ namespace AvaloniaLogReader.ViewModels
             }
         }
 
-        private string _backgroundButton;
-        public string BackgroundButton
-        {
-            get
-            {
-                return _backgroundButton;
-            }
-            set
-            {
-                _backgroundButton = value;
-                OnPropertyChanged(nameof(BackgroundButton));
-            }
-        }
-
         public NavigationBarViewModel(ContentStore contentStore)
         {
             UpdateColors(contentStore._uiColors);
@@ -40,7 +26,6 @@ namespace AvaloniaLogReader.ViewModels
         internal void UpdateColors(UIColors updatedColors)
         {
             Background = updatedColors.Background;
-            BackgroundButton = updatedColors.BackgroundButton;
         }
     }
 }

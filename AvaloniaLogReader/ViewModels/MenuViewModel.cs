@@ -8,7 +8,7 @@ namespace AvaloniaLogReader.ViewModels
     public class MenuViewModel : ViewModelBase
     {
         private readonly ContentStore _contentStore;
-
+        
         public MenuViewModel(ContentStore contentStore)
         {
             _contentStore = contentStore;

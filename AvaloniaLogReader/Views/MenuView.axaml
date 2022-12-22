@@ -6,11 +6,12 @@
         xmlns:vm="using:AvaloniaLogReader.ViewModels"
 		x:Class="AvaloniaLogReader.Views.MenuView"
         d:DesignHeight="400" d:DesignWidth="600">
-
+  
   <Design.DataContext>
 	<vm:MenuViewModel/>
   </Design.DataContext>
 
-  <Grid>
+  <Grid Background="White">
+	<Image Source="avares://AvaloniaLogReader/Assets/AvaloniaWPF.png"></Image>
   </Grid>
 </UserControl>

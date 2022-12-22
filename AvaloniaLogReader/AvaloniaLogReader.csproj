@@ -9,18 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
-    <AvaloniaResource Remove="Assets\AvaloniaWPF.png" />
-    <AvaloniaResource Remove="Assets\close.png" />
-    <AvaloniaResource Remove="Assets\maximize.png" />
-    <AvaloniaResource Remove="Assets\minimize.png" />
-    <AvaloniaResource Remove="Assets\save.png" />
     <None Remove=".gitignore" />
-    <None Remove="Assets\AvaloniaWPF.png" />
-    <None Remove="Assets\close.png" />
-    <None Remove="Assets\maximize.png" />
-    <None Remove="Assets\minimize.png" />
-    <None Remove="Assets\save.png" />
-    <None Remove="Views\LayoutView.xaml" />
   </ItemGroup>
   <ItemGroup>
 	<!--This helps with theme dll-s trimming.

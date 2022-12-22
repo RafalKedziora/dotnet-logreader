@@ -11,17 +11,8 @@
 	<vm:NavigationBarViewModel/>
   </Design.DataContext>
 
-  <Grid>
-	<Grid.ColumnDefinitions>
-	  <ColumnDefinition MaxWidth="80"/>
-	</Grid.ColumnDefinitions>
-	<Grid.RowDefinitions>
-	  <RowDefinition MaxHeight="35"/>
-	</Grid.RowDefinitions>
-	<Grid.Background>
-	  <SolidColorBrush Color="{Binding Background}"/>
-	</Grid.Background>
-	<TextBlock Grid.Column="0" Background="{x:Null}" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">
+  <Grid MinHeight="35" MaxHeight="35" Background="{Binding Background}">
+	<TextBlock Margin="10 0 0 0" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left">
 	  LogReader
 	</TextBlock>
   </Grid>
