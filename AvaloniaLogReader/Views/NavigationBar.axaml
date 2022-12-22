@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        xmlns:vm="using:AvaloniaLogReader.ViewModels"
+        x:Class="AvaloniaLogReader.Views.NavigationBar"
+        d:DesignHeight="450" d:DesignWidth="800">
+
+  <Design.DataContext>
+	<vm:NavigationBarViewModel/>
+  </Design.DataContext>
+
+  <Grid MinHeight="35" MaxHeight="35" Background="{Binding Background}">
+	<TextBlock Margin="10 0 0 0" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left">
+	  LogReader
+	</TextBlock>
+  </Grid>
+</UserControl>
