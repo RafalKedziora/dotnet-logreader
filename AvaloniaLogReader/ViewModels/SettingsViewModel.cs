@@ -2,6 +2,7 @@
 using AvaloniaLogReader.Commands.SettingsCommands;
 using AvaloniaLogReader.Services;
 using Domain.Models;
+using Services.Helpers;
 using Services.Stores;
 using System;
 using System.Windows.Input;

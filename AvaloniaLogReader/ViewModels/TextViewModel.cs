@@ -1,7 +1,7 @@
 ﻿using AvaloniaLogReader.Commands;
-using AvaloniaLogReader.Helpers;
 using AvaloniaLogReader.Services;
 using Domain.Models;
+using Services.Helpers;
 using Services.Stores;
 using System;
 using System.Linq;

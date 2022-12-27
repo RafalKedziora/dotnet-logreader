@@ -1,5 +1,5 @@
 ﻿using AvaloniaLogReader.Commands.BaseCommands;
-using AvaloniaLogReader.Helpers;
+using Services.Helpers;
 using Services.Stores;
 using System;
 using System.IO;

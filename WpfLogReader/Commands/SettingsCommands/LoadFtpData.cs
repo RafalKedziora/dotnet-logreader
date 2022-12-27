@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Services.Helpers;
+using System.Threading.Tasks;
 using WpfLogReader.Commands.BaseCommands;
 using WpfLogReader.ViewModels;
 
