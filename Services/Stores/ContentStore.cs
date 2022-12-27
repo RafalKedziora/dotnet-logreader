@@ -1,8 +1,7 @@
 ﻿using Domain.Models;
 using Services.Interfaces;
-using System.Collections.Generic;
 
-namespace WpfLogReader.Stores
+namespace Services.Stores
 {
     public class ContentStore
     {

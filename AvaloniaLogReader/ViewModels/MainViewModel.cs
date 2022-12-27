@@ -1,5 +1,4 @@
 ﻿using AvaloniaLogReader.Stores;
-using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace AvaloniaLogReader.ViewModels
 {

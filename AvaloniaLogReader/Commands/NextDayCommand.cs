@@ -1,6 +1,6 @@
 ﻿using AvaloniaLogReader.Commands.BaseCommands;
-using AvaloniaLogReader.Stores;
 using AvaloniaLogReader.ViewModels;
+using Services.Stores;
 using System.Linq;
 
 namespace AvaloniaLogReader.Commands

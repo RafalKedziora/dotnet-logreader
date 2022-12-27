@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Services.Stores;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using WpfLogReader.Commands.BaseCommands;
 using WpfLogReader.Helpers;
-using WpfLogReader.Stores;
 
 namespace WpfLogReader.Commands.SettingsCommands
 {

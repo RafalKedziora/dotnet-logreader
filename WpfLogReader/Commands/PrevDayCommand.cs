@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using Services.Stores;
+using System.Linq;
 using WpfLogReader.Commands.BaseCommands;
-using WpfLogReader.Stores;
 using WpfLogReader.ViewModels;
 
 namespace WpfLogReader.Commands

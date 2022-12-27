@@ -1,5 +1,5 @@
-﻿using AvaloniaLogReader.Stores;
-using Domain.Models;
+﻿using Domain.Models;
+using Services.Stores;
 using System;
 using System.IO;
 
@@ -8,7 +8,7 @@ namespace AvaloniaLogReader.ViewModels
     public class MenuViewModel : ViewModelBase
     {
         private readonly ContentStore _contentStore;
-        
+
         public MenuViewModel(ContentStore contentStore)
         {
             _contentStore = contentStore;

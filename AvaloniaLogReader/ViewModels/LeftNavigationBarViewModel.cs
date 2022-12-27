@@ -1,8 +1,8 @@
 ﻿using Avalonia.Media;
 using AvaloniaLogReader.Commands;
 using AvaloniaLogReader.Services;
-using AvaloniaLogReader.Stores;
 using Domain.Models;
+using Services.Stores;
 using System.Windows.Input;
 
 namespace AvaloniaLogReader.ViewModels

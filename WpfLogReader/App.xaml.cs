@@ -5,6 +5,7 @@ using Services;
 using Services.Data;
 using Services.Interfaces;
 using Services.Repositories;
+using Services.Stores;
 using System;
 using System.IO;
 using System.Windows;

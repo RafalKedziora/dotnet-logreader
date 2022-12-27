@@ -1,5 +1,5 @@
-﻿using AvaloniaLogReader.Stores;
-using Domain.Models;
+﻿using Domain.Models;
+using Services.Stores;
 
 namespace AvaloniaLogReader.ViewModels
 {

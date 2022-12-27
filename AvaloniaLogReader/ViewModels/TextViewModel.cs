@@ -1,8 +1,8 @@
 ﻿using AvaloniaLogReader.Commands;
 using AvaloniaLogReader.Helpers;
 using AvaloniaLogReader.Services;
-using AvaloniaLogReader.Stores;
 using Domain.Models;
+using Services.Stores;
 using System;
 using System.Linq;
 using System.Windows.Input;
@@ -42,10 +42,14 @@ namespace AvaloniaLogReader.ViewModels
                 currentDay = DateTime.Today.ToString("dd.MM.yyyy");
                 _contentStore.currentFile = _contentStore.Files.FirstOrDefault(x => x.Name == "latest");
             }
-            else
+            else if (file is not null)
             {
                 logboxText = FileReader.ReadFile(Environment.CurrentDirectory + $"/logs/{file.Name}.log");
                 currentDay = file.LogDate.ToString("dd.MM.yyyy");
+            }
+            else
+            {
+                logboxText = "Nie załadowano logów";
             }
         }
 

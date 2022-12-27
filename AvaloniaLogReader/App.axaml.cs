@@ -1,5 +1,4 @@
 ﻿using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using AvaloniaLogReader.Services;
@@ -13,6 +12,7 @@ using Services;
 using Services.Data;
 using Services.Interfaces;
 using Services.Repositories;
+using Services.Stores;
 using System;
 using System.IO;
 

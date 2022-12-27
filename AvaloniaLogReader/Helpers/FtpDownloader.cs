@@ -1,6 +1,6 @@
-﻿using AvaloniaLogReader.Stores;
-using Domain.Models;
+﻿using Domain.Models;
 using FluentFTP;
+using Services.Stores;
 using System;
 using System.Collections.Generic;
 using System.Threading;
