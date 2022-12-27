@@ -38,7 +38,7 @@ namespace WpfLogReader
             services.AddTransient<IFtpCredentialsRepository, FtpCredentialsRepository>();
             services.AddTransient<IUIColorsRepository, UIColorsRepository>();
 
-            services.AddSingleton<ContentStore>();
+            services.AddTransient<ContentStore>();
             services.AddSingleton<NavigationStore>();
 
             services.AddSingleton(s => CreateMenuNavigationService(s));
