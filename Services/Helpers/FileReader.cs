@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace AvaloniaLogReader.Helpers
+namespace Services.Helpers
 {
     public static class FileReader
     {

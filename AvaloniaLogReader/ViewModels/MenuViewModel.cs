@@ -1,5 +1,5 @@
-﻿using AvaloniaLogReader.Stores;
-using Domain.Models;
+﻿using Domain.Models;
+using Services.Stores;
 using System;
 using System.IO;
 
@@ -7,13 +7,13 @@ namespace AvaloniaLogReader.ViewModels
 {
     public class MenuViewModel : ViewModelBase
     {
-        private readonly ContentStore _contentStore;
-        
-        public MenuViewModel(ContentStore contentStore)
+        private readonly FilesStore _filesStore;
+
+        public MenuViewModel(FilesStore filesStore)
         {
-            _contentStore = contentStore;
+            _filesStore = filesStore;
             if (File.Exists(Environment.CurrentDirectory + "/logs/latest.log"))
-                _contentStore._files.Add(new FileModel
+                _filesStore._files.Add(new FileModel
                 {
                     Name = "latest",
                     Extension = ".log",

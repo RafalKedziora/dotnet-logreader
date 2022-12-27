@@ -3,6 +3,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:vm="using:AvaloniaLogReader.ViewModels"
              x:Class="AvaloniaLogReader.Views.TextView">
-  Welcome to Avalonia!
+  <Design.DataContext>
+	<vm:TextViewModel/>
+  </Design.DataContext>
+
+  <UserControl.Styles>
+	<Style Selector="Button">
+	  <Setter Property="Width" Value="60"/>
+	  <Setter Property="Height" Value="30"/>
+	  <Setter Property="Padding" Value="5"/>
+	</Style>
+  </UserControl.Styles>
+
+  <DockPanel>
+	<Grid DockPanel.Dock="Top" Height="20">
+	  <Grid.Background>
+		<SolidColorBrush Color="{Binding Path=Background}"/>
+	  </Grid.Background>
+	  <ReversibleStackPanel ReverseOrder="True" Orientation="Horizontal" HorizontalAlignment="Right">
+		<Button Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}" Command="{Binding NextDayCommand}">Next</Button>
+		<Button Background="{Binding Path=BackgroundButton}" FontSize="12" Foreground="White" BorderBrush="{x:Null}" Command="{Binding PrevDayCommand}">Prev</Button>
+		<TextBlock Margin="20 0 0 0" FontSize="17" Foreground="White" Text="{Binding CurrentDay}"/>
+	  </ReversibleStackPanel>
+	</Grid>
+	<Grid DockPanel.Dock="Right">
+	  <TextBox FontSize="15" Grid.ColumnSpan="3" BorderThickness="3" TextAlignment="Left" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="5" Text="{Binding LogboxText}"></TextBox>
+	</Grid>
+  </DockPanel>
 </UserControl>

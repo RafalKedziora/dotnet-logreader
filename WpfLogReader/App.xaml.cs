@@ -3,8 +3,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Services;
 using Services.Data;
+using Services.Helpers;
 using Services.Interfaces;
 using Services.Repositories;
+using Services.Stores;
 using System;
 using System.IO;
 using System.Windows;
@@ -38,7 +40,8 @@ namespace WpfLogReader
             services.AddTransient<IFtpCredentialsRepository, FtpCredentialsRepository>();
             services.AddTransient<IUIColorsRepository, UIColorsRepository>();
 
-            services.AddSingleton<ContentStore>();
+            services.AddTransient<ContentStore>();
+            services.AddSingleton<FilesStore>();
             services.AddSingleton<NavigationStore>();
 
             services.AddSingleton(s => CreateMenuNavigationService(s));
@@ -48,8 +51,8 @@ namespace WpfLogReader
             services.AddTransient(CreateNavigationBarViewModel);
             services.AddTransient(CreateLeftNavigationBarViewModel);
 
-            services.AddTransient(s => new TextViewModel(s.GetRequiredService<ContentStore>(), CreateTextNavigationService(s)));
-            services.AddTransient(s => new SettingsViewModel(s.GetRequiredService<ContentStore>(), s.GetRequiredService<NavigationBarViewModel>(), s.GetRequiredService<LeftNavigationBarViewModel>(), CreateSettingsNavigationService(s), s.GetRequiredService<FtpDownloader>(), s.GetRequiredService<FileUnpacker>()));
+            services.AddTransient(s => new TextViewModel(s.GetRequiredService<ContentStore>(), s.GetRequiredService<FilesStore>(), CreateTextNavigationService(s)));
+            services.AddTransient(s => new SettingsViewModel(s.GetRequiredService<ContentStore>(), s.GetRequiredService<FilesStore>(), s.GetRequiredService<NavigationBarViewModel>(), s.GetRequiredService<LeftNavigationBarViewModel>(), CreateSettingsNavigationService(s), s.GetRequiredService<FtpDownloader>(), s.GetRequiredService<FileUnpacker>()));
 
             services.AddSingleton<MainViewModel>();
 

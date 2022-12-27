@@ -1,7 +1,7 @@
 ﻿using AvaloniaLogReader.Commands.BaseCommands;
-using AvaloniaLogReader.Stores;
 using AvaloniaLogReader.ViewModels;
 using Domain.Models;
+using Services.Stores;
 
 namespace AvaloniaLogReader.Commands.SettingsCommands
 {
@@ -30,6 +30,7 @@ namespace AvaloniaLogReader.Commands.SettingsCommands
             };
 
             _contentStore._ftpCredentialsRepository.Update(updatedFtpCredentials);
+            _settingsViewModel.UpdateFtpCredentials();
         }
     }
 }

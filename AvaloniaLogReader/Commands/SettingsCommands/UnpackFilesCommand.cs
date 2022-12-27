@@ -1,6 +1,6 @@
 ﻿using AvaloniaLogReader.Commands.BaseCommands;
-using AvaloniaLogReader.Helpers;
-using AvaloniaLogReader.Stores;
+using Services.Helpers;
+using Services.Stores;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -9,19 +9,19 @@ namespace AvaloniaLogReader.Commands.SettingsCommands
 {
     public class UnpackFilesCommand : AsyncCommandBase
     {
-        private readonly ContentStore _contentStore;
+        private readonly FilesStore _filesStore;
         private readonly FileUnpacker _fileUnpacker;
-        public UnpackFilesCommand(ContentStore contentStore, FileUnpacker fileUnpacker)
+        public UnpackFilesCommand(FilesStore filesStore, FileUnpacker fileUnpacker)
         {
-            _contentStore = contentStore;
+            _filesStore = filesStore;
             _fileUnpacker = fileUnpacker;
         }
 
         public override async Task ExecuteAsync(object parameter)
         {
-            _contentStore._files = _fileUnpacker.GetFilesToUnpack();
+            _filesStore._files = _fileUnpacker.GetFilesToUnpack();
 
-            foreach (var file in _contentStore._files)
+            foreach (var file in _filesStore._files)
             {
                 if (file.Extension == ".log.gz")
                 {
@@ -29,7 +29,7 @@ namespace AvaloniaLogReader.Commands.SettingsCommands
                 }
             }
 
-            _contentStore._files = FileReader.FilterUnpacked(_contentStore._files);
+            _filesStore._files = FileReader.FilterUnpacked(_filesStore._files);
 
         }
     }

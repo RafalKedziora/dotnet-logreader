@@ -14,18 +14,21 @@ namespace WpfLogReader.Commands.SettingsCommands
 
         public override void Execute(object parameter)
         {
-            IEnumerable<string> contents = Directory.EnumerateFileSystemEntries(_path);
-
-            foreach (string path in contents)
+            if (Directory.Exists(_path))
             {
-                FileAttributes attributes = File.GetAttributes(path);
-                if (attributes.HasFlag(FileAttributes.Directory))
+                IEnumerable<string> contents = Directory.EnumerateFileSystemEntries(_path);
+
+                foreach (string path in contents)
                 {
-                    Directory.Delete(path, true);
-                }
-                else
-                {
-                    File.Delete(path);
+                    FileAttributes attributes = File.GetAttributes(path);
+                    if (attributes.HasFlag(FileAttributes.Directory))
+                    {
+                        Directory.Delete(path, true);
+                    }
+                    else
+                    {
+                        File.Delete(path);
+                    }
                 }
             }
         }

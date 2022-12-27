@@ -1,12 +1,12 @@
-﻿using AvaloniaLogReader.Stores;
-using Domain.Models;
+﻿using Domain.Models;
 using FluentFTP;
+using Services.Stores;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AvaloniaLogReader
+namespace Services.Helpers
 {
     public class FtpDownloader
     {

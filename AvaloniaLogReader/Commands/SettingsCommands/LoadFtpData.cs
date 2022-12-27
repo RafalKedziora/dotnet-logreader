@@ -1,5 +1,6 @@
 ﻿using AvaloniaLogReader.Commands.BaseCommands;
 using AvaloniaLogReader.ViewModels;
+using Services.Helpers;
 using System.Threading.Tasks;
 
 namespace AvaloniaLogReader.Commands.SettingsCommands

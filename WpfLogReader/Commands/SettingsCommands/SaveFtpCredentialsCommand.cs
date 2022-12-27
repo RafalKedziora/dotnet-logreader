@@ -1,6 +1,6 @@
 ﻿using Domain.Models;
+using Services.Stores;
 using WpfLogReader.Commands.BaseCommands;
-using WpfLogReader.Stores;
 using WpfLogReader.ViewModels;
 
 namespace WpfLogReader.Commands.SettingsCommands
@@ -30,6 +30,7 @@ namespace WpfLogReader.Commands.SettingsCommands
             };
 
             _contentStore._ftpCredentialsRepository.Update(updatedFtpCredentials);
+            _settingsViewModel.UpdateFtpCredentials();
         }
     }
 }

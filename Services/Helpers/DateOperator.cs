@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WpfLogReader
+﻿namespace Services.Helpers
 {
     public static class DateOperator
     {

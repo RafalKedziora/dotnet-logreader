@@ -1,7 +1,7 @@
 ﻿using Domain.Models;
+using Services.Stores;
 using System.Windows.Input;
 using WpfLogReader.Commands.WindowManagement;
-using WpfLogReader.Stores;
 
 namespace WpfLogReader.ViewModels
 {

@@ -1,20 +1,15 @@
 ﻿using Domain.Models;
 using Services.Interfaces;
-using System.Collections.Generic;
 
-namespace WpfLogReader.Stores
+namespace Services.Stores
 {
     public class ContentStore
     {
         public IFtpCredentialsRepository _ftpCredentialsRepository;
         public IUIColorsRepository _uiColorsRepository;
-        public List<FileModel> _files;
-        public FileModel currentFile;
 
         public UIColors _uiColors;
         public FtpCredentials _ftpCredentials;
-
-        public IEnumerable<FileModel> Files => _files;
 
         public ContentStore(IFtpCredentialsRepository ftpCredentialsRepository, IUIColorsRepository uiColorsRepository)
         {
@@ -23,9 +18,6 @@ namespace WpfLogReader.Stores
 
             _uiColors = GetUIColors();
             _ftpCredentials = GetFtpDataAccess();
-
-            _files = new List<FileModel>();
-            currentFile = null;
         }
 
         public UIColors GetUIColors() => _uiColorsRepository.GetById(1);

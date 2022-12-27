@@ -1,9 +1,9 @@
 ﻿using Domain.Models;
+using Services.Stores;
 using System.Windows.Input;
 using System.Windows.Media;
 using WpfLogReader.Commands;
 using WpfLogReader.Services;
-using WpfLogReader.Stores;
 
 namespace WpfLogReader.ViewModels
 {

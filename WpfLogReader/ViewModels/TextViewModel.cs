@@ -1,11 +1,12 @@
 ﻿using Domain.Models;
+using Services.Helpers;
+using Services.Stores;
 using System;
 using System.Linq;
 using System.Windows.Input;
 using WpfLogReader.Commands;
 using WpfLogReader.Helpers;
 using WpfLogReader.Services;
-using WpfLogReader.Stores;
 
 namespace WpfLogReader.ViewModels
 {
@@ -19,33 +20,39 @@ namespace WpfLogReader.ViewModels
         private string logboxText;
 
         private readonly ContentStore _contentStore;
+        private readonly FilesStore _filesStore;
 
         public string Background => _contentStore._uiColors.Background;
         public string BackgroundButton => _contentStore._uiColors.BackgroundButton;
 
-        public TextViewModel(ContentStore contentStore, INavigationService textNavigationService)
+        public TextViewModel(ContentStore contentStore, FilesStore filesStore, INavigationService textNavigationService)
         {
             _contentStore = contentStore;
+            _filesStore = filesStore;
 
-            NextDayCommand = new NextDayCommand(this, _contentStore);
-            PrevDayCommand = new PrevDayCommand(this, _contentStore);
+            NextDayCommand = new NextDayCommand(this, _filesStore);
+            PrevDayCommand = new PrevDayCommand(this, _filesStore);
             ResetTextView = new NavigateCommand(textNavigationService);
 
-            ChangeDay(_contentStore.currentFile);
+            ChangeDay(_filesStore.currentFile);
         }
 
         public void ChangeDay(FileModel file)
         {
-            if (file is null && _contentStore.Files.Any(x => x.Name == "latest"))
+            if (file is null && _filesStore.Files.Any(x => x.Name == "latest"))
             {
                 logboxText = FileReader.ReadFile(Environment.CurrentDirectory + $"/logs/latest.log");
                 currentDay = DateTime.Today.ToString("dd.MM.yyyy");
-                _contentStore.currentFile = _contentStore.Files.FirstOrDefault(x => x.Name == "latest");
+                _filesStore.currentFile = _filesStore.Files.FirstOrDefault(x => x.Name == "latest");
             }
-            else
+            else if (file is not null)
             {
                 logboxText = FileReader.ReadFile(Environment.CurrentDirectory + $"/logs/{file.Name}.log");
                 currentDay = file.LogDate.ToString("dd.MM.yyyy");
+            }
+            else
+            {
+                logboxText = "Nie załadowano logów";
             }
         }
 

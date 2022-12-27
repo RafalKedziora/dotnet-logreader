@@ -5,32 +5,34 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
 
-namespace AvaloniaLogReader
+namespace Services.Helpers
 {
     public class FileUnpacker
     {
         public List<FileModel> GetFilesToUnpack()
         {
             var currentDirectory = Environment.CurrentDirectory + "/logs";
-            var directoryFiles = Directory.GetFiles(currentDirectory);
-
             var files = new List<FileModel>();
-            foreach (var filePath in directoryFiles)
+            if (Directory.Exists(currentDirectory))
             {
-                var fileModel = new FileModel
+                var directoryFiles = Directory.GetFiles(currentDirectory);
+
+                foreach (var filePath in directoryFiles)
                 {
-                    Id = files.Count + 1,
-                    Name = Path.GetFileNameWithoutExtension(filePath).Split('.')[0],
-                    Extension = Path.GetExtension(filePath)
-                };
+                    var fileModel = new FileModel
+                    {
+                        Id = files.Count + 1,
+                        Name = Path.GetFileNameWithoutExtension(filePath).Split('.')[0],
+                        Extension = Path.GetExtension(filePath)
+                    };
 
-                fileModel.Extension = fileModel.Extension == ".gz" ? ".log.gz" : ".log";
+                    fileModel.Extension = fileModel.Extension == ".gz" ? ".log.gz" : ".log";
 
-                fileModel.LogDate = DateOperator.DateParser(fileModel.Name.Split('.')[0]);
+                    fileModel.LogDate = DateOperator.DateParser(fileModel.Name.Split('.')[0]);
 
-                files.Add(fileModel);
+                    files.Add(fileModel);
+                }
             }
-
             return files;
         }
 

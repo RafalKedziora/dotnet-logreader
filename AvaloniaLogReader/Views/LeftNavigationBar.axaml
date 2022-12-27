@@ -6,7 +6,7 @@
              x:Class="AvaloniaLogReader.Views.LeftNavigationBar">
   <Grid>
 	<Grid.Background>
-	  <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+	  <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
 		<GradientStop Color="{Binding Gradient1}" Offset="0.0"/>
 		<GradientStop Color="{Binding Gradient2}" Offset="0.5"/>
 		<GradientStop Color="{Binding Gradient3}" Offset="1"/>
