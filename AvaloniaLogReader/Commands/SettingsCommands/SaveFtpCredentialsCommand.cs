@@ -30,6 +30,7 @@ namespace AvaloniaLogReader.Commands.SettingsCommands
             };
 
             _contentStore._ftpCredentialsRepository.Update(updatedFtpCredentials);
+            _settingsViewModel.UpdateFtpCredentials();
         }
     }
 }

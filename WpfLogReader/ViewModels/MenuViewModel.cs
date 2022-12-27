@@ -7,13 +7,13 @@ namespace WpfLogReader.ViewModels
 {
     public class MenuViewModel : ViewModelBase
     {
-        private readonly ContentStore _contentStore;
+        private readonly FilesStore _filesStore;
 
-        public MenuViewModel(ContentStore contentStore)
+        public MenuViewModel(FilesStore filesStore)
         {
-            _contentStore = contentStore;
+            _filesStore = filesStore;
             if (File.Exists(Environment.CurrentDirectory + "/logs/latest.log"))
-                _contentStore._files.Add(new FileModel
+                _filesStore._files.Add(new FileModel
                 {
                     Name = "latest",
                     Extension = ".log",

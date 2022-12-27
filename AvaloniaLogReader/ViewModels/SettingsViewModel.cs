@@ -21,7 +21,7 @@ namespace AvaloniaLogReader.ViewModels
         private readonly NavigationBarViewModel _navigationBarViewModel;
         private readonly LeftNavigationBarViewModel _leftNavigationBarViewModel;
 
-        public SettingsViewModel(ContentStore contentStore, NavigationBarViewModel navigationBarViewModel, LeftNavigationBarViewModel leftNavigationBarViewModel, INavigationService settingsNavigationService, FtpDownloader ftp, FileUnpacker fileUnpacker)
+        public SettingsViewModel(ContentStore contentStore, FilesStore filesStore, NavigationBarViewModel navigationBarViewModel, LeftNavigationBarViewModel leftNavigationBarViewModel, INavigationService settingsNavigationService, FtpDownloader ftp, FileUnpacker fileUnpacker)
         {
             _navigationBarViewModel = navigationBarViewModel;
             _leftNavigationBarViewModel = leftNavigationBarViewModel;
@@ -30,7 +30,7 @@ namespace AvaloniaLogReader.ViewModels
             SaveFtpCredentialsCommand = new SaveFtpCredentialsCommand(contentStore, this);
             ResetSettings = new NavigateCommand(settingsNavigationService);
             LoadFtpDataCommand = new LoadFtpData(this, ftp);
-            UnpackFilesCommand = new UnpackFilesCommand(contentStore, fileUnpacker);
+            UnpackFilesCommand = new UnpackFilesCommand(filesStore, fileUnpacker);
             RemoveAllFilesCommand = new RemoveAllFilesCommand(Environment.CurrentDirectory + "/logs");
 
 
@@ -50,6 +50,11 @@ namespace AvaloniaLogReader.ViewModels
         {
             _navigationBarViewModel.UpdateColors(updatedColors);
             _leftNavigationBarViewModel.UpdateColors(updatedColors);
+            ResetSettings.Execute(this);
+        }
+
+        public void UpdateFtpCredentials()
+        {
             ResetSettings.Execute(this);
         }
 
