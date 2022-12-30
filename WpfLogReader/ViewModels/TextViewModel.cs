@@ -5,7 +5,6 @@ using System;
 using System.Linq;
 using System.Windows.Input;
 using WpfLogReader.Commands;
-using WpfLogReader.Helpers;
 using WpfLogReader.Services;
 
 namespace WpfLogReader.ViewModels

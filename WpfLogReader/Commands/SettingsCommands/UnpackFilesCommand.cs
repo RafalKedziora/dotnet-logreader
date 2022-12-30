@@ -4,7 +4,6 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using WpfLogReader.Commands.BaseCommands;
-using WpfLogReader.Helpers;
 
 namespace WpfLogReader.Commands.SettingsCommands
 {
